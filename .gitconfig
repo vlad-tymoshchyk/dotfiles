@@ -1,0 +1,8 @@
+[alias]
+	st = status
+	co = checkout
+	lg = log --oneline
+	br = branch
+[user]
+	name = Vlad Tymoshchyk
+	email = vtymoshchyk@gmail.com
