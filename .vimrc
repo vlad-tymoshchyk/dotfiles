@@ -42,6 +42,7 @@ Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'sjl/gundo.vim'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:indentLine_enabled = 0
@@ -326,18 +327,11 @@ nnoremap <silent> <leader>c; :call ToggleEndChar(';')<cr>
 "
 " commands
 "
-command! Vimrc tabe ~/vim-configuration/myvimrc
-command! Conf source ~/vim-configuration/myvimrc
-command! Beautify call JsBeautify()
+command! Vimrc tabe ~/.vimrc
+command! Conf source ~/.vimrc
 
 " source ~\vimscripts\
-command! Vimrc tabe ~/vim-configuration/myvimrc
-command! Package tabe ~/package.json
-command! Conf source ~/vim-configuration/myvimrc
-command! Beautify call JsBeautify()
-command! HtmlBeautify call HtmlBeautify()
 command! Font Guifont Consolas:h15
-command! Exit qa!
 
 command! SortWords call setline('.', join(sort(split(getline('.'), ' ')), " "))
 command! ClearDebug :g/* debugging-console */d 
