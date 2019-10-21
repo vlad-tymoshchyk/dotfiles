@@ -1,8 +1,11 @@
 [alias]
-	st = status
-	co = checkout
-	lg = log --oneline
-	br = branch
+  st = status
+  co = checkout
+  lg = log --oneline
+  br = branch
+  diffs = diff --staged
+  diffw = diff --word-diff
+  diffsw = diff --staged --word-dif
 [user]
-	name = Vlad Tymoshchyk
-	email = vtymoshchyk@gmail.com
+  name = Vlad Tymoshchyk
+  email = vtymoshchyk@gmail.com

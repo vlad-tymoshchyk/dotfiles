@@ -43,6 +43,8 @@ Plug 'wellle/targets.vim'
 Plug 'sjl/gundo.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+
 call plug#end()
 
 let g:indentLine_enabled = 0

@@ -128,6 +128,8 @@ alias ii='xdg-open . &'
 alias dotfiles='cd ~/dotfiles'
 alias wj='cd ~/wj/workjam-web'
 
+alias grepr='grep -R'
+
 
 # git prompt in bash
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
