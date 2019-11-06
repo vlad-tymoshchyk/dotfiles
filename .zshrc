@@ -11,6 +11,8 @@ export ZSH="/home/vlad/.oh-my-zsh"
 
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
+# ZSH_THEME="af-magic"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,4 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+alias wj="cd ~/wj/workjam-web"
+alias dotfiles="cd ~/dotfiles"
+alias grepr="grep -R"

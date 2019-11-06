@@ -3,6 +3,7 @@ Plug 'dracula/vim'
 Plug 'prettier/vim-prettier'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ryanoasis/vim-devicons'
@@ -274,6 +275,7 @@ nnoremap vv ggVG
 " FUNCTIONAL KEYS
 noremap <silent> <F6> :GundoToggle<cr>
 noremap <silent> <F7> :NERDTreeToggle<cr>
+" noremap <silent> <F8> :NERDTreeFind<cr>
 noremap <silent> <F8> :TagbarToggle<cr>
 
 nmap <c-,> <c-y>,
@@ -433,3 +435,6 @@ inoremap ;w <esc>:w<cr>
 " inoremap <F2> <esc>:se ft=jsx<cr>a
 
 set guifont=Monospace\ Regular\ 14
+
+nnoremap <leader>w <Plug>GenerateDiagram
+" nnoremap <unique> <leader>w :echo "done"
