@@ -1,0 +1,6 @@
+clear
+echo "\n"
+
+./sandbox_util -d 'argone' 'argtwo'
+
+echo "\n"

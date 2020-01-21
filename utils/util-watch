@@ -1,0 +1,1 @@
+while inotifywait -e close_write ./sandbox_bash ./sandbox_util; do ./sandbox_bash; done;
