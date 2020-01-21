@@ -5,7 +5,9 @@
   br = branch
   diffs = diff --staged
   diffw = diff --word-diff
-  diffsw = diff --staged --word-dif
+  diffsw = diff --staged --word-diff
+  diffws = diff --staged --word-diff
+  unstage = reset -- .
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk@gmail.com

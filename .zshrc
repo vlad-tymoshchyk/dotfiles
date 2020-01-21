@@ -9,10 +9,7 @@ export ZSH="/home/vlad/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
-# ZSH_THEME="af-magic"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,7 +69,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git web-search vi-mode jump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +99,38 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias wj="cd ~/wj/workjam-web"
-alias dotfiles="cd ~/dotfiles"
+hash -d wj=~/wj/workjam-web
+hash -d wjsrc=~/wj/workjam-web/src
+hash -d wjapp=~/wj/workjam-web/src/app
+hash -d wjv2=~/wj/workjam-web/src/v2
+hash -d wjstore=~/wj/workjam-web/src/v2/store
+hash -d wjapi=~/wj/workjam-web/src/v2/api
+hash -d wjcom=~/wj/workjam-web/src/v2/components
+
+hash -d wjdocs=~/wj/workjam-api-documentation
+
+hash -d dotfiles=~/dotfiles
+hash -d sandbox=~/sandbox
+hash -d github=~/github
+
+hash -d downloads=~/Downloads
+
+alias vimrc="nvim ~/dotfiles/.vimrc"
+alias zshrc="nvim ~/dotfiles/.zshrc"
+
 alias grepr="grep -R"
+alias grepri="grep -iR"
+alias findn="find . -name"
+
+alias fzf="~/.fzf/bin/fzf"
+
+alias vimf="vim \$(fzf)"
+alias gvimf="gvim \$(fzf)"
+
+alias aptS="apt-cache search"
+
+set -g mouse on
+
+bindkey jk vi-cmd-mode
+
+# [[ $TERM != "screen" ]] && exec tmux
