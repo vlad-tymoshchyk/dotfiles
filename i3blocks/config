@@ -1,0 +1,10 @@
+[time]
+command=echo $(date)
+interval=1
+
+[volume]
+interval=once
+signal=10
+
+[help]
+interval=once

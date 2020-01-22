@@ -127,10 +127,13 @@ alias fzf="~/.fzf/bin/fzf"
 alias vimf="vim \$(fzf)"
 alias gvimf="gvim \$(fzf)"
 
-alias aptS="apt-cache search"
+alias apts="apt-cache search"
 
 set -g mouse on
 
 bindkey jk vi-cmd-mode
 
 # [[ $TERM != "screen" ]] && exec tmux
+
+alias -s {txt,js,jsx,ts,tsx}=nvim
+alias -s {uml,yaml}=vim
