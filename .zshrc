@@ -128,6 +128,7 @@ alias vimf="vim \$(fzf)"
 alias gvimf="gvim \$(fzf)"
 
 alias apts="apt-cache search"
+alias apti="apt-get install"
 
 set -g mouse on
 
@@ -137,3 +138,6 @@ bindkey jk vi-cmd-mode
 
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=vim
+
+# zle -N exit exit
+# bindkey ^q exit

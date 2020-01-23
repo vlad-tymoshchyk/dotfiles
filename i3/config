@@ -187,5 +187,16 @@ bindsym $mod+Shift+u		exec --no-startup-id i3resize down
 
 bindsym $mod+Shift+i		exec --no-startup-id i3resize up
 
-exec "setxkbmap -layout us,ru"
+bindsym Print 					exec flameshot gui
+
+exec "setxkbmap -layout us,ua"
 exec "setxkbmap -option 'grp:win_space_toggle'"
+exec "feh --bg-fill ~/wallpapers/Spacescapes/Space\ Exploration\ 141.jpg"
+
+bindsym $mod+g exec google-chrome
+
+bind $mod+a mode "command"
+mode "command" {
+	bindsym g exec google-chrome; mode "default"
+	bindsym Escape mode "default"
+}
