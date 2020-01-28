@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cat_file() {
+  clear
+  tail -n 50 $1
+}
+
+cat_file $1
+
+inotifywait -m $1 -e modify |
+  while read path action file; do
+    cat_file $1
+  done

@@ -130,7 +130,6 @@ alias wj='cd ~/wj/workjam-web'
 
 alias grepr='grep -R'
 
-
 # git prompt in bash
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1

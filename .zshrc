@@ -116,7 +116,10 @@ hash -d github=~/github
 hash -d downloads=~/Downloads
 
 alias vimrc="nvim ~/dotfiles/.vimrc"
+alias bashrc="nvim ~/dotfiles/.bashrc"
 alias zshrc="nvim ~/dotfiles/.zshrc"
+alias tmuxrc="nvim ~/dotfiles/.tmux.conf"
+alias i3config="nvim ~/dotfiles/i3/config"
 
 alias grepr="grep -R"
 alias grepri="grep -iR"
@@ -129,6 +132,7 @@ alias gvimf="gvim \$(fzf)"
 
 alias apts="apt-cache search"
 alias apti="apt-get install"
+alias sapti="sudo apt-get install"
 
 set -g mouse on
 
@@ -141,3 +145,5 @@ alias -s {uml,yaml}=vim
 
 # zle -N exit exit
 # bindkey ^q exit
+
+alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"

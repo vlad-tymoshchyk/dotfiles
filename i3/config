@@ -33,11 +33,10 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-# bindsym $mod+Shift+q kill
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -l 30
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -155,7 +154,7 @@ bar {
         status_command i3status
 }
 
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 0
 gaps inner 15
 gaps outer 10
 
@@ -190,13 +189,23 @@ bindsym $mod+Shift+i		exec --no-startup-id i3resize up
 bindsym Print 					exec flameshot gui
 
 exec "setxkbmap -layout us,ua"
+exec "setxkbmap -option"
 exec "setxkbmap -option 'grp:win_space_toggle'"
+
 exec "feh --bg-fill ~/wallpapers/Spacescapes/Space\ Exploration\ 141.jpg"
 
 bindsym $mod+g exec google-chrome
 
-bind $mod+a mode "command"
-mode "command" {
-	bindsym g exec google-chrome; mode "default"
-	bindsym Escape mode "default"
-}
+# bind $mod+a mode "$command"
+# mode "$command" {
+#   bindsym g exec --no-startup-id google-chrome; mode "default"
+#   bindsym Escape mode "default"
+# }
+
+# set $alt Mod1
+
+# bind "$mode_system" {
+#   bindsym l exec --
+#   no-startup-id i3exit lock, mode "default"
+# }
+# bindsym $alt+Pause mode "$mode_system"
