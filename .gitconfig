@@ -1,6 +1,7 @@
 [alias]
   st = status
   co = checkout
+	; lg = log --pretty=format:"%h%x09%an%x09%s"
   lg = log --oneline
   br = branch
   diffs = diff --staged

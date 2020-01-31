@@ -343,9 +343,14 @@ nnoremap <c-w>Q :tabclose<cr>
 nnoremap <c-w>O :tabonly<cr>
 nnoremap <C-w>t :tabe<cr>
 
+let g:LanguageClient_autoStart = 1
+
 let g:LanguageClient_serverCommands = {
       \ 'javascript': ['tcp://127.0.0.1:2089'],
+      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+      \ 'typescript': ['tcp://127.0.0.1:2089'],
+      \ 'typescript.tsx': ['tcp://127.0.0.1:2089'],
       \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<cr>
-
+nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>

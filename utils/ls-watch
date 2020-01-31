@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ls_watch() {
+  clear
+  ls -lah $1
+}
+
+ls_watch $1
+
+inotifywait -m $1 -e create -e moved_to -e delete |
+  while read path action file; do
+    ls_watch $1
+  done

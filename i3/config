@@ -30,7 +30,8 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -188,6 +189,8 @@ bindsym $mod+Shift+i		exec --no-startup-id i3resize up
 
 bindsym Print 					exec flameshot gui
 
+bindsym $mod+b          exec --no-startup-id ~/dotfiles/utils/rbook
+
 exec "setxkbmap -layout us,ua"
 exec "setxkbmap -option"
 exec "setxkbmap -option 'grp:win_space_toggle'"
@@ -196,11 +199,14 @@ exec "feh --bg-fill ~/wallpapers/Spacescapes/Space\ Exploration\ 141.jpg"
 
 bindsym $mod+g exec google-chrome
 
-# bind $mod+a mode "$command"
-# mode "$command" {
+set $mode_launcher Launch: [f]irefox [t]hunderbird
+bind $mod+a mode "$mode_launcher"
+mode "$mode_launcher" {
 #   bindsym g exec --no-startup-id google-chrome; mode "default"
-#   bindsym Escape mode "default"
-# }
+	bindsym f exec firefox
+	bindsym t exec thunderbird
+	bindsym Escape mode "default"
+}
 
 # set $alt Mod1
 

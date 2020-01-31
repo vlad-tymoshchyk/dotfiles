@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}

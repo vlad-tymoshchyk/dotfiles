@@ -146,4 +146,9 @@ alias -s {uml,yaml}=vim
 # zle -N exit exit
 # bindkey ^q exit
 
-alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
+# alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
+
+export PATH=$HOME/utils:$PATH
+
+alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
+alias lee="leetcode"
