@@ -120,6 +120,7 @@ alias bashrc="nvim ~/dotfiles/.bashrc"
 alias zshrc="nvim ~/dotfiles/.zshrc"
 alias tmuxrc="nvim ~/dotfiles/.tmux.conf"
 alias i3config="nvim ~/dotfiles/i3/config"
+alias i3blocks="nvim ~/dotfiles/i3blocks/config"
 
 alias grepr="grep -R"
 alias grepri="grep -iR"
@@ -152,3 +153,8 @@ export PATH=$HOME/utils:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/vlad/.config/broot/launcher/bash/br
+bindkey -s ^b 'br\n'

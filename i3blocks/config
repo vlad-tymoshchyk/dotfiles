@@ -1,6 +1,6 @@
 [time]
-command=echo $(date)
-interval=1
+command=echo "[$(date +%x)] $(date +%H:%M)"
+interval=60
 
 [volume]
 interval=once
