@@ -113,6 +113,7 @@ hash -d wjdoc=~/wj/workjam-api-documentation
 hash -d dotfiles=~/dotfiles
 hash -d sandbox=~/sandbox
 hash -d github=~/github
+hash -d books=~/books
 
 hash -d downloads=~/Downloads
 
@@ -162,3 +163,7 @@ source ~/.config/broot/launcher/bash/br
 bindkey -s '^b' 'br\n'
 
 export EDITOR=/usr/bin/nvim
+
+mkcdir () {
+  mkdir -p -- "$1" && cd -P -- "$1"
+}
