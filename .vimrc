@@ -31,7 +31,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
@@ -45,7 +45,7 @@ Plug 'prettier/vim-prettier'
 Plug 'rhysd/vim-clang-format'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/gundo.vim'
 Plug 'tomtom/tlib_vim'
@@ -63,7 +63,8 @@ call plug#end()
 
 colorscheme industry
 language en_US.utf8
-let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git"
+" let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git"
+" let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git"
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
@@ -102,7 +103,6 @@ set lazyredraw
 set linebreak
 set mouse=a
 set noerrorbells
-set noexpandtab
 set nofoldenable
 set norelativenumber
 set noshowmatch		" cursor no jumps to parent bracket
@@ -120,7 +120,7 @@ set shiftwidth=2
 set sidescrolloff=5
 set smartcase
 set smartindent
-set spell
+" set spell
 set tabstop=2
 set textwidth=0
 set title
@@ -311,6 +311,8 @@ nnoremap <C-x>f :NERDTreeFind<cr>
 
 nnoremap <C-x>p :PrettierAsync<cr>
 
+nnoremap <C-x>s :Gstatus<cr>
+
 nnoremap <leader>w :w<cr>
 inoremap <leader>w :w<cr>l
 
@@ -354,4 +356,4 @@ let g:LanguageClient_serverCommands = {
       \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<cr>
-nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>
+" nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>

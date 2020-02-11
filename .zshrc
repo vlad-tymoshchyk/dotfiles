@@ -99,7 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-hash -d wj=~/wj/workjam-web
+hash -d wja=~/wj/wj-web-app
+hash -d wjw=~/wj/workjam-web
 hash -d wjsrc=~/wj/workjam-web/src
 hash -d wjapp=~/wj/workjam-web/src/app
 hash -d wjv2=~/wj/workjam-web/src/v2
@@ -107,7 +108,7 @@ hash -d wjstore=~/wj/workjam-web/src/v2/store
 hash -d wjapi=~/wj/workjam-web/src/v2/api
 hash -d wjcom=~/wj/workjam-web/src/v2/components
 
-hash -d wjdocs=~/wj/workjam-api-documentation
+hash -d wjdoc=~/wj/workjam-api-documentation
 
 hash -d dotfiles=~/dotfiles
 hash -d sandbox=~/sandbox
@@ -122,8 +123,8 @@ alias tmuxrc="nvim ~/dotfiles/.tmux.conf"
 alias i3config="nvim ~/dotfiles/i3/config"
 alias i3blocks="nvim ~/dotfiles/i3blocks/config"
 
-alias grepr="grep -R"
-alias grepri="grep -iR"
+alias grepr="grep -R --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
+alias grepri="grep -iR --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
 alias findn="find . -name"
 
 alias fzf="~/.fzf/bin/fzf"
@@ -156,5 +157,8 @@ alias lee="leetcode"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /home/vlad/.config/broot/launcher/bash/br
-bindkey -s ^b 'br\n'
+source ~/.config/broot/launcher/bash/br
+
+bindkey -s '^b' 'br\n'
+
+export EDITOR=/usr/bin/nvim
