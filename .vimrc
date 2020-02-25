@@ -129,7 +129,7 @@ set wildmenu
 set wrap
 
 if !has('nvim')
-  set guifont=Consolas:h10
+  set guifont=Consolas:h15
 endif
 let g:mkdp_preview_options = {
       \   'maid': {
@@ -158,7 +158,7 @@ endif
 
 command! ClearDebug :g/* debugging-console */d 
 command! Conf source ~/.vimrc
-command! Font Guifont DejaVu\ Sans\ Mono:h10
+command! Font Guifont DejaVu\ Sans\ Mono:h15
 command! SortWords call setline('.', join(sort(split(getline('.'), ' ')), " "))
 command! Vifmrc tabe ~/.config/vifm/vifmrc
 command! Vimrc tabe ~/dotfiles/.vimrc
@@ -246,7 +246,7 @@ if has('nvim')
   if has('win32')
     se shell=powershell.exe
   endif
-  autocmd VimEnter :Guifont Consolas:h10
+  autocmd VimEnter :Guifont Consolas:h15
 
   tnoremap <a-h> <c-\><c-n>gT
   tnoremap <a-l> <c-\><c-n>gt
@@ -299,7 +299,7 @@ inoremap ;w <esc>:w<cr>
 " inoremap <F2> <esc>:se ft=jsx<cr>a
 
 " set guifont=Monospace\ Regular\ 14
-set guifont=DroidSansMono\ Nerd\ Font\ 10
+set guifont=DroidSansMono\ Nerd\ Font\ 15
 
 nnoremap <leader>w <Plug>GenerateDiagram
 " nnoremap <unique> <leader>w :echo "done"

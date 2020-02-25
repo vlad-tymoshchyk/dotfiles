@@ -100,7 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 hash -d wja=~/wj/wj-web-app
+hash -d wja1=~/wj/wj-web-app-1
 hash -d wjw=~/wj/workjam-web
+hash -d wjw1=~/wj/workjam-web-1
 hash -d wjsrc=~/wj/workjam-web/src
 hash -d wjapp=~/wj/workjam-web/src/app
 hash -d wjv2=~/wj/workjam-web/src/v2
@@ -120,7 +122,8 @@ hash -d downloads=~/Downloads
 alias vimrc="nvim ~/dotfiles/.vimrc"
 alias bashrc="nvim ~/dotfiles/.bashrc"
 alias zshrc="nvim ~/dotfiles/.zshrc"
-alias tmuxrc="nvim ~/dotfiles/.tmux.conf"
+alias tmuxconf="nvim ~/dotfiles/.tmux.conf"
+alias gitconfig="nvim ~/dotfiles/.gitconfig"
 alias i3config="nvim ~/dotfiles/i3/config"
 alias i3blocks="nvim ~/dotfiles/i3blocks/config"
 
@@ -161,6 +164,7 @@ alias lee="leetcode"
 source ~/.config/broot/launcher/bash/br
 
 bindkey -s '^b' 'br\n'
+bindkey -s '^h' 'htop\n'
 
 export EDITOR=/usr/bin/nvim
 

@@ -4,6 +4,7 @@
 	; lg = log --pretty=format:"%h%x09%an%x09%s"
   lg = log --oneline
   br = branch
+  re = rebase
   diffs = diff --staged
   diffw = diff --word-diff
   diffsw = diff --staged --word-diff
