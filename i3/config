@@ -84,11 +84,8 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
@@ -96,27 +93,13 @@ mode "resize" {
         bindsym j resize grow height 1 px or 1 ppt
         bindsym k resize shrink height 1 px or 1 ppt
         bindsym l resize grow width 1 px or 1 ppt
-
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-
 for_window [class="^.*"] border pixel 1
-# gaps inner 15
-# gaps outer 10
-
-# bindsym $mod+Shift 	gaps inner current plus 5
-# bindsym $mod+[		gaps inner current minus 5
-# bindsym $mod+}			gaps inner current plus 5
-# bindsym $mod+{		gaps inner current minus 5
-
-# bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 bindsym $mod+m move workspace to output left
 
@@ -128,8 +111,6 @@ bar {
 	modifier None
 }
 
-# exec xsetroot -solid "#f00"
-# exec feh --bg-scale ~/wallpaper1.webp
 exec nitrogen ~	j
 
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
@@ -147,24 +128,34 @@ exec "setxkbmap -layout us,ua"
 exec "setxkbmap -option"
 exec "setxkbmap -option 'grp:win_space_toggle'"
 
-# exec "feh --bg-fill ~/wallpapers/Spacescapes/Space\ Exploration\ 141.jpg"
 exec "feh --bg-fill ~/wallpapers/arch_wallpapers_1.jpg"
 
-bindsym $mod+g exec google-chrome
-
-set $mode_launcher Launch: [f]irefox [t]hunderbird
-bind $mod+a mode "$mode_launcher"
+set $mode_launcher Application
+bindsym $mod+a mode "$mode_launcher"
 mode "$mode_launcher" {
-#   bindsym g exec --no-startup-id google-chrome; mode "default"
-	bindsym f exec firefox
-	bindsym t exec thunderbird
+	bindsym g exec google-chrome; mode "default"
+	bindsym f exec firefox; mode "default"
+	bindsym t exec thunderbird; mode "default"
+	bindsym s exec slack; mode "default"
+	bindsym k exec skype; mode "default"
+	bindsym e exec telegram-desktop; mode "default"
 	bindsym Escape mode "default"
+	bindsym Return mode "default"
 }
 
-# set $alt Mod1
 
-# bind "$mode_system" {
-#   bindsym l exec --
-#   no-startup-id i3exit lock, mode "default"
-# }
-# bindsym $alt+Pause mode "$mode_system"
+workspace 0 output HDMI-2
+
+assign [class="Slack"] 5
+for_window [class="Slack"] focus
+assign [class="Skype"] 5
+for_window [class="Skype"] focus
+assign [class="Thunderbird"] 5
+for_window [class="Thunderbird"] focus
+
+assign [class="Telegram"] 6
+for_window [class="Telegram"] focus
+
+focus_on_window_activation focus
+
+bindsym $mod+o workspace back_and_forth

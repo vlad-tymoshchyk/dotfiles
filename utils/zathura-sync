@@ -1,0 +1,10 @@
+cd ~/zathura-sync
+if [ "$(git status -s | wc -l)" -ne "0" ] 
+  then
+    git add .
+    git commit -m "AUTO ($(date +%d.%m.%Y\ %H:%M))"
+    git push
+    notify-send "zathura-sync" "The history has been synchronized"
+else
+  notify-send "zathura-sync" "Nothing to synchronize"
+fi
