@@ -1,0 +1,1 @@
+nodemon -w $1 -x "sh $1"
