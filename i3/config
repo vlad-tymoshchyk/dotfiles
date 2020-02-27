@@ -144,16 +144,14 @@ mode "$mode_launcher" {
 }
 
 
-workspace 0 output HDMI-2
-
-assign [class="Slack"] 5
+assign [class="Slack"] s
 for_window [class="Slack"] focus
-assign [class="Skype"] 5
+assign [class="Skype"] k
 for_window [class="Skype"] focus
-assign [class="Thunderbird"] 5
+assign [class="Thunderbird"] t
 for_window [class="Thunderbird"] focus
 
-assign [class="Telegram"] 6
+assign [class="Telegram"] e
 for_window [class="Telegram"] focus
 
 focus_on_window_activation focus
