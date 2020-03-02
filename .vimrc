@@ -346,6 +346,11 @@ nnoremap <c-w>Q :tabclose<cr>
 nnoremap <c-w>O :tabonly<cr>
 nnoremap <C-w>t :tabe<cr>
 
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 let g:LanguageClient_autoStart = 1
 
 let g:LanguageClient_serverCommands = {

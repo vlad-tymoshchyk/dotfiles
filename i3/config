@@ -115,7 +115,9 @@ exec nitrogen ~	j
 
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
 
-bindsym $mod+u			exec --no-startup-id ddspawn tmuxdd
+bindsym $mod+z    			exec --no-startup-id rofi -show window
+
+bindsym $mod+u    			exec --no-startup-id ddspawn tmuxdd
 bindsym $mod+Shift+u		exec --no-startup-id i3resize down
 
 bindsym $mod+Shift+i		exec --no-startup-id i3resize up
