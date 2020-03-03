@@ -139,7 +139,7 @@ mode "$mode_launcher" {
 	bindsym f exec firefox; mode "default"
 	bindsym t exec thunderbird; mode "default"
 	bindsym s exec slack; mode "default"
-	bindsym k exec skype; mode "default"
+	bindsym k exec skypeforlinux; mode "default"
 	bindsym e exec telegram-desktop; mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"

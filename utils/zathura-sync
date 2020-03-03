@@ -1,6 +1,7 @@
 cd ~/zathura-sync
 if [ "$(git status -s | wc -l)" -ne "0" ] 
   then
+    git pull
     git add .
     git commit -m "AUTO ($(date +%d.%m.%Y\ %H:%M))"
     git push
