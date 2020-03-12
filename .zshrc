@@ -164,7 +164,7 @@ alias lee="leetcode"
 source ~/.config/broot/launcher/bash/br
 
 bindkey -s '^b' 'br\n'
-bindkey -s '^h' 'htop\n'
+# bindkey -s '^h' 'htop\n'
 
 export EDITOR=/usr/bin/nvim
 

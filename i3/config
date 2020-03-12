@@ -140,6 +140,7 @@ mode "$mode_launcher" {
 	bindsym t exec thunderbird; mode "default"
 	bindsym s exec slack; mode "default"
 	bindsym k exec skypeforlinux; mode "default"
+	bindsym p exec postman; mode "default"
 	bindsym e exec telegram-desktop; mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
@@ -152,6 +153,8 @@ assign [class="Skype"] k
 for_window [class="Skype"] focus
 assign [class="Thunderbird"] t
 for_window [class="Thunderbird"] focus
+assign [class="Postman"] p
+for_window [class="Postman"] focus
 
 assign [class="Telegram"] e
 for_window [class="Telegram"] focus
