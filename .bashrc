@@ -136,5 +136,4 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
 
-source ~/.config/broot/launcher/bash/br
-source ~/.config/broot/launcher/bash/br
+# source ~/.config/broot/launcher/bash/br
