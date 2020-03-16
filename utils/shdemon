@@ -1,1 +1,1 @@
-nodemon -w $1 -x "sh $1"
+nodemon -q -w $1 -x "clear; bash $1 || echo ERROR"
