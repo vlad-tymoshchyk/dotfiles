@@ -140,6 +140,12 @@ alias apts="apt-cache search"
 alias apti="apt-get install"
 alias sapti="sudo apt-get install"
 
+alias tree1="tree -L 1"
+alias tree2="tree -L 2"
+alias tree3="tree -L 3"
+alias tree4="tree -L 4"
+alias tree5="tree -L 5"
+
 set -g mouse on
 
 bindkey jk vi-cmd-mode
