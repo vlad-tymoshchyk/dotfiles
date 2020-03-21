@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SESSION_NAME=cpp-sandbox
+if [ ! -z $(command -v tmux) ];
+then
+  tmux has-session -t $SESSION_NAME
+  if [ $? != 0 ];
+  then
+    tmux new-session -s $SESSION_NAME -n sandbox -d
+    tmux send-keys -t $SESSION_NAME '[ ! -f ./index.cpp ] && touch index.cpp' C-m
+    tmux send-keys -t $SESSION_NAME 'clear' C-m
+    tmux send-keys -t $SESSION_NAME 'nodemon -C -w index.cpp -x "clear; g++ index.cpp -o index.o; ./index.o"' C-m
+    tmux split-window -h -t $SESSION_NAME
+    tmux send-keys -t $SESSION_NAME 'sleep 0.3 && nvim index.cpp' C-m
+  fi
+  tmux attach -t $SESSION_NAME
+else
+  echo "No tmux found"
+  echo "Please install tmux firstly"
+  exit 1;
+fi
