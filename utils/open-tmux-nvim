@@ -1,0 +1,11 @@
+send() {
+  tmux send-keys -t nvim "$1" "$2"
+}
+send "jk;qa!" C-m
+sleep 0.1
+send "clear && nvim" C-m
+
+send "i"
+send "consoation" C-m
+send "consoationName" C-m
+send "co" C-n

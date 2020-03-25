@@ -1,3 +1,4 @@
+#!/bin/bash
 # ===========================================
 echo "INSTALLING APT PACKAGES"
 # ===========================================
@@ -9,6 +10,15 @@ APT_PACKAGES=(
   git
   tmux
   zsh
+  zathura
+  apt-file
+  zlib1g-dev
+  libssl-dev
+  libcurl4-openssl-dev
+  libexpat1-dev
+  inotify-tools
+  tree
+  nmap
 )
 
 for i in ${APT_PACKAGES[@]}
@@ -19,13 +29,13 @@ do
   else
     echo "Already installed: $i... Trying to update..."
   fi
-  sudo apt install $i --assume-yes
+  sudo apt install $i -y
 done
 
-sudo add-apt-repository ppa:mmstick76/alacritty
-sudo apt install alacritty --assume-yes
+sudo add-apt-repository -y ppa:mmstick77/alacritty
+sudo apt install alacritty -y
 
-# sudo apt install --assume-yes
+# sudo apt install -y
 
 # ===========================================
 echo "CLONING DOTFILES AND CREATING SYMLINKS"
@@ -57,3 +67,22 @@ do
   [[ -a ~/$i ]] && rm ~/$i
   ln -s ~/dotfiles/$i
 done
+
+# =========================
+echo "INSTALLING SLACK"
+# =========================
+if [[ ! -x $(command -v slack) ]];
+then
+  cd ~
+  wget https://downloads.slack-edge.com/linux_releases/slack-desktop-4.0.2-amd64.deb
+  sudo apt install ./slack-desktop-*.deb -y
+else
+  echo "...slack already installed"
+fi
+
+# =========================
+echo "INSTALLING TELEGRAM"
+# =========================
+cd ~
+sudo add-apt-repository ppa:atareao/telegram -y
+sudo apt-get install telegram -y

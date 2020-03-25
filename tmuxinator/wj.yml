@@ -1,0 +1,17 @@
+# /home/vtymoshchyk/.config/tmuxinator/wj.yml
+
+name: wj
+root: ~/wj/workjam-web/
+
+startup_window: panes
+windows:
+  - compiling:
+      layout: main-vertical
+      panes:
+        - npm run start
+  - panes:
+      layout: main-vertical
+      panes:
+        - 
+        -
+      

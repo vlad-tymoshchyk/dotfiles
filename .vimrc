@@ -59,6 +59,8 @@ Plug 'wellle/targets.vim'
 Plug 'xavierchow/vim-swagger-preview'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+
+Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 colorscheme industry
@@ -78,7 +80,7 @@ let g:snipMate.override = 1
 let g:ycm_key_list_select_completion = ["<leader><Tab>"]
 let g:ycm_key_list_stop_completion = "<esc>"
 let mapleader = ","
-se shortmess+=Ia
+set shortmess+=Ia
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -305,13 +307,13 @@ nnoremap <leader>w <Plug>GenerateDiagram
 " nnoremap <unique> <leader>w :echo "done"
 
 nnoremap <silent> : :Buffers<cr>
-nnoremap <C-x>b :Gblame<cr>
-nnoremap <C-x>l :Files<cr>
-nnoremap <C-x>f :NERDTreeFind<cr>
+nnoremap <silent> <C-x>b :Gblame<cr>
+nnoremap <silent> <C-x>l :Files<cr>
+nnoremap <silent> <C-x>f :NERDTreeFind<cr>
 
-nnoremap <C-x>p :PrettierAsync<cr>
+nnoremap <silent> <C-x>p :Prettier<cr>
 
-nnoremap <C-x>s :Gstatus<cr>
+nnoremap <silent> <C-x>s :Gstatus<cr>
 
 nnoremap <leader>w :w<cr>
 inoremap <leader>w :w<cr>l
@@ -362,3 +364,26 @@ let g:LanguageClient_serverCommands = {
 
 nnoremap <F5> :call LanguageClient_contextMenu()<cr>
 " nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>
+
+nnoremap <C-1> 1gt
+nnoremap <C-2> 2gt
+nnoremap <C-3> 3gt
+nnoremap <C-4> 4gt
+nnoremap <C-5> 5gt
+nnoremap <C-6> 6gt
+nnoremap <C-7> 7gt
+nnoremap <C-8> 8gt
+nnoremap <C-9> 9gt
+nnoremap <C-0> 0gt
+" nnoremap <C-1> :tabnext 1<cr>
+" nnoremap <C-2> :tabnext 2<cr>
+" nnoremap <C-3> :tabnext 3<cr>
+" nnoremap <C-4> :tabnext 4<cr>
+" nnoremap <C-5> :tabnext 5<cr>
+" nnoremap <C-6> :tabnext 6<cr>
+" nnoremap <C-7> :tabnext 7<cr>
+" nnoremap <C-8> :tabnext 8<cr>
+" nnoremap <C-9> :tabnext 9<cr>
+" nnoremap <C-0> :tabnext 0<cr>
+
+" some tmux stuff

@@ -9,7 +9,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,8 +117,9 @@ hash -d dotfiles=~/dotfiles
 hash -d sandbox=~/sandbox
 hash -d github=~/github
 hash -d books=~/books
-
+hash -d master=~/master-thesis
 hash -d downloads=~/Downloads
+hash -d codewars=~/codewars
 
 alias vimrc="nvim ~/dotfiles/.vimrc"
 alias bashrc="nvim ~/dotfiles/.bashrc"
@@ -160,10 +162,11 @@ alias -s {uml,yaml}=vim
 
 # alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
 
-export PATH=$HOME/dotfiles/utils:$PATH
+export PATH=$HOME/dotfiles/utils:$HOME/dotfiles/tmux-scripts:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
+alias tx="tmuxinator"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -176,4 +179,13 @@ export EDITOR=/usr/bin/nvim
 
 mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
+}
+
+alias setxkb="setxkbmap -query; setxkbmap -option; setxkbmap -layout us,ua; setxkbmap -option grp:win_space_toggle; echo ---; setxkbmap -query"
+
+aptse() {
+  if [ -n "$1" ];
+  then
+    apt search "^$1$"
+  fi
 }

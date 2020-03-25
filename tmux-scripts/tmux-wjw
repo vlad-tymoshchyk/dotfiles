@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z $(command -v tmux) ];
+then
+  echo "No tmux found"
+  echo "Please install tmux firstly"
+  exit 1;
+fi
+SANDBOX_NAME="wjw"
+
+tmux has-session -t $SANDBOX_NAME
+if [ $? != 0 ];
+then
+  cd ~/wj/workjam-web/src
+  tmux new-session -s $SANDBOX_NAME -n sandbox -d
+  tmux send-keys -t $SANDBOX_NAME "npm run start" C-m
+  tmux split-window -h -t $SANDBOX_NAME
+  tmux new-window -t $SANDBOX_NAME
+  tmux select-window -t "$SANDBOX_NAME:1"
+fi
+tmux attach -t $SANDBOX_NAME
