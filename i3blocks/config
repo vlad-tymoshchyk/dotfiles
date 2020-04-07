@@ -1,10 +1,16 @@
+separator_block_width=15
+
 [battery]
 interval=60
-command=echo "|Battery: $(upower -i $(upower -e | grep 'BAT')| grep percentage | awk 'match($0, /[0-9]+%/) { print substr( $0, RSTART, RLENGTH )}') ($(upower -i $(upower -e | grep 'BAT')| grep state | awk '{ print $2 }'))|"
+command=$SCRIPTS_DIR/battery
 
 [time]
-command=echo "[$(date +%x)] $(date +%H:%M)"
-interval=60
+command=echo "(🇨🇦 $(TZ=America/Montreal date +%H:%M:%S))"
+interval=1
+
+[time]
+command=echo "📅 $(date +%x) 🇺🇦 $(date +%H:%M:%S)"
+interval=1
 
 [volume]
 interval=once

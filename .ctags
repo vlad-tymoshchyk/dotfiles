@@ -1,0 +1,11 @@
+--exclude=assets
+
+--languages=-javascript
+
+--langdef=js
+--langmap=js:.js
+--langmap=js:+.jsx
+
+--regex-js=/\s*export const ([A-za-z]+)/\1/n,constant/
+--regex-js=/\s*export function *\*?* ([A-za-z]+)/\1/n,function/
+--regex-js=/\s*export class ([A-za-z]+)/\1/n,class/

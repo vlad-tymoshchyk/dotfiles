@@ -8,9 +8,11 @@ case $NAME in
   js) 
     COMMAND="nodemon -w $FILE -x \"clear; node $FILE\""
     ;;
+  sh) 
+    COMMAND="nodemon -w $FILE -x \"clear; bash $FILE\""
+    ;;
   cpp) 
     COMMAND="nodemon -C -w $FILE -x \"clear; g++ $FILE -o index.o; ./index.o\""
-    echo "cpp"
     ;;
   *) 
     echo "Unrecognized type: $1"; 
@@ -31,7 +33,8 @@ fi
 tmux has-session -t $SANDBOX_NAME
 if [ $? != 0 ];
 then
-  [ ! -d $FOLDER ] && mkdir $FOLDER && cd $FOLDER
+  [ ! -d $FOLDER ] && mkdir $FOLDER
+  cd $FOLDER
   [ ! -f $FILE ] && touch $FILE
   clear
   tmux new-session -s $SANDBOX_NAME -n sandbox -d

@@ -28,12 +28,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joshdick/onedark.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 " Plug 'majutsushi/tagbar'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
@@ -71,7 +72,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = "right"
-let g:UltiSnipsExpandTrigger = "<Tab>"
+" let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<Tab>"
 let g:indentLine_enabled = 0
@@ -176,6 +177,8 @@ nmap f <Plug>(easymotion-s)
 nmap t <Plug>(easymotion-bd-jk)
 nnoremap : ;
 nnoremap ; :
+" nnoremap q; q:
+" nnoremap q: q;
 nnoremap <Down> j<c-e>
 nnoremap <F5> :Conf<cr>
 nnoremap <Up> k<c-y>
@@ -365,21 +368,21 @@ let g:LanguageClient_serverCommands = {
 nnoremap <F5> :call LanguageClient_contextMenu()<cr>
 " nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>
 
-nnoremap <C-1> 1gt
-nnoremap <C-2> 2gt
-nnoremap <C-3> 3gt
-nnoremap <C-4> 4gt
-nnoremap <C-5> 5gt
-nnoremap <C-6> 6gt
-nnoremap <C-7> 7gt
-nnoremap <C-8> 8gt
-nnoremap <C-9> 9gt
-nnoremap <C-0> 0gt
-" nnoremap <C-1> :tabnext 1<cr>
-" nnoremap <C-2> :tabnext 2<cr>
-" nnoremap <C-3> :tabnext 3<cr>
-" nnoremap <C-4> :tabnext 4<cr>
-" nnoremap <C-5> :tabnext 5<cr>
+" nnoremap <C-1> 1gt
+" nnoremap <C-2> 2gt
+" nnoremap <C-3> 3gt
+" nnoremap <C-4> 4gt
+" nnoremap <C-5> 5gt
+" nnoremap <C-6> 6gt
+" nnoremap <C-7> 7gt
+" nnoremap <C-8> 8gt
+" nnoremap <C-9> 9gt
+" nnoremap <C-0> 0gt
+nnoremap <C-1> :tabnext 1<cr>
+nnoremap <C-2> :tabnext 2<cr>
+nnoremap <C-3> :tabnext 3<cr>
+nnoremap <C-4> :tabnext 4<cr>
+nnoremap <C-5> :tabnext 5<cr>
 " nnoremap <C-6> :tabnext 6<cr>
 " nnoremap <C-7> :tabnext 7<cr>
 " nnoremap <C-8> :tabnext 8<cr>
@@ -387,3 +390,27 @@ nnoremap <C-0> 0gt
 " nnoremap <C-0> :tabnext 0<cr>
 
 " some tmux stuff
+nnoremap gq :q<cr>
+
+nnoremap <F11> :Goyo<cr>
+
+set splitbelow
+set splitright
+
+autocmd BufWritePost */.vimrc :Conf
+
+inoremap <silent><expr> <C-n> 
+      \ pumvisible() ? "\<C-n>" :
+      \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1] =~# '\s'
+" endfunction
+
+
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+
+vnoremap y may`a

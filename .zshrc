@@ -104,6 +104,7 @@ hash -d wja=~/wj/wj-web-app
 hash -d wja1=~/wj/wj-web-app-1
 hash -d wjw=~/wj/workjam-web
 hash -d wjw1=~/wj/workjam-web-1
+hash -d wjw2=~/wj/workjam-web-2
 hash -d wjsrc=~/wj/workjam-web/src
 hash -d wjapp=~/wj/workjam-web/src/app
 hash -d wjv2=~/wj/workjam-web/src/v2
@@ -119,17 +120,20 @@ hash -d github=~/github
 hash -d books=~/books
 hash -d master=~/master-thesis
 hash -d downloads=~/Downloads
+hash -d packages=~/.packages
 hash -d codewars=~/codewars
 
 alias vimrc="nvim ~/dotfiles/.vimrc"
 alias bashrc="nvim ~/dotfiles/.bashrc"
-alias zshrc="nvim ~/dotfiles/.zshrc"
+alias zshrc="nvim ~/dotfiles/.zshrc && source ~/dotfiles/.zshrc"
 alias tmuxconf="nvim ~/dotfiles/.tmux.conf"
 alias gitconfig="nvim ~/dotfiles/.gitconfig"
 alias i3config="nvim ~/dotfiles/i3/config"
-alias i3blocks="nvim ~/dotfiles/i3blocks/config"
+alias i3blocksconf="nvim ~/dotfiles/i3blocks/config"
+alias instal="nvim ~/dotfiles/install.sh"
 
 alias grepr="grep -R --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
+alias grepi="grep -i"
 alias grepri="grep -iR --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
 alias findn="find . -name"
 
@@ -175,7 +179,7 @@ alias tx="tmuxinator"
 bindkey -s '^b' 'br\n'
 # bindkey -s '^h' 'htop\n'
 
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/local/bin/nvim
 
 mkcdir () {
   mkdir -p -- "$1" && cd -P -- "$1"
@@ -189,3 +193,9 @@ aptse() {
     apt search "^$1$"
   fi
 }
+
+# git command for getting short summary on files which the branches are different in
+# git diff TR-3151 --raw | sed 's/\s/ /g'| grep '[A-Z]\s*src/.*$' -o
+alias zshreload="source ~/.zshrc"
+
+alias netstorm="wine ~/.wine/drive_c/Program\\ Files\\ \(x86\)/Netstorm\\ Islands\\ at\\ War/package/Netstorm.exe"

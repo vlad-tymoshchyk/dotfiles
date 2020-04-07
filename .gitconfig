@@ -13,3 +13,5 @@
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk-old@gmail.com
+[core]
+  excludesfile = ~/.gitignore_global

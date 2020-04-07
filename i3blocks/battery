@@ -1,0 +1,22 @@
+TMP=$(upower -i $(upower -e | grep 'BAT'))
+
+PERCENTAGE=$(echo $TMP | grep percentage | awk 'match($0, /[0-9]+%/) { print substr($0, RSTART, RLENGTH) }')
+
+TEXT_STATUS=$(echo $TMP | grep -E "state:\s+[a-z-]+" -o | awk '{ print $2 }');
+
+case $TEXT_STATUS in
+  'charging')
+      ICON_STATUS='🔌'
+    ;;
+  'discharging')
+      ICON_STATUS='💻'
+    ;;
+  'fully-charged')
+      ICON_STATUS='✔️'
+    ;;
+  *)
+      ICON_STATUS=$TEXT_STATUS;
+    ;;
+esac
+
+echo "🔋$PERCENTAGE($ICON_STATUS)"

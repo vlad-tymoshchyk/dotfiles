@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SANDBOX_NAME="codewars-js"
+FILE="index.js"
+FILETEST="index.test.js"
+FOLDER="$HOME/sandbox/sandbox-codewars-js"
+
+tmux has-session -t $SANDBOX_NAME
+if [ $? != 0 ];
+then
+  [ ! -d $FOLDER ] && mkdir $FOLDER
+  cd $FOLDER
+  [ ! -f $FILE ] && touch $FILE
+  [ ! -f $FILETEST ] && touch $FILETEST
+  clear
+  tmux new-session -s $SANDBOX_NAME -n sandbox -d
+  tmux send-keys -t $SANDBOX_NAME "clear" C-m
+  tmux send-keys -t $SANDBOX_NAME "./run" C-m
+  tmux split-window -h -t $SANDBOX_NAME
+  tmux send-keys -t $SANDBOX_NAME "sleep 0.5 && nvim -p $FILE $FILETEST" C-m
+fi
+tmux attach -t $SANDBOX_NAME
