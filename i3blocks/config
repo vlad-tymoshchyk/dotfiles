@@ -1,4 +1,8 @@
-separator_block_width=15
+separator_block_width=25
+
+[kb_layout]
+interval=persist
+command=$SCRIPTS_DIR/kb_layout
 
 [battery]
 interval=60

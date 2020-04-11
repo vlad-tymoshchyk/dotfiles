@@ -15,3 +15,4 @@
   email = vtymoshchyk-old@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
+  pager = less -RFX

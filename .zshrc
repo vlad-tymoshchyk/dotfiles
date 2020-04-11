@@ -199,3 +199,6 @@ aptse() {
 alias zshreload="source ~/.zshrc"
 
 alias netstorm="wine ~/.wine/drive_c/Program\\ Files\\ \(x86\)/Netstorm\\ Islands\\ at\\ War/package/Netstorm.exe"
+alias vi="nvim \"+set nonumber\""
+
+alias rn="ranger"
