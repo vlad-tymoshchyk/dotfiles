@@ -15,6 +15,7 @@
   diffws = diff --staged --word-diff
   ; unstage = reset -- .
   unstage = reset HEAD
+  cm = commit -m
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk@gmail.com
