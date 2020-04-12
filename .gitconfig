@@ -1,18 +1,23 @@
 [alias]
   st = status
   co = checkout
-	; lg = log --pretty=format:"%h%x09%an%x09%s"
-  lg = log --oneline
+  ; lg = log --pretty=format:"%h%x09%an%x09%s"
+  ; lg = log --oneline
+  lg = log --pretty='%Cred%h%Creset | %s %C(cyan)[%an]%Creset %C(green)(%cr)%Creset %C(yellow)%d%Creset'
+  lgg = lg --graph --all
+
+  so = show --pretty='parent %Cred%p%Creset commit %Cred%h%Creset%C(yellow)%d%Creset%n%n%w(72,2,2)%s%n%n%w(72,0,0)%C(cyan)%an%Creset %Cgreen%ar%Creset'
   br = branch
   re = rebase
   diffs = diff --staged
   diffw = diff --word-diff
   diffsw = diff --staged --word-diff
   diffws = diff --staged --word-diff
-  unstage = reset -- .
+  ; unstage = reset -- .
+  unstage = reset HEAD
 [user]
   name = Vlad Tymoshchyk
-  email = vtymoshchyk-old@gmail.com
+  email = vtymoshchyk@gmail.com
 [core]
   excludesfile = ~/.gitignore_global
   pager = less -RFX
