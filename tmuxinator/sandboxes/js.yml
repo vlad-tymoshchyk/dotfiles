@@ -1,7 +1,7 @@
-# /home/vtymoshchyk/.config/tmuxinator/wja.yml
+# /home/vtymoshchyk/.config/tmuxinator/sandbox-sed.yml
 
-name: wja
-root: ~/
+name: sandbox-js
+root: ~/sandboxes/sandbox-js
 
 # Optional tmux socket
 # socket_name: foo
@@ -22,7 +22,7 @@ root: ~/
 # on_project_stop: command
 
 # Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
-# pre_window: rbenv shell 2.0.0-p247
+# pre_window: clear
 
 # Pass command line options to tmux. Useful for specifying a different tmux.conf.
 # tmux_options: -f ~/.tmux.mac.conf
@@ -34,19 +34,16 @@ root: ~/
 # startup_window: editor
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+startup_pane: 2
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
 
 windows:
   - editor:
-      layout: main-vertical
-      # Synchronize all panes of this window, can be enabled before or after the pane commands run.
-      # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
-      # synchronize: after
+      pre:
+        - touch index.js
+      layout: even-horizontal
       panes:
-        - vim
-        - guard
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
+        - clear && nodemon -w index.js -x "clear && node index.js"
+        - sleep 0.5 && nvim index.js

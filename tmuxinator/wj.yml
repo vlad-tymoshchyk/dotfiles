@@ -3,15 +3,17 @@
 name: wj
 root: ~/wj/workjam-web/
 
-startup_window: panes
+startup_window: compiling
+startup_pane: 2
 windows:
   - compiling:
-      layout: main-vertical
+      pre:
+        - sleep 0.5 && clear
+      layout: even-horizontal
       panes:
         - npm run start
+        -
   - panes:
-      layout: main-vertical
       panes:
         - 
-        -
       

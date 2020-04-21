@@ -115,13 +115,16 @@ hash -d wjcom=~/wj/workjam-web/src/v2/components
 hash -d wjdoc=~/wj/workjam-api-documentation
 
 hash -d dotfiles=~/dotfiles
+hash -d tmuxinator=~/dotfiles/tmuxinator
 hash -d sandbox=~/sandbox
+hash -d sandboxes=~/sandboxes
 hash -d github=~/github
 hash -d books=~/books
 hash -d master=~/master-thesis
 hash -d downloads=~/Downloads
 hash -d packages=~/.packages
 hash -d codewars=~/codewars
+hash -d projects=~/projects
 
 alias vimrc="nvim ~/dotfiles/.vimrc"
 alias bashrc="nvim ~/dotfiles/.bashrc"
@@ -170,7 +173,7 @@ export PATH=$HOME/dotfiles/utils:$HOME/dotfiles/tmux-scripts:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
-alias tx="tmuxinator"
+alias mux="tmuxinator"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -181,7 +184,7 @@ bindkey -s '^b' 'br\n'
 
 export EDITOR=/usr/local/bin/nvim
 
-mkcdir () {
+mkdircd () {
   mkdir -p -- "$1" && cd -P -- "$1"
 }
 
@@ -202,3 +205,6 @@ alias netstorm="wine ~/.wine/drive_c/Program\\ Files\\ \(x86\)/Netstorm\\ Island
 alias vi="nvim \"+set nonumber\""
 
 alias rn="ranger"
+
+alias soundloopon="pactl load-module module-loopback latency_msec=1"
+alias soundloopoff="pactl unload-module module-loopback"

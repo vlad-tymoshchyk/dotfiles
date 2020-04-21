@@ -136,17 +136,19 @@ exec "feh --bg-fill ~/wallpapers/arch_wallpapers_1.jpg"
 set $mode_launcher Application
 bindsym $mod+a mode "$mode_launcher"
 mode "$mode_launcher" {
-	bindsym g exec google-chrome; mode "default"
-	bindsym f exec firefox; mode "default"
-	bindsym t workspace t; exec thunderbird; mode "default"
-	bindsym s workspace s; exec slack; mode "default"
-	bindsym k workspace k; exec skypeforlinux; mode "default"
-	bindsym p workspace p; exec postman; mode "default"
-  bindsym e workspace e; exec telegram-desktop; mode "default"
-  bindsym h exec alacritty --command htop; mode "default"
+	bindsym g                exec google-chrome;              mode "default"
+	bindsym f                exec firefox;                    mode "default"
+	bindsym t workspace t;   exec thunderbird;                mode "default"
+	bindsym s workspace s;   exec slack;                      mode "default"
+	bindsym k workspace k;   exec skypeforlinux;              mode "default"
+	bindsym p workspace p;   exec postman;                    mode "default"
+  bindsym e workspace e;   exec telegram-desktop;           mode "default"
+  bindsym h                exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
+
+for_window[instance="Float_Alacritty"] floating enable
 
 assign [class="Slack"] s
 # for_window [class="Slack"] focus

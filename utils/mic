@@ -1,0 +1,30 @@
+#!/bin/bash
+
+full-list() {
+  pactl list source-outputs
+}
+
+list() {
+  full-list | grep -E "Volume|Source Output"
+}
+
+numbers() {
+  full-list | grep -Po "(?<=Source Output #)\d+"
+}
+
+set() {
+  INPUT="${1:-100}"
+  VALUE=$(expr $INPUT \* 654)
+  numbers | sed -E "s/^(.+)$/pactl set-source-output-volume \1 $VALUE/e" - >> /dev/null
+  list
+}
+
+case $1 in
+  list | "") list ;;
+  full-list) full-list ;;
+  set) set $2 $3 ;;
+  numbers) numbers ;;
+  *)
+    echo "Unknown option. Options: [list, numbers]"
+    ;;
+esac

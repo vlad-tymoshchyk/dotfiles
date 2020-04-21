@@ -62,6 +62,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 
 Plug 'tmux-plugins/vim-tmux'
+Plug 'mileszs/ack.vim'
 call plug#end()
 
 colorscheme industry
@@ -173,8 +174,8 @@ inoremap jk <esc>
 inoremap {<cr> {<cr>}<esc>O
 inoremap {<space> {  }<left><left>
 nmap <c-,> <c-y>,
-nmap f <Plug>(easymotion-s)
-nmap t <Plug>(easymotion-bd-jk)
+nmap <leader>f <Plug>(easymotion-s)
+nmap <leader>t <Plug>(easymotion-bd-jk)
 nnoremap : ;
 nnoremap ; :
 " nnoremap q; q:
@@ -414,3 +415,5 @@ set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone
 
 vnoremap y may`a
+
+command! Term :execute "!alacritty --working-directory " . expand('%:p:h') . " &" | normal "kkk"

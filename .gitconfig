@@ -16,6 +16,13 @@
   ; unstage = reset -- .
   unstage = reset HEAD
   cm = commit -m
+  cmp = "!f() { git commit -m \"$1\" && git push; }; f"
+  cp = cherry-pick
+  lgdev = lg development..HEAD
+  lgmas = lg master..HEAD
+  codev = co development
+  comas = co master
+  cob = checkout -b
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk@gmail.com
