@@ -133,7 +133,7 @@ alias tmuxconf="nvim ~/dotfiles/.tmux.conf"
 alias gitconfig="nvim ~/dotfiles/.gitconfig"
 alias i3config="nvim ~/dotfiles/i3/config"
 alias i3blocksconf="nvim ~/dotfiles/i3blocks/config"
-alias instal="nvim ~/dotfiles/install.sh"
+alias installconf="nvim ~/dotfiles/install.sh"
 
 alias grepr="grep -R --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
 alias grepi="grep -i"
@@ -208,3 +208,4 @@ alias rn="ranger"
 
 alias soundloopon="pactl load-module module-loopback latency_msec=1"
 alias soundloopoff="pactl unload-module module-loopback"
+alias z="zathura"
