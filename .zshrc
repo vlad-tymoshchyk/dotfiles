@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,8 +16,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# ZSH_THEME="agnoster"
-ZSH_THEME="awesomepanda"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="agnoster"
+# ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -100,40 +108,46 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-hash -d wja=~/wj/wj-web-app
-hash -d wja1=~/wj/wj-web-app-1
-hash -d wjw=~/wj/workjam-web
-hash -d wjw1=~/wj/workjam-web-1
-hash -d wjw2=~/wj/workjam-web-2
-hash -d wjsrc=~/wj/workjam-web/src
-hash -d wjapp=~/wj/workjam-web/src/app
-hash -d wjv2=~/wj/workjam-web/src/v2
-hash -d wjstore=~/wj/workjam-web/src/v2/store
-hash -d wjapi=~/wj/workjam-web/src/v2/api
-hash -d wjcom=~/wj/workjam-web/src/v2/components
+hash -d                projects=~/projects
 
-hash -d wjdoc=~/wj/workjam-api-documentation
+hash -d                      wj=~projects/wj
 
-hash -d dotfiles=~/dotfiles
-hash -d tmuxinator=~/dotfiles/tmuxinator
-hash -d sandbox=~/sandbox
-hash -d sandboxes=~/sandboxes
-hash -d github=~/github
-hash -d books=~/books
-hash -d master=~/master-thesis
-hash -d downloads=~/Downloads
-hash -d packages=~/.packages
-hash -d codewars=~/codewars
-hash -d projects=~/projects
+hash -d                     wjw=~wj/workjam-web
+hash -d                    wjw1=~wj/workjam-web-1
+hash -d                    wjw2=~wj/workjam-web-2
 
-alias vimrc="nvim ~/dotfiles/.vimrc"
-alias bashrc="nvim ~/dotfiles/.bashrc"
-alias zshrc="nvim ~/dotfiles/.zshrc && source ~/dotfiles/.zshrc"
-alias tmuxconf="nvim ~/dotfiles/.tmux.conf"
-alias gitconfig="nvim ~/dotfiles/.gitconfig"
-alias i3config="nvim ~/dotfiles/i3/config"
-alias i3blocksconf="nvim ~/dotfiles/i3blocks/config"
-alias installconf="nvim ~/dotfiles/install.sh"
+hash -d                   wjsrc=~wjw/src
+hash -d                   wjapp=~wjsrc/app
+hash -d                    wjv2=~wjsrc/v2
+hash -d                 wjstore=~wjv2/store
+hash -d                   wjapi=~wjv2/api
+hash -d                   wjcom=~wjv2/components
+
+hash -d                     wja=~wj/wj-web-app
+hash -d                    wja1=~wj/wj-web-app-1
+hash -d                   wjdoc=~wj/workjam-api-documentation
+
+hash -d                dotfiles=~/dotfiles
+hash -d                     dot=~dotfiles
+hash -d              tmuxinator=~dotfiles/tmuxinator
+hash -d                 sandbox=~/sandbox
+hash -d               sandboxes=~/sandboxes
+hash -d                  github=~/github
+hash -d                   books=~/books
+hash -d                  master=~/master-thesis
+hash -d               downloads=~/Downloads
+hash -d                packages=~/.packages
+hash -d                codewars=~/codewars
+hash -d                projects=~/projects
+
+alias vimrc="nvim ~dot/.vimrc"
+alias bashrc="nvim ~dot/.bashrc"
+alias zshrc="nvim ~dot/.zshrc && source ~dot/.zshrc"
+alias tmuxconf="nvim ~dot/.tmux.conf"
+alias gitconfig="nvim ~dot/.gitconfig"
+alias i3config="nvim ~dot/i3/config"
+alias i3blocksconf="nvim ~dot/i3blocks/config"
+alias installconf="nvim ~dot/install.sh"
 
 alias grepr="grep -R --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
 alias grepi="grep -i"
@@ -142,6 +156,7 @@ alias findn="find . -name"
 
 alias fzf="~/.fzf/bin/fzf"
 
+alias nvimf="nvim \$(fzf)"
 alias vimf="vim \$(fzf)"
 alias gvimf="gvim \$(fzf)"
 
@@ -169,7 +184,7 @@ alias -s {uml,yaml}=vim
 
 # alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
 
-export PATH=$HOME/dotfiles/utils:$HOME/dotfiles/tmux-scripts:$PATH
+export PATH=$HOME/dotfiles/utils:$HOME/manually-installed-packages/**/bin:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
@@ -182,7 +197,7 @@ alias mux="tmuxinator"
 bindkey -s '^b' 'br\n'
 # bindkey -s '^h' 'htop\n'
 
-export EDITOR=/usr/local/bin/nvim
+export EDITOR=/usr/bin/nvim
 
 mkdircd () {
   mkdir -p -- "$1" && cd -P -- "$1"
@@ -209,3 +224,7 @@ alias rn="ranger"
 alias soundloopon="pactl load-module module-loopback latency_msec=1"
 alias soundloopoff="pactl unload-module module-loopback"
 alias z="zathura"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
