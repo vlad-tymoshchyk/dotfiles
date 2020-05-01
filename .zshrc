@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 
 hash -d                projects=~/projects
 
-hash -d                      wj=~projects/wj
+hash -d                      wj=~/wj
 
 hash -d                     wjw=~wj/workjam-web
 hash -d                    wjw1=~wj/workjam-web-1
@@ -128,7 +128,6 @@ hash -d                    wja1=~wj/wj-web-app-1
 hash -d                   wjdoc=~wj/workjam-api-documentation
 
 hash -d                dotfiles=~/dotfiles
-hash -d                     dot=~dotfiles
 hash -d              tmuxinator=~dotfiles/tmuxinator
 hash -d                 sandbox=~/sandbox
 hash -d               sandboxes=~/sandboxes
@@ -140,14 +139,14 @@ hash -d                packages=~/.packages
 hash -d                codewars=~/codewars
 hash -d                projects=~/projects
 
-alias vimrc="nvim ~dot/.vimrc"
-alias bashrc="nvim ~dot/.bashrc"
-alias zshrc="nvim ~dot/.zshrc && source ~dot/.zshrc"
-alias tmuxconf="nvim ~dot/.tmux.conf"
-alias gitconfig="nvim ~dot/.gitconfig"
-alias i3config="nvim ~dot/i3/config"
-alias i3blocksconf="nvim ~dot/i3blocks/config"
-alias installconf="nvim ~dot/install.sh"
+alias vimrc="nvim ~dotfiles/.vimrc"
+alias bashrc="nvim ~dotfiles/.bashrc"
+alias zshrc="nvim ~dotfiles/.zshrc && source ~dot/.zshrc"
+alias tmuxconf="nvim ~dotfiles/.tmux.conf"
+alias gitconfig="nvim ~dotfiles/.gitconfig"
+alias i3config="nvim ~dotfiles/i3/config"
+alias i3blocksconf="nvim ~dotfiles/i3blocks/config"
+alias installconf="nvim ~dotfiles/install.sh"
 
 alias grepr="grep -R --exclude-dir=i18n --exclude-dir=dist --exclude-dir=node_modules"
 alias grepi="grep -i"
@@ -197,7 +196,8 @@ alias mux="tmuxinator"
 bindkey -s '^b' 'br\n'
 # bindkey -s '^h' 'htop\n'
 
-export EDITOR=/usr/bin/nvim
+export EDITOR=$(which nvim)
+export PDF_VIEWER=$(which zathura)
 
 mkdircd () {
   mkdir -p -- "$1" && cd -P -- "$1"
@@ -227,4 +227,8 @@ alias z="zathura"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme#
+
+bindkey -s '^o' 'cd - && clear\n'
+bindkey -s 'jgd' 'clear && cd ~dotfiles\n'
+bindkey -s 'jwjw' 'clear && ~wjw\n'

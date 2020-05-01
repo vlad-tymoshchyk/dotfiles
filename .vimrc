@@ -323,9 +323,9 @@ nnoremap <leader>w :w<cr>
 inoremap <leader>w :w<cr>l
 
 
-" localication for ukrainian language
+" localization for ukrainian language
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКІЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкіегмцчня;abcdefghijklmnopqrstuvwxyz
-inoremap ол <esc>
+" inoremap ол <esc>
 nnoremap Ж ;
 nnoremap ж :
 vnoremap Ж ;
@@ -417,3 +417,5 @@ set completeopt=longest,menuone
 vnoremap y may`a
 
 command! Term :execute "!alacritty --working-directory " . expand('%:p:h') . " &" | normal "kkk"
+
+set runtimepath+=~/dotfiles
