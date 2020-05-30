@@ -1,0 +1,27 @@
+snippet clg "console.log"
+console.log('${1}', ${2:$1});
+endsnippet
+
+snippet des "Describe (js)"
+describe('${1:description}', () => {
+	$0
+});
+endsnippet
+
+snippet it "it (js)"
+it('${1:description}', () => {
+	$0
+});
+endsnippet
+
+snippet rt_efc "export functional component"
+import React, { FC } from 'react';
+
+interface ${3} {
+	${5}
+}
+
+export const ${1}: FC<${4:$3}> = (${2}) => {
+
+}
+endsnippet

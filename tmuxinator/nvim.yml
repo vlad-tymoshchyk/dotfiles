@@ -1,7 +1,7 @@
 # /home/vtymoshchyk/.config/tmuxinator/sandbox-sed.yml
 
-name: sandbox-bash
-root: ~/sandboxes/sandbox-bash
+name: sandbox-nvim
+root: ~/sandboxes/sandbox-nvim
 
 # Optional tmux socket
 # socket_name: foo
@@ -42,8 +42,13 @@ startup_pane: 2
 windows:
   - editor:
       pre:
-        - touch index.sh
+        - touch script.vim
+        - touch script.sh
       layout: even-horizontal
       panes:
-        - clear && nodemon -w index.sh -x "clear && bash index.sh"
-        - sleep 0.5 && nvim index.sh
+        - sleep 0.5 && nvim -p script.vim script.sh
+  - nodemon:
+      layout: even-vertical
+      panes:
+        - clear && nodemon -w script.sh -w script.vim -x "clear && bash script.sh"
+        - alacritty --command ./initializing &

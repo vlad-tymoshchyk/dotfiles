@@ -1,11 +1,16 @@
-function! g:WriteLog(text)
-  let l:file='/home/vtymoshchyk/logs/vimscript.log'
-  new
-  setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted
-  put!='[' . strftime('%H:%M:%S') . ']: ' . a:text
-  norm Gdd
-  execute 'w >>' file
-  q
+function! g:WriteLog(...)
+  let l:file='/home/vlad/sandboxes/sandbox-nvim/log'
+
+  if a:1=="CLEAR"
+    call writefile([], file) " UNCOMMENT TO CLEAR LOG FILE
+  else
+    new
+    setlocal buftype=nofile bufhidden=hide noswapfile nobuflisted
+    put!='[' . strftime('%H:%M:%S') . ']: ' . join(a:000)
+    norm Gdd
+    silent execute 'w >>' l:file
+    q
+  endif
   " call writefile([], file) " UNCOMMENT TO CLEAR LOG FILE
 endfunction
 
@@ -57,18 +62,22 @@ Plug 'vifm/vifm.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
-Plug 'xavierchow/vim-swagger-preview'
+" Plug 'xavierchow/vim-swagger-preview'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 
 Plug 'tmux-plugins/vim-tmux'
 Plug 'mileszs/ack.vim'
+
+Plug 'lervag/vimtex'
+
 call plug#end()
 
-colorscheme industry
+let g:polyglot_disabled = ['latex']
+
 language en_US.utf8
 " let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git"
-" let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git"
+let $FZF_DEFAULT_COMMAND = "fdfind --ignore-case --hidden --type f --exclude .git"
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
@@ -175,13 +184,15 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap {<space> {  }<left><left>
 nmap <c-,> <c-y>,
 nmap <leader>f <Plug>(easymotion-s)
+nmap ба <Plug>(easymotion-s)
 nmap <leader>t <Plug>(easymotion-bd-jk)
+nmap бе <Plug>(easymotion-bd-jk)
 nnoremap : ;
 nnoremap ; :
 " nnoremap q; q:
 " nnoremap q: q;
 nnoremap <Down> j<c-e>
-nnoremap <F5> :Conf<cr>
+" nnoremap <F5> :Conf<cr>
 nnoremap <Up> k<c-y>
 nnoremap <backspace> i<backspace><esc>l
 nnoremap <enter> i<enter><esc>l
@@ -248,7 +259,8 @@ if has('gui_running')
 endif
 
 if has('nvim')
-  colorscheme dracula
+  " colorscheme dracula
+  colorscheme gruvbox
   if has('win32')
     se shell=powershell.exe
   endif
@@ -313,6 +325,8 @@ nnoremap <leader>w <Plug>GenerateDiagram
 nnoremap <silent> : :Buffers<cr>
 nnoremap <silent> <C-x>b :Gblame<cr>
 nnoremap <silent> <C-x>l :Files<cr>
+nnoremap <silent> <C-p> :GFiles<cr>
+nnoremap <silent> <C-x>h :vs<cr>:Files<cr>
 nnoremap <silent> <C-x>f :NERDTreeFind<cr>
 
 nnoremap <silent> <C-x>p :Prettier<cr>
@@ -333,7 +347,111 @@ vnoremap ж :
 cnoremap ц w
 cnoremap й q
 cnoremap ч x
+cnoremap ф a
+" cnoremap ч x
+" cnoremap ч x
 nnoremap Є "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  " nnoremap й q
+  " nnoremap ц w
+  " nnoremap у e
+  " nnoremap к r
+  " nnoremap е t
+  " nnoremap н y
+  " nnoremap г u
+  " nnoremap ш i
+  " nnoremap щ o
+  " nnoremap з p
+  " nnoremap х [
+  " nnoremap ї ]
+  " nnoremap ґ \
+  " nnoremap ф a
+  " nnoremap і s
+  " nnoremap в d
+  " nnoremap а f
+  " nnoremap п g
+  " nnoremap р h
+  " nnoremap о j
+  " nnoremap л k
+  " nnoremap д l
+  " nnoremap ж ;
+  " nnoremap є '
+  " nnoremap я z
+  " nnoremap ч x
+  " nnoremap с c
+  " nnoremap м v
+  " nnoremap и b
+  " nnoremap т n
+  " nnoremap ь m
+  " nnoremap б ,
+  " nnoremap ю .
+  " nnoremap .  /
+  " nnoremap Й Q
+  " nnoremap Ц W
+  " nnoremap У E
+  " nnoremap К R
+  " nnoremap Е T
+  " nnoremap Н Y
+  " nnoremap Г U
+  " nnoremap Ш I
+  " nnoremap Щ O
+  " nnoremap З P
+  " nnoremap Х [
+  " nnoremap Ї ]
+  " nnoremap Ґ \
+  " nnoremap Ф A
+  " nnoremap І S
+  " nnoremap В D
+  " nnoremap А F
+  " nnoremap П G
+  " nnoremap Р H
+  " nnoremap О J
+  " nnoremap Л K
+  " nnoremap Д L
+  " nnoremap Ж :
+  " nnoremap Є "
+  " nnoremap Я Z
+  " nnoremap Ч X
+  " nnoremap С C
+  " nnoremap М V
+  " nnoremap И B
+  " nnoremap Т N
+  " nnoremap Ь M
+  " nnoremap Б <
+  " nnoremap Ю >
+  " nnoremap ,  ?
+
+
+
+
+
 
 nnoremap <silent> <C-j> :ALENext<cr>
 nnoremap <silent> <C-k> :ALEPrevious<cr>
@@ -366,7 +484,7 @@ let g:LanguageClient_serverCommands = {
       \ 'typescript.tsx': ['tcp://127.0.0.1:2089'],
       \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<cr>
+" nnoremap <F5> :call LanguageClient_contextMenu()<cr>
 " nnoremap <C-]> :call LanguageClient#textDocument_definition()<cr>
 
 " nnoremap <C-1> 1gt
@@ -419,3 +537,40 @@ vnoremap y may`a
 command! Term :execute "!alacritty --working-directory " . expand('%:p:h') . " &" | normal "kkk"
 
 set runtimepath+=~/dotfiles
+
+so ~/dotfiles/localization-ukr.vim
+
+set clipboard+=unnamedplus
+
+autocmd BufRead,BufNewFile ~/master-thesis/*.tex setlocal ts=4 sw=4 tw=0 noet ft=tex
+
+abbrev сдф CLA
+
+nnoremap о gj
+nnoremap л gk
+nnoremap по j
+nnoremap пл k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+nnoremap ʼ ~
+nnoremap ЮЮ >>
+nnoremap ББ <<
+vmap І S
+vmap Х {
+vmap Ї }
+
+set scrolloff=0
+
+nnoremap <F5> :make build<cr>
+
+nnoremap <F1> :ALEDetail<cr>
+
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>gs :G<cr>
+
+hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Red ctermbg=Yellow

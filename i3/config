@@ -45,6 +45,10 @@ bindsym $mod+l focus right
 
 bindsym $mod+Tab focus down
 
+bind $mod+67 exec setxkbmap us
+bind $mod+68 exec setxkbmap dvorak
+bind $mod+69 exec setxkbmap us,ua
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -149,6 +153,7 @@ mode "$mode_launcher" {
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
+bindsym $mod+Shift+Return  exec alacritty --class "Float_Alacritty"
 
 for_window[instance="Float_Alacritty"] floating enable
 

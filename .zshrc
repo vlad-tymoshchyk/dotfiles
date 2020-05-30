@@ -17,8 +17,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 # ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="agnoster"
-# ZSH_THEME="awesomepanda"
+# ZSH_THEME="agnoster"
+ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -115,6 +115,7 @@ hash -d                      wj=~/wj
 hash -d                     wjw=~wj/workjam-web
 hash -d                    wjw1=~wj/workjam-web-1
 hash -d                    wjw2=~wj/workjam-web-2
+hash -d                    wjmat=~wj/workjam-web-materials
 
 hash -d                   wjsrc=~wjw/src
 hash -d                   wjapp=~wjsrc/app
@@ -138,10 +139,12 @@ hash -d               downloads=~/Downloads
 hash -d                packages=~/.packages
 hash -d                codewars=~/codewars
 hash -d                projects=~/projects
+hash -d                    test=~/test
+hash -d                    mux=~dotfiles/tmuxinator
 
 alias vimrc="nvim ~dotfiles/.vimrc"
 alias bashrc="nvim ~dotfiles/.bashrc"
-alias zshrc="nvim ~dotfiles/.zshrc && source ~dot/.zshrc"
+alias zshrc="nvim ~dotfiles/.zshrc && source ~dotfiles/.zshrc"
 alias tmuxconf="nvim ~dotfiles/.tmux.conf"
 alias gitconfig="nvim ~dotfiles/.gitconfig"
 alias i3config="nvim ~dotfiles/i3/config"
@@ -183,7 +186,7 @@ alias -s {uml,yaml}=vim
 
 # alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
 
-export PATH=$HOME/dotfiles/utils:$HOME/manually-installed-packages/**/bin:$PATH
+export PATH=$HOME/dotfiles/bin:$HOME/applications/bin:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
@@ -204,6 +207,7 @@ mkdircd () {
 }
 
 alias setxkb="setxkbmap -query; setxkbmap -option; setxkbmap -layout us,ua; setxkbmap -option grp:win_space_toggle; echo ---; setxkbmap -query"
+alias setxkbdvorak="setxkbmap -query; setxkbmap -option; setxkbmap -layout dvorak,ua; setxkbmap -option grp:win_space_toggle; echo ---; setxkbmap -query"
 
 aptse() {
   if [ -n "$1" ];
@@ -232,3 +236,13 @@ alias z="zathura"
 bindkey -s '^o' 'cd - && clear\n'
 bindkey -s 'jgd' 'clear && cd ~dotfiles\n'
 bindkey -s 'jwjw' 'clear && ~wjw\n'
+
+tmux has -t default 2> /dev/null
+if [ $? -ne 0 ]
+then
+  tmux new-session -s default -d
+fi
+
+cheat() {
+  curl cheat.sh/$1
+}
