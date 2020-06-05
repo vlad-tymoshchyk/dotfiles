@@ -259,8 +259,8 @@ if has('gui_running')
 endif
 
 if has('nvim')
-  " colorscheme dracula
-  colorscheme gruvbox
+  colorscheme dracula
+  " colorscheme gruvbox
   if has('win32')
     se shell=powershell.exe
   endif
