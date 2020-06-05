@@ -133,6 +133,7 @@ hash -d              tmuxinator=~dotfiles/tmuxinator
 hash -d                 sandbox=~/sandbox
 hash -d               sandboxes=~/sandboxes
 hash -d                  github=~/github
+hash -d            applications=~/applications
 hash -d                   books=~/books
 hash -d                  master=~/master-thesis
 hash -d               downloads=~/Downloads

@@ -62,7 +62,7 @@ bindsym $mod+Shift+v split h
 bindsym $mod+f fullscreen toggle
 
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+# bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -130,7 +130,7 @@ bindsym $mod+Shift+i		exec --no-startup-id i3resize up
 
 bindsym Print 					exec flameshot gui
 
-bindsym $mod+b          exec --no-startup-id ~/dotfiles/utils/rbook
+bindsym $mod+b          exec --no-startup-id ~/dotfiles/bin/rbook
 
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "setxkbmap -layout us,ua"
@@ -140,7 +140,9 @@ exec "setxkbmap -option 'grp:win_space_toggle'"
 exec "feh --bg-fill ~/wallpapers/arch_wallpapers_1.jpg"
 
 set $mode_launcher Application
+set $mode_workspaces Workspace
 bindsym $mod+a mode "$mode_launcher"
+bindsym $mod+w mode "$mode_workspaces"
 mode "$mode_launcher" {
 	bindsym g                exec google-chrome;              mode "default"
 	bindsym f                exec firefox;                    mode "default"
@@ -150,6 +152,16 @@ mode "$mode_launcher" {
 	bindsym p workspace p;   exec postman;                    mode "default"
   bindsym e workspace e;   exec telegram-desktop;           mode "default"
   bindsym h                exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+mode "$mode_workspaces" {
+  bindsym a workspace angular;                              mode "default"
+  bindsym r workspace react;                                mode "default"
+  bindsym j workspace js;                                   mode "default"
+  bindsym t workspace rs;                                   mode "default"
+  bindsym n workspace node;                                 mode "default"
+  bindsym b workspace bash;                                 kode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }

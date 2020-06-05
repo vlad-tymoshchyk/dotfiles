@@ -41,8 +41,11 @@ root: ~/sandboxes/sandbox-react
 
 windows:
   - editor:
-    pre:
-      - xdg-open http://localhost:3100
-    layout: even-horizontal
-    panes:
-      - nvim src/index.js
+      layout: even-horizontal
+      panes:
+        - nvim src/index.js
+  - npm:
+      layout: even-horizontal
+      panes:
+        - npm start
+        - google-chrome --new-window http://localhost:3100

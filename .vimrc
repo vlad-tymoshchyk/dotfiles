@@ -538,7 +538,7 @@ command! Term :execute "!alacritty --working-directory " . expand('%:p:h') . " &
 
 set runtimepath+=~/dotfiles
 
-so ~/dotfiles/localization-ukr.vim
+" so ~/dotfiles/localization-ukr.vim
 
 set clipboard+=unnamedplus
 
