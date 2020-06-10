@@ -1,0 +1,12 @@
+#!/bin/bash
+. ../bin/colors
+
+while read package; do
+  if [[ ! $package =~ ^(#| *$) ]]; then
+    if type $package > /dev/null 2>&1; then
+      echo -e "${Gre}${ITick} ${Cya}Package is installed: ${Gre}${package}${RCol}"
+    else
+      echo -e "${Red}${ICross} ${Whi}Package is not installed: ${Red}${package}${RCol}"
+    fi
+  fi
+done < ./packages_list_apt

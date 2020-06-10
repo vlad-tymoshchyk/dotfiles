@@ -574,3 +574,5 @@ nmap <leader>gs :G<cr>
 hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
 hi TabLine ctermfg=Blue ctermbg=Yellow
 hi TabLineSel ctermfg=Red ctermbg=Yellow
+
+nnoremap <silent> <leader>? :ALEDetail<cr>

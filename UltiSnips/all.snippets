@@ -2,6 +2,12 @@ snippet clg "console.log"
 console.log('${1}', ${2:$1});
 endsnippet
 
+snippet af "anonimous function"
+(${1}) => {
+	${2}
+}
+endsnippet
+
 snippet des "Describe (js)"
 describe('${1:description}', () => {
 	$0
@@ -25,3 +31,4 @@ export const ${1}: FC<${4:$3}> = (${2}) => {
 
 }
 endsnippet
+

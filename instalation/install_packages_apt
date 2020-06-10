@@ -1,0 +1,7 @@
+#!/bin/bash
+
+while read package; do
+  if [[ ! $package =~ ^(#| *$) ]]; then
+    echo $package
+  fi
+done < ./packages_list_apt
