@@ -187,7 +187,7 @@ alias -s {uml,yaml}=vim
 
 # alias rbook="ls ~/books | dmenu -i -l 30 | xargs -I{} zathura ~/books/{}"
 
-export PATH=$HOME/dotfiles/bin:$HOME/applications/bin:$PATH
+export PATH=$HOME/dotfiles/bin:$HOME/bin:$PATH
 
 alias fcd="cd \$(ls -R | grep "^\./" | fzf | awk -F'[:]' '{print $1}')"
 alias lee="leetcode"
@@ -247,3 +247,6 @@ fi
 cheat() {
   curl cheat.sh/$1
 }
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
