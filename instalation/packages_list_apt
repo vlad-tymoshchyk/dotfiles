@@ -1,11 +1,12 @@
 # cli
-i3
 apt-file
 curl
 git
 htop
+i3
 inotify-tools
 nmap
+ranger
 tig
 tmux
 tree

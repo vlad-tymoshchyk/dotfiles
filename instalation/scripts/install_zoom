@@ -4,5 +4,5 @@ package="zoom_amd64.deb"
 
 cd ~/Downloads
 wget "http://zoom.us/client/latest/${package}"
-sudo apt install - "./$package"
+sudo apt install -y "./$package"
 rm $package

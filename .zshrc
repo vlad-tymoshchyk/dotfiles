@@ -142,6 +142,7 @@ hash -d                codewars=~/codewars
 hash -d                projects=~/projects
 hash -d                    test=~/test
 hash -d                    mux=~dotfiles/tmuxinator
+hash -d                    ssh=~/.ssh
 
 alias vimrc="nvim ~dotfiles/.vimrc"
 alias bashrc="nvim ~dotfiles/.bashrc"

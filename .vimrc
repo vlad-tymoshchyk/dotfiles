@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim/killersheep'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'PProvost/vim-ps1'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'alvan/vim-closetag'
