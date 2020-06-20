@@ -117,7 +117,7 @@ set linebreak
 set mouse=a
 set noerrorbells
 set nofoldenable
-set norelativenumber
+set relativenumber
 set noshowmatch		" cursor no jumps to parent bracket
 set nosmarttab
 set nospell
