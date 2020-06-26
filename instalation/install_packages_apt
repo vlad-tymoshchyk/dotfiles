@@ -1,0 +1,10 @@
+#!/bin/bash
+
+install="sudo apt-get install -y"
+
+while read package; do
+  if [[ ! $package =~ ^(#| *$) ]]; then
+    echo $package
+    $install $package
+  fi
+done < ./packages_list_apt

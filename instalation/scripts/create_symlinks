@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ln -s ~/dotfiles/.vimrc ~
+ln -s ~/dotfiles/.zshrc ~
+ln -s ~/dotfiles/.tmux.conf ~
+ln -s ~/dotfiles/.gitconfig ~
+ln -s ~/dotfiles/.gitignore_global ~
+
+ln -s ~/dotfiles/tmuxinator ~/.config
+
+mkdir ~/.config/nvim
+echo "so ~/.vimrc" > ~/.config/nvim/init.vim

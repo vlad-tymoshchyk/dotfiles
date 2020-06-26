@@ -1,0 +1,10 @@
+#!/bin/bash
+
+install="sudo npm install -g"
+
+while read package; do
+  if [[ ! $package =~ ^(#| *$) ]]; then
+    echo $package
+    $install $package
+  fi
+done < ./packages_list_npm

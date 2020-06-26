@@ -1,0 +1,25 @@
+# cli
+apt-file
+curl
+git
+htop
+i3
+inotify-tools
+nmap
+ranger
+tig
+tmux
+tree
+zsh
+
+# libs
+zlib1g-dev
+libssl-dev
+libcurl4-openssl-dev
+libexpat1-dev
+
+# gui programs
+calibre
+zathura
+
+# vi: ft=sh

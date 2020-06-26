@@ -1,0 +1,9 @@
+#!/bin/bash
+
+package="AVPNC_linux.tar.gz"
+
+cd ~/Downloads
+wget "https://s3-us-west-2.amazonaws.com/aviatrix-download/AviatrixVPNClient/${package}"
+tar -xzf AVPNC_linux.tar.gz
+cd AVPNC_setup
+./install.sh

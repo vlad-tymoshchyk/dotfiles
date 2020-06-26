@@ -117,7 +117,7 @@ set linebreak
 set mouse=a
 set noerrorbells
 set nofoldenable
-set norelativenumber
+set relativenumber
 set noshowmatch		" cursor no jumps to parent bracket
 set nosmarttab
 set nospell
@@ -574,3 +574,5 @@ nmap <leader>gs :G<cr>
 hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
 hi TabLine ctermfg=Blue ctermbg=Yellow
 hi TabLineSel ctermfg=Red ctermbg=Yellow
+
+nnoremap <silent> <leader>? :ALEDetail<cr>

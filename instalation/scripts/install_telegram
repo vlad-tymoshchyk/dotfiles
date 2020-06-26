@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sudo apt install -y telegram-desktop
+
+# # package="tsetup.2.1.11.tar.xz"
+# package=""
+
+# cd ~/bin
+# wget "https://telegram.org/dl/desktop/linux/${package}" -o telegram.tar.xz
+# tar
+
+# # sudo apt install -y "./$package"
+# # rm $package

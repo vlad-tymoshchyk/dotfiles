@@ -1,0 +1,7 @@
+yarn
+nodemon
+mocha
+jest
+prettier
+
+# vi: ft=sh
