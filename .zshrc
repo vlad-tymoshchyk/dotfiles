@@ -223,7 +223,8 @@ aptse() {
 alias zshreload="source ~/.zshrc"
 
 alias netstorm="wine ~/.wine/drive_c/Program\\ Files\\ \(x86\)/Netstorm\\ Islands\\ at\\ War/package/Netstorm.exe"
-alias vi="nvim \"+set nonumber\""
+alias vi="nvim"
+alias v="nvim"
 
 alias rn="ranger"
 
@@ -251,3 +252,6 @@ cheat() {
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+LC_TIME=en_IN.UTF-8
+export LC_TIME

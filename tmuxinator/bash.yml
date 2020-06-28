@@ -8,4 +8,4 @@ windows:
       layout: even-horizontal
       panes:
         - npm start
-        - sleep 0.5 && nvim index.sh
+        - sleep 0.5 && nvim index.bash
