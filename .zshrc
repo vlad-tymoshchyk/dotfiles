@@ -255,3 +255,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || p
 
 LC_TIME=en_IN.UTF-8
 export LC_TIME
+
+# ssh-add ~ssh/github_rsa
+alias goneovim="~/Downloads/Goneovim-0.4.7-linux/goneovim"
+alias exx="exercism"
+alias ww="which"

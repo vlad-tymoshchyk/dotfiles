@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/vim-plug'
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug 'lervag/vimtex'
 " Plug 'majutsushi/tagbar'
@@ -242,6 +243,21 @@ inoremap [<space> [  ]<left><left>
 inoremap {<cr> {<cr>}<esc>O
 inoremap {<space> {  }<left><left>
 
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>gs :G<cr>
+" nmap <leader>gd <Plug>(coc-definition)
+" nmap <leader>gr <Plug>(coc-references)
+" nmap <leader>gs :G<cr>
+
+" command! LU :w || source ~/test/vim/test.lua
+
+lua require'nvim_lsp'.tsserver.setup{ on_attach=require'completion'.on_attach }
+
+se completeopt=menuone,noinsert,noselect
+
+" let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
+
+let g:NERDTreeMinimalUI = 1
+
+nmap <silent> * :let @/='\v<'.expand('<cword>').'>'<cr>:let v:searchforward=1<cr>n
+nmap <silent> # :let @/='\v<'.expand('<cword>').'>'<cr>:let v:searchforward=0<cr>n
+nmap <silent> g* :let @/='\v'.expand('<cword>')<cr>:let v:searchforward=1<cr>n
+nmap <silent> g# :let @/='\v'.expand('<cword>')<cr>:let v:searchforward=0<cr>n

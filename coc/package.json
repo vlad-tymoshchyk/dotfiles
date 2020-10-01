@@ -1,13 +1,14 @@
 {
   "dependencies": {
-    "coc-actions": ">=1.4.0",
-    "coc-bookmark": ">=1.2.5",
-    "coc-git": ">=1.7.15",
-    "coc-jest": ">=1.0.3",
+    "coc-actions": ">=1.4.2",
+    "coc-bookmark": ">=1.2.6",
+    "coc-git": ">=1.8.8",
+    "coc-jest": ">=1.1.1",
     "coc-leetcode": ">=1.0.1",
     "coc-neosnippet": ">=1.2.2",
-    "coc-post": ">=0.1.0",
-    "coc-sh": ">=0.5.1",
+    "coc-post": ">=0.2.0",
+    "coc-sh": ">=0.6.0",
+    "coc-snippets": ">=2.2.1",
     "coc-template": ">=1.2.5",
     "coc-webpack": ">=1.4.0"
   }

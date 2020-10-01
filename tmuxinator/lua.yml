@@ -1,0 +1,13 @@
+name: sandbox-lua
+root: ~/sandboxes/sandbox-lua
+
+startup_pane: 2
+
+windows:
+  - editor:
+      pre:
+        - touch index.lua
+      layout: even-horizontal
+      panes:
+        - npm start
+        - sleep 0.5 && nvim index.lua
