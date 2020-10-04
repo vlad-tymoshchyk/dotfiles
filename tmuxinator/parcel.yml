@@ -1,0 +1,15 @@
+name: sandbox-parcel
+root: ~/sandboxes/sandbox-parcel
+
+startup_window: 2
+
+windows:
+  - building:
+      panes:
+        - npm start
+  - editor:
+      pre:
+        - touch index.html
+        - touch main.js
+      panes:
+        - sleep 0.5 && nvim main.js
