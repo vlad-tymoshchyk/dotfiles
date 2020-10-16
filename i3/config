@@ -13,8 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
-
+font pango:monospace 10
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -33,7 +32,7 @@ bindsym $mod+Return exec alacritty
 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 30
 
 bindsym $mod+slash exec rofi -show window
@@ -110,7 +109,7 @@ for_window [class="^.*"] border pixel 1
 bindsym $mod+m move workspace to output left
 
 bar {
-	font pango:mono 12
+	font pango:mono 18
 	status_command SCRIPTS_DIR=$HOME/dotfiles/i3blocks i3blocks
 	position top
 	mode dock
@@ -129,6 +128,7 @@ bindsym $mod+Shift+u		exec --no-startup-id i3resize down
 bindsym $mod+Shift+i		exec --no-startup-id i3resize up
 
 bindsym Print 					exec flameshot gui
+bindsym $mod+p 					exec flameshot gui
 
 bindsym $mod+b          exec --no-startup-id ~/dotfiles/bin/rbook
 
@@ -137,12 +137,15 @@ exec "setxkbmap -layout us,ua"
 exec "setxkbmap -option"
 exec "setxkbmap -option 'grp:win_space_toggle'"
 
-exec "feh --bg-fill ~/wallpapers/arch_wallpapers_1.jpg"
+# exec "feh --bg-fill ~/wallpapers/ubuntu_stars.jpg"
+exec "feh --bg-fill ~/wallpapers/iss_space_shuttle.jpg"
 
 set $mode_launcher Application
 set $mode_workspaces Workspace
+set $mode_move_to_workspaces Move To Workspace
 bindsym $mod+a mode "$mode_launcher"
 bindsym $mod+w mode "$mode_workspaces"
+bindsym $mod+Shift+w mode "$mode_move_to_workspaces"
 mode "$mode_launcher" {
 	bindsym g                exec google-chrome;              mode "default"
 	bindsym f                exec firefox;                    mode "default"
@@ -156,18 +159,95 @@ mode "$mode_launcher" {
 	bindsym Return mode "default"
 }
 mode "$mode_workspaces" {
-  bindsym a workspace angular;                              mode "default"
-  bindsym r workspace react;                                mode "default"
-  bindsym j workspace js;                                   mode "default"
-  bindsym t workspace rs;                                   mode "default"
-  bindsym n workspace node;                                 mode "default"
-  bindsym b workspace bash;                                 kode "default"
+  bindsym a workspace a;   mode "default"
+  bindsym b workspace b;   mode "default"
+  bindsym c workspace c;   mode "default"
+  bindsym d workspace d;   mode "default"
+  bindsym e workspace e;   mode "default"
+  bindsym f workspace f;   mode "default"
+  bindsym g workspace g;   mode "default"
+  bindsym h workspace h;   mode "default"
+  bindsym k workspace k;   mode "default"
+  bindsym l workspace l;   mode "default"
+  bindsym m workspace m;   mode "default"
+  bindsym n workspace n;   mode "default"
+  # bindsym i workspace i;   mode "default"
+  bindsym i workspace vdi;   mode "default"
+  bindsym o workspace o;   mode "default"
+  bindsym p workspace p;   mode "default"
+  bindsym r workspace r;   mode "default"
+  bindsym s workspace s;   mode "default"
+  bindsym t workspace t;   mode "default"
+  bindsym u workspace u;   mode "default"
+  # bindsym v workspace v;   mode "default"
+  bindsym v workspace vpn;   mode "default"
+  bindsym w workspace w;   mode "default"
+  bindsym x workspace x;   mode "default"
+  bindsym y workspace y;   mode "default"
+  bindsym z workspace z;   mode "default"
+
+  bindsym A move container to workspace a; workspace a;   mode "default"
+  bindsym B move container to workspace b; workspace b;   mode "default"
+  bindsym C move container to workspace c; workspace c;   mode "default"
+  bindsym D move container to workspace d; workspace d;   mode "default"
+  bindsym E move container to workspace e; workspace e;   mode "default"
+  bindsym F move container to workspace f; workspace f;   mode "default"
+  bindsym G move container to workspace g; workspace g;   mode "default"
+  bindsym H move container to workspace h; workspace h;   mode "default"
+  bindsym K move container to workspace k; workspace k;   mode "default"
+  bindsym L move container to workspace l; workspace l;   mode "default"
+  bindsym M move container to workspace m; workspace m;   mode "default"
+  bindsym N move container to workspace n; workspace n;   mode "default"
+  bindsym O move container to workspace o; workspace o;   mode "default"
+  bindsym P move container to workspace p; workspace p;   mode "default"
+  bindsym R move container to workspace r; workspace r;   mode "default"
+  bindsym S move container to workspace s; workspace s;   mode "default"
+  bindsym T move container to workspace t; workspace t;   mode "default"
+  bindsym U move container to workspace u; workspace u;   mode "default"
+  # bindsym V move container to workspace v; workspace v;   mode "default"
+  bindsym V move container to workspace vpn; workspace vpn;   mode "default"
+  bindsym W move container to workspace u; workspace u;   mode "default"
+  bindsym X move container to workspace x; workspace x;   mode "default"
+  bindsym Y move container to workspace y; workspace y;   mode "default"
+  bindsym Z move container to workspace z; workspace z;   mode "default"
+
+	bindsym Escape mode "default"
+	bindsym Return mode "default"
+}
+mode "$mode_move_to_workspaces" {
+  bindsym a move container to workspace a; workspace a;   mode "default"
+  bindsym b move container to workspace b; workspace b;   mode "default"
+  bindsym c move container to workspace c; workspace c;   mode "default"
+  bindsym d move container to workspace d; workspace d;   mode "default"
+  bindsym e move container to workspace e; workspace e;   mode "default"
+  bindsym f move container to workspace f; workspace f;   mode "default"
+  bindsym g move container to workspace g; workspace g;   mode "default"
+  bindsym h move container to workspace h; workspace h;   mode "default"
+  bindsym k move container to workspace k; workspace k;   mode "default"
+  bindsym l move container to workspace l; workspace l;   mode "default"
+  bindsym m move container to workspace m; workspace m;   mode "default"
+  bindsym n move container to workspace n; workspace n;   mode "default"
+  # bindsym i move container to workspace i; workspace i;   mode "default"
+  bindsym i move container to workspace vdi; workspace vdi;   mode "default"
+  bindsym o move container to workspace o; workspace o;   mode "default"
+  bindsym p move container to workspace p; workspace p;   mode "default"
+  bindsym r move container to workspace r; workspace r;   mode "default"
+  bindsym s move container to workspace s; workspace s;   mode "default"
+  bindsym t move container to workspace t; workspace t;   mode "default"
+  bindsym u move container to workspace u; workspace u;   mode "default"
+  # bindsym v move container to workspace v; workspace v;   mode "default"
+  bindsym v move container to workspace vpn; workspace vpn;   mode "default"
+  bindsym w move container to workspace u; workspace u;   mode "default"
+  bindsym x move container to workspace x; workspace x;   mode "default"
+  bindsym y move container to workspace y; workspace y;   mode "default"
+  bindsym z move container to workspace z; workspace z;   mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }
 bindsym $mod+Shift+Return  exec alacritty --class "Float_Alacritty"
 
 for_window[instance="Float_Alacritty"] floating enable
+for_window[instance="Float_Alacritty"] resize set 1200 800
 
 assign [class="Slack"] s
 # for_window [class="Slack"] focus
@@ -185,7 +265,7 @@ for_window [class="Telegram"] focus
 
 bindsym $mod+o workspace back_and_forth
 
-bindsym $mod+p focus parent
+# bindsym $mod+p focus parent
 
 # default_border pixel 9
 # client.focused #00ff00
@@ -222,4 +302,9 @@ bindsym XF86AudioRaiseVolume exec $volumepath -np -i $volumestep -t $statuscmd -
 bindsym XF86AudioLowerVolume exec $volumepath -np -d $volumestep -t $statuscmd -u $statussig
 bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
 
-synclient TouchpadOff=1
+# synclient TouchpadOff=1
+
+bindsym $mod+Up exec volume -i 2; exec volume -n
+bindsym $mod+Down exec volume -d 2; exec volume -n
+bindsym $mod+Left exec ~/bin/brightdown
+bindsym $mod+Right exec ~/bin/brightup
