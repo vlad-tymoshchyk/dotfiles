@@ -1,22 +1,37 @@
-TMP=$(upower -i $(upower -e | grep 'BAT'))
+#!/usr/bin/env bash
+tmp=$(upower -i $(upower -e | grep 'BAT'))
 
-PERCENTAGE=$(echo $TMP | grep percentage | awk 'match($0, /[0-9]+%/) { print substr($0, RSTART, RLENGTH) }')
+percentage_full=$(echo $tmp | grep percentage | awk 'match($0, /[0-9]+%/) { print substr($0, RSTART, RLENGTH) }')
+percentage=${percentage_full::-1}
 
-TEXT_STATUS=$(echo $TMP | grep -E "state:\s+[a-z-]+" -o | awk '{ print $2 }');
+text_status=$(echo $tmp | grep -E "state:\s+[a-z-]+" -o | awk '{ print $2 }');
 
-case $TEXT_STATUS in
+case $text_status in
   'charging')
-      ICON_STATUS='🔌'
+      icon_status='🔌'
     ;;
   'discharging')
-      ICON_STATUS='💻'
+      icon_status='💻'
     ;;
   'fully-charged')
-      ICON_STATUS='✔️'
+      icon_status='✔️'
     ;;
   *)
-      ICON_STATUS=$TEXT_STATUS;
+      icon_status=$text_status;
     ;;
 esac
 
-echo "🔋$PERCENTAGE($ICON_STATUS)"
+last_value=$(cat /tmp/battery_last_value)
+if [[ $percentage -lt 25 ]] && ! [[ $percentage -eq $last_value ]] && [[ $text_status = 'discharging' ]];
+then
+  if [[ $percentage -lt 15 ]];
+  then
+    notify-send -u critical -t 15000 "Low battery" "Battery is critically low: $percentage%"
+    play -q /usr/share/sounds/gnome/default/alerts/sonar.ogg
+  else
+    notify-send -t 3000 "Low battery" "Battery is $percentage%"
+  fi
+  echo $percentage > /tmp/battery_last_value
+fi
+
+echo "🔋$percentage%($icon_status)"
