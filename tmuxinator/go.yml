@@ -1,0 +1,13 @@
+name: sandbox-go
+root: ~/sandboxes/sandbox-go
+
+startup_pane: 2
+
+windows:
+  - editor:
+      pre:
+        - touch main.go
+      layout: even-horizontal
+      panes:
+        - npm start
+        - sleep 0.5 && nvim main.go
