@@ -1,0 +1,8 @@
+#!/usr/bin/env -S bats -p
+
+@test "Run battery" {
+  run ./battery
+  run notify-send "$output"
+  [ "$status" -eq 0 ]
+  # [ "some" = "somee" ]
+}

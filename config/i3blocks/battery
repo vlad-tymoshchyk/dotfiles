@@ -27,7 +27,8 @@ then
   if [[ $percentage -lt 15 ]];
   then
     notify-send -u critical -t 15000 "Low battery" "Battery is critically low: $percentage%"
-    play -q /usr/share/sounds/gnome/default/alerts/sonar.ogg
+    # play -q /usr/share/sounds/gnome/default/alerts/sonar.ogg
+    play -q /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
   else
     notify-send -t 3000 "Low battery" "Battery is $percentage%"
   fi

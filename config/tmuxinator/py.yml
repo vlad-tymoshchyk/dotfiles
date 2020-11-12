@@ -45,5 +45,5 @@ windows:
         - touch index.py
       layout: even-horizontal
       panes:
-        - clear && nodemon -w index.py -x "clear && python index.py"
+        - clear && nodemon -w index.py -x "clear && python3 index.py"
         - sleep 0.5 && nvim index.py

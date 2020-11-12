@@ -1,10 +1,14 @@
 snippet clg "console.log"
-console.log('${1}', ${2:$1});
+console.log('${1:${VISUAL}}', ${2:$1});
+endsnippet
+
+snippet cl "console.log"
+console.log(${0:${VISUAL}});
 endsnippet
 
 snippet af "anonimous function"
 (${1}) => {
-	${2}
+	${2:${VISUAL}}
 }
 endsnippet
 

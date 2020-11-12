@@ -4,7 +4,7 @@ folder_name="nvim-linux64"
 package="${folder_name}.tar.gz"
 
 cd ~/bin
-wget "https://github.com/neovim/neovim/releases/download/v0.4.3/${package}"
+wget "https://github.com/neovim/neovim/releases/download/nightly/${package}"
 tar -xzf "$package"
 ln -s "./${folder_name}/bin/nvim" ~/bin
 

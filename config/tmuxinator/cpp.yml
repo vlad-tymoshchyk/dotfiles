@@ -1,0 +1,13 @@
+name: sandbox-cpp
+root: ~/sandboxes/sandbox-cpp
+
+startup_pane: 2
+windows:
+  - editor:
+      pre:
+        - if [[ ! -d ~/sandboxes/sandbox-cpp ]]; then mkdir "~/sandboxes/sandbox-cpp"; fi
+        - touch main.cpp
+      layout: even-horizontal
+      panes:
+        - clear && nodemon -w main.cpp -x "clear && cc main.cpp -o main && ./main"
+        - sleep 0.5 && nvim main.cpp

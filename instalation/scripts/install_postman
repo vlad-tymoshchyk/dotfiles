@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [[ ! -d ~/bin ]]
+then
+  echo "~/bin directory does not exists"
+  exit 1
+fi
+
+archive="Postman.tar.gz"
+
+cd ~/Downloads
+wget "https://dl.pstmn.io/download/latest/linux64" -O $archive
+
+tar xvzf $archive -C ~/bin/
+
+mv ~/bin/Postman ~/bin/Postman-folder
+
+ln -s ~/bin/Postman-folder/app/Postman ~/bin/Postman
