@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+const { existsSync, writeFileSync } = require("fs");
+const { execSync } = require("child_process");
+
+process.argv.shift();
+process.argv.shift();
+const htmlFile = "index.html";
+const scriptFile = process.argv.shift() || "main.js";
+
+if (!existsSync(htmlFile)) {
+  createHtmlFile();
+}
+
+if (!existsSync(scriptFile)) {
+  createScriptFile(scriptFile);
+}
+
+execSync("parcel index.html " + process.argv.join(" "), { stdio: "inherit" });
+
+function createScriptFile(name) {
+  const template = `console.log("This is from script")`;
+  writeFileSync(name, template);
+}
+
+function createHtmlFile() {
+  const template = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title></title>
+    </head>
+    <body>
+      <div id="root"></div>
+      <script src="${scriptFile}"></script>
+    </body>
+    </html>
+  `;
+  writeFileSync(htmlFile, template);
+}
