@@ -1,3 +1,7 @@
 background_opacity: 0.8
 font:
   size: 18
+window:
+  padding:
+    x: 10
+    y: 10
