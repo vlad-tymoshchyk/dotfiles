@@ -135,7 +135,14 @@ nnoremap <c-x>a :!git add %<cr>
 nnoremap <enter> i<enter><esc>l
 nnoremap <leader>, ,
 nnoremap <silent> <C-x>b :Gblame<cr>
-nnoremap <silent> <C-x>f :NERDTreeFind<cr>
+nnoremap <silent> <C-x>f :call SmartNERDTree()<CR>
+function! SmartNERDTree()                   
+    if @% == ""
+        NERDTreeToggle                      
+    else                                    
+        NERDTreeFind                        
+    endif                                   
+endfun
 nnoremap <silent> <C-l> :Buffers<cr>
 nnoremap <silent> \s :Snippets<cr>
 nnoremap <silent> \m :Maps<cr>
@@ -271,9 +278,7 @@ nmap <silent> g# :let @/='\v'.expand('<cword>')<cr>:let v:searchforward=0<cr>n
 let g:NERDTreeHijackNetrw = 0
 let g:ranger_replace_netrw = 1
 
-nnoremap <space>f <Plug>(easymotion-bd-f)
-" map <space>s :Snippets<cr>
-nnoremap <space>t :let $VIM_DIR=expand('%:p:h')<cr>:terminal<cr>icd $VIM_DIR && clear<cr>
+nnoremap <silent> <space>f :lua require('telescope.builtin').live_grep{}<cr>
 
 " let g:fzf_preview_window='right:60%'
 
