@@ -53,7 +53,7 @@ alias mux="tmuxinator"
 alias rn="ranger"
 alias mcal="gcal --with-week-number --starting-day=Monday"
 alias xg="xdg-open"
-alias l="ls -gah"
+alias l="ls -gah --group-directories-first"
 alias ll="ls -lah"
 
 alias -s {txt,js,jsx,ts,tsx}=nvim
