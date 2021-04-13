@@ -18,6 +18,7 @@ Plug 'digitaltoad/vim-pug'
 Plug 'dracula/vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
+" Plug 'francoiscabrol/ranger.vim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -275,8 +276,7 @@ nmap <silent> # :let @/='\v<'.expand('<cword>').'>'<cr>:let v:searchforward=0<cr
 nmap <silent> g* :let @/='\v'.expand('<cword>')<cr>:let v:searchforward=1<cr>n
 nmap <silent> g# :let @/='\v'.expand('<cword>')<cr>:let v:searchforward=0<cr>n
 
-let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
+let g:NERDTreeHijackNetrw = 1
 
 nnoremap <silent> <space>f :lua require('telescope.builtin').live_grep{}<cr>
 
