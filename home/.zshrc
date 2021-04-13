@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git web-search vi-mode jump)
+plugins=(git z vi-mode jump)
 
 source $ZSH/oh-my-zsh.sh
 set -g mouse on
@@ -51,6 +51,10 @@ alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
 alias rn="ranger"
+alias mcal="gcal --with-week-number --starting-day=Monday"
+alias xg="xdg-open"
+alias l="ls -gah"
+alias ll="ls -lah"
 
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=nvim
@@ -74,9 +78,6 @@ then
   tmux new-session -s default -d
 fi
 
-alias l="ls -gah"
-alias ll="ls -lah"
-
 hash -d ossui=~/gl/im/oss-user-demo-ui
 hash -d ossspa=~/gl/im/oss-user-demo-spa-ui
 hash -d saas=~/gl/im/saas-authn-webapp
@@ -86,5 +87,3 @@ hash -d words=~/words
 gs() {
   echo "Dont launch GHostScript"
 }
-
-alias mcal="gcal --with-week-number --starting-day=Monday"
