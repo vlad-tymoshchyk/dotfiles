@@ -1,13 +1,13 @@
 call plug#begin('~/.vim/plugged')
-" Plug 'dracula/vim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'dracula/vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'rafcamlet/nvim-luapad'
-" Plug 'ryanoasis/vim-devicons'
-" Plug 'sheerun/vim-polyglot'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
 " Plug 'tpope/vim-projectionist'
-" Plug 'vim-airline/vim-airline'
-" Plug 'w0rp/ale'
-" Plug 'wellle/targets.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+Plug 'wellle/targets.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
@@ -314,3 +314,5 @@ nnoremap <silent> \r :Telescope lsp_references<cr>
 nnoremap <silent> \a :Telescope lsp_code_actions<cr>
 let g:AutoPairsFlyMode=1
 let g:AutoPairsCenterLine=0
+nnoremap <C-e> <C-w>
+nnoremap <C-w> <Nop>
