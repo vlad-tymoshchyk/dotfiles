@@ -39,6 +39,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 30
 bindsym $mod+i exec rofi -show window
+bindsym Print 					exec flameshot gui
+bindsym $mod+p 					exec flameshot gui
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -59,8 +61,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+z floating toggle
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym Print 					exec flameshot gui
-bindsym $mod+p 					exec flameshot gui
+bindsym $mod+Shift+m move workspace to output left
 
 bindsym $ctrl+1 exec ~/bin/set_eng_ukr_keyboard
 bindsym $ctrl+2 exec ~/bin/set_ukr_eng_keyboard
@@ -114,7 +115,7 @@ bindsym $mod+w mode "$mode_workspaces"
 bindsym $mod+Shift+w mode "$mode_move_to_workspaces"
 mode "$mode_launcher" {
 	bindsym g exec google-chrome; mode "default"
-	bindsym f exec firefox; mode "default"
+	bindsym f exec xdg-open ~; mode "default"
   bindsym h exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
   bindsym b exec --no-startup-id ~/dotfiles/bin/rbook;    mode "default"
 	bindsym s workspace s; exec slack;                      mode "default"
