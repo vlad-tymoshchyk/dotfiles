@@ -56,6 +56,8 @@ alias xg="xdg-open"
 alias l="ls -gah --group-directories-first"
 alias ll="ls -lah"
 
+alias proj="cd \`ls ~/projects | fzf | xargs -I{} echo ~/projects/{}\` && clear"
+
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=nvim
 
