@@ -15,6 +15,7 @@ hash -d sandboxes=~/sandboxes
 hash -d github=~/github
 hash -d books=~/books
 hash -d downloads=~/Downloads
+hash -d proj=~/projects
 hash -d projects=~/projects
 hash -d test=~/test
 hash -d mux=~dotfiles/config/tmuxinator
@@ -58,6 +59,11 @@ alias ll="ls -lah"
 
 alias proj="cd \`ls ~/projects | fzf | xargs -I{} echo ~/projects/{}\` && clear"
 
+install-oh-my-zsh-curl() { sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" }
+install-oh-my-zsh-wget() { sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" }
+install-nvm-curl() { curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash }
+install-nvm-wget() { wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash }
+
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=nvim
 
@@ -89,3 +95,5 @@ hash -d words=~/words
 gs() {
   echo "Dont launch GHostScript"
 }
+
+eval "$(direnv hook zsh)"
