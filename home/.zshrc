@@ -78,9 +78,9 @@ then
   tmux new-session -s default -d
 fi
 
-hash -d ossui=~/gl/im/oss-user-demo-ui
-hash -d ossspa=~/gl/im/oss-user-demo-spa-ui
-hash -d saas=~/gl/im/saas-authn-webapp
+hash -d authn=~/projects/saas-authn-ui
+hash -d admin=~/projects/saas-admin-ui
+hash -d bizops=~/projects/saas-bizops-ui
 hash -d animal=~/gl/AnimalRescue/Frontend
 hash -d words=~/words
 

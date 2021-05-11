@@ -192,15 +192,16 @@ let g:coc_global_extensions=[ "coc-tsserver" ]
 autocmd BufWritePost */.vimrc :Conf
 " autocmd BufWritePost ~/vim-viml/main.vim :so %
 
-colorscheme gruvbox
+colorscheme dracula
 " inoremap [<cr> [<cr>]<esc>O
 " inoremap [<space> [  ]<left><left>
 " inoremap {<cr> {<cr>}<esc>O
 " inoremap {<space> {  }<left><left>
 
 nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gr <Plug>(coc-references)
-nmap <leader>gy <Plug>(coc-type-definition)
+nnoremap <silent> <leader>gh :call CocAction("doHover")<cr>
 " nmap <leader>gs :G<cr>
 
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
@@ -281,10 +282,8 @@ nnoremap <silent>,ww :w<cr>
 let g:NERDDefaultNesting=0
 
 nnoremap <leader>gs :G<cr>
-nnoremap <leader>gh :diffget //2<cr>
+" nnoremap <leader>gh :diffget //2<cr>
 nnoremap <leader>gl :diffget //3<cr>
-
-autocmd! BufWritePost * :so ~/test/vim-script/test.vim
 
 let g:prettier#config#single_quote = 1
 

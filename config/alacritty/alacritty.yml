@@ -1,6 +1,8 @@
 background_opacity: 0.8
 font:
   size: 18
+  normal:
+    family: JetBrains Mono
 window:
   padding:
     x: 10

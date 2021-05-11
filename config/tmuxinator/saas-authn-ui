@@ -1,0 +1,10 @@
+name: pet-sos
+root: ~/gl/AnimalRescue/Frontend
+
+windows:
+  - editor:
+      panes:
+        - nvim .
+  - npm:
+      panes:
+        - npm start

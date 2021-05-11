@@ -1,0 +1,6 @@
+name: saas-admin-ui
+root: ~/gl/im/saas-admin-ui
+
+windows:
+  - runs
+  - work
