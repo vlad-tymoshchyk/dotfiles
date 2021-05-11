@@ -315,3 +315,7 @@ let g:AutoPairsFlyMode=1
 let g:AutoPairsCenterLine=0
 nnoremap <C-e> <C-w>
 nnoremap <C-w> <Nop>
+
+" inoremap <silent> ол <esc>
+" autocmd InsertEnter * :silent !{~/bin/set_ukr_eng_keyboard}
+" autocmd InsertLeave * :silent !{~/bin/set_eng_ukr_keyboard}
