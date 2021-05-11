@@ -6,7 +6,7 @@ command=$SCRIPTS_DIR/kb_layout
 
 [battery]
 interval=60
-command=$SCRIPTS_DIR/battery
+command=~/dotfiles/config/i3blocks/battery
 
 [time]
 command=echo "(🇨🇦 $(TZ=America/Montreal date +%H:%M:%S))"

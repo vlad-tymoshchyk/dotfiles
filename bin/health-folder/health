@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+const fs = require("fs");
+const c = require("chalk");
+const { execSync } = require("child_process");
+
+const packages = {
+  // cli
+  node: "Node.js runtime for JavaScript",
+  nvim: "TBD",
+  tmux: "Terminal multiplexer",
+  tmuxinator: "Session manager for tmux",
+  npm: "NPM package manager",
+  yarn: "YARN package manager",
+  deno: "JS alternative runtime",
+  direnv: "Cli util to use .envrc config",
+  python: "Python bin",
+  python2: "Python2 bin",
+  python3: "Python3 bin",
+  go: "Go programming language",
+  lua: "Lua programming language",
+  ruby: "Ruby programming language",
+
+  // npm global packages
+  prettier: "Code formatting tool",
+  tsc: "TypeScript compiler",
+  tsserver: "TypeScript server",
+  "ts-node": "Node.js + TypeScript",
+  mocha: "Node.js unit testing framework",
+  "create-react-app": "React boilerplate generator",
+  "typescript-language-server": "Language server for nvim",
+  serve: "Util to serve static files",
+  hrs: "Util for hot module reloading",
+  eslint: "JS linting tool",
+  parcel: "Convenient JS bundler",
+};
+
+const installed = [];
+const uninstalled = [];
+Object.keys(packages).forEach((pack) => {
+  try {
+    execSync(`which ${pack}`);
+    installed.push(pack);
+  } catch {
+    uninstalled.push(pack);
+  }
+});
+
+writeTitle(c.yellow("Installed:"));
+installed.forEach((pack) => {
+  writeRow(c.green(pack), packages[pack]);
+});
+
+writeTitle(c.gray("Uninstalled:"));
+uninstalled.forEach((pack) => {
+  writeRow(c.red(pack), packages[pack]);
+});
+console.log();
+
+function writeRow(name, des) {
+  console.log(" " + name.padEnd(40), des);
+}
+function writeTitle(title) {
+  console.log();
+  console.log(" ", c.bold.underline(title));
+  console.log();
+}
