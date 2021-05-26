@@ -44,6 +44,12 @@ alias apts="apt-cache search"
 alias apti="apt-get install"
 alias sapti="sudo apt-get install"
 
+alias gpnv="git push --no-verify"
+alias gcnv="git commit --no-verify"
+alias glg="git log --pretty='%Cred%h%Creset | %s %C(cyan)[%an]%Creset %C(green)(%cr)%Creset %C(yellow)%d%Creset'"
+alias glgg="git log --pretty='%Cred%h%Creset | %s %C(cyan)[%an]%Creset %C(green)(%cr)%Creset %C(yellow)%d%Creset' --graph --all"
+alias gs="git status"
+
 alias tree1="tree -L 1"
 alias tree2="tree -L 2"
 alias tree3="tree -L 3"
@@ -91,9 +97,5 @@ hash -d admin=~/projects/saas-admin-ui
 hash -d bizops=~/projects/saas-bizops-ui
 hash -d animal=~/gl/AnimalRescue/Frontend
 hash -d words=~/words
-
-gs() {
-  echo "Dont launch GHostScript"
-}
 
 eval "$(direnv hook zsh)"

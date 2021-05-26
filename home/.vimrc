@@ -126,6 +126,8 @@ nnoremap <silent> [w <Plug>(ale_previous)
 nnoremap <silent> ]w <Plug>(ale_next)
 nnoremap vv ggVG
 noremap <silent> <Space>n :NERDTreeToggle<cr>
+noremap <silent> <Space>i :GFiles?<cr>
+noremap <silent> <Space>h :History<cr>
 vnoremap y may`a
 
 let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git --exclude .cache --exclude node_modules"
@@ -202,6 +204,7 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <silent> <leader>gh :call CocAction("doHover")<cr>
+nnoremap <silent> <leader>gn :ALERename<cr>
 " nmap <leader>gs :G<cr>
 
 let g:completion_matching_strategy_list=['exact', 'substring', 'fuzzy']
