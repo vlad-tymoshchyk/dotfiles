@@ -191,9 +191,6 @@ let g:notes_suffix = '.txt'
 let g:coc_config_home="~/dotfiles/rubbish-bin"
 let g:coc_global_extensions=[ "coc-tsserver" ]
 
-autocmd BufWritePost */.vimrc :Conf
-" autocmd BufWritePost ~/vim-viml/main.vim :so %
-
 colorscheme dracula
 " inoremap [<cr> [<cr>]<esc>O
 " inoremap [<space> [  ]<left><left>
@@ -322,3 +319,7 @@ nnoremap <C-w> <Nop>
 " inoremap <silent> ол <esc>
 " autocmd InsertEnter * :silent !{~/bin/set_ukr_eng_keyboard}
 " autocmd InsertLeave * :silent !{~/bin/set_eng_ukr_keyboard}
+let g:AutoPairsShortcutBackInsert = "<M-a>"
+
+autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
+autocmd BufWritePost */.vimrc :Conf

@@ -37,7 +37,7 @@ bindsym $mod+Shift+Return  exec alacritty --class "Float_Alacritty"
 bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 30
+bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
 bindsym $mod+i exec rofi -show window
 bindsym Print 					exec flameshot gui
 bindsym $mod+p 					exec flameshot gui
@@ -122,6 +122,7 @@ mode "$mode_launcher" {
 	bindsym k workspace k; exec skypeforlinux;              mode "default"
 	bindsym p workspace p; exec postman;                    mode "default"
   bindsym e workspace e; exec telegram-desktop;           mode "default"
+  bindsym t workspace t; exec gnome-control-center;       mode "default"
   bindsym u mode "$mode_utils"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"

@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git z vi-mode jump)
+plugins=(git z vi-mode jump colorize command-not-found)
 
 source $ZSH/oh-my-zsh.sh
 set -g mouse on
