@@ -1,0 +1,13 @@
+name: sandbox-deno
+root: ~/sandboxes/sandbox-deno
+
+startup_pane: 2
+
+windows:
+  - editor:
+      pre:
+        - touch index.ts
+      layout: even-horizontal
+      panes:
+        - npm start
+        - sleep 0.5 && nvim index.ts
