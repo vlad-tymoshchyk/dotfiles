@@ -98,7 +98,12 @@ set updatetime=300
 
 inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : coc#refresh()
 inoremap jk <esc>
+inoremap <c-j> <esc>
 map ,f <Plug>(easymotion-bd-f)
+map ,j <Plug>(easymotion-j)
+map ,k <Plug>(easymotion-k)
+map ,w <Plug>(easymotion-w)
+map ,b <Plug>(easymotion-b)
 nnoremap <C-w>t :tabe<cr>
 nnoremap <silent> <c-w>O :tabonly<cr>
 nnoremap <c-w>Q :tabclose<cr>
@@ -135,6 +140,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeWinPos = "right"
+let g:UltiSnipsExpandTrigger = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 let g:indentLine_enabled = 0
@@ -197,6 +203,7 @@ nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gr <Plug>(coc-references)
 nnoremap <silent> <leader>gh :call CocAction("doHover")<cr>
+nnoremap <silent> K :call CocAction("doHover")<cr>
 nnoremap <silent> <leader>gn :ALERename<cr>
 " nmap <leader>gs :G<cr>
 
@@ -272,9 +279,6 @@ nnoremap ,gv `[v`]h
 set runtimepath+=~/dotfiles/
 " set runtimepath+=~/test/vim-plugin
 
-" nnoremap gj maJ`a
-nnoremap <silent>,ww :w<cr>
-
 let g:NERDDefaultNesting=0
 
 nnoremap <leader>gs :G<cr>
@@ -319,3 +323,6 @@ let g:AutoPairsShortcutBackInsert = "<M-a>"
 
 autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
 autocmd BufWritePost */.vimrc :Conf
+
+autocmd BufEnter * lua require'completion'.on_attach()
+let g:completion_enable_snippet = 'UltiSnips'

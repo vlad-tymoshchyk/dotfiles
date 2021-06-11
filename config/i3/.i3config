@@ -94,6 +94,10 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10;
 bindsym XF86AudioRaiseVolume exec volume -i 5 && volume -n
 bindsym XF86AudioLowerVolume exec volume -d 5 && volume -n
 bindsym XF86AudioMute exec volume -m && volume -n
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
 bindsym XF86MonBrightnessDown exec ~/bin/brightdown 30
 bindsym XF86MonBrightnessUp exec ~/bin/brightup 30
 bindsym $mod+Up exec volume -i 5 && volume -n
