@@ -2,8 +2,8 @@ set $mod Mod4
 set $alt Mod1
 set $ctrl Control
 set $mode_launcher [u]:Utils [g]:Chrome [f]:Files [e]:Telegram [k]:Skype [s]:Slack [p]:Postman
-set $mode_utils [o]:One screen [s]:Separate screens [a]:Auto screen [d]:Dark screen [f]:Bright screen
-set $mode_workspaces Workspace
+set $mode_utils [l]:Lock [o]:One screen [s]:Separate screens [a]:Auto screen [d]:Dark screen [f]:Bright screen
+set $mode_workspaces Go To Workspace
 set $mode_move_to_workspaces Move To Workspace
 set $fmarginright 200
 set $fmargintop 50
@@ -15,7 +15,8 @@ floating_modifier $alt
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "feh --bg-fill ~/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
-
+exec "setxkbmap -option ctrl:nocap"
+exec "gnome-screensaver"
 
 for_window [class="^.*"] border pixel 1
 for_window [instance="Float_Alacritty"] floating enable
@@ -51,7 +52,8 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-bindsym $mod+Tab focus down
+# bindsym $mod+Tab focus down
+bindsym $mod+Tab workspace back_and_forth
 
 bindsym $mod+v split v
 bindsym $mod+Shift+v split h
@@ -136,6 +138,7 @@ mode "$mode_utils" {
   bindsym a exec exec xrandr --auto; mode "default"
   bindsym o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
   bindsym s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
+  bindsym l exec gnome-screensaver-command --lock; mode "default"
   bindsym d exec ~/bin/brightdown 100; mode "default"
   bindsym f exec ~/bin/brightup 100; mode "default"
 	bindsym Escape mode "default"

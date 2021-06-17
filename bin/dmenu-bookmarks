@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cat ~/dotfiles/websites-bookmarks | dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24' | awk '{print $1}' | xargs -I{} xdg-open {}

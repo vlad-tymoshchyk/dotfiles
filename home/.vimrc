@@ -33,6 +33,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
+Plug 'romgrk/github-light.vim'
 call plug#end()
 
 set autoindent
@@ -194,9 +195,9 @@ let g:coc_config_home="~/dotfiles/rubbish-bin"
 let g:coc_global_extensions=[ "coc-tsserver" ]
 
 colorscheme dracula
-" inoremap [<cr> [<cr>]<esc>O
+inoremap [<cr> [<cr>]<esc>O
 " inoremap [<space> [  ]<left><left>
-" inoremap {<cr> {<cr>}<esc>O
+inoremap {<cr> {<cr>}<esc>O
 " inoremap {<space> {  }<left><left>
 
 nmap <leader>gd <Plug>(coc-definition)

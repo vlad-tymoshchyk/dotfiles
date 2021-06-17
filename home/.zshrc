@@ -36,9 +36,9 @@ alias gitconfig="nvim ~/.gitconfig"
 alias i3config="nvim ~/.config/i3/.i3config"
 alias i3blocksconf="nvim ~/.config/i3blocks/config"
 alias grepi="grep -i"
-alias grepr="grep -nR"
 alias grepri="grep -inR"
-alias grepre="grep -R -n --exclude-dir=dist --exclude-dir=node_modules"
+alias grepr="grep -R -n --exclude-dir=dist --exclude-dir=node_modules --exclude-dir=coverage --exclude-dir=build"
+alias grepra="grep -nR"
 
 alias apts="apt-cache search"
 alias apti="apt-get install"
@@ -78,7 +78,7 @@ export PDF_VIEWER=$(which zathura)
 
 LC_TIME=en_IN.UTF-8
 export LC_TIME
-export PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 

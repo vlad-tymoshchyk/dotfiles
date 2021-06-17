@@ -1,37 +1,70 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const c = require("chalk");
-const { execSync } = require("child_process");
+const fs = require('fs');
+const c = require('chalk');
+const { execSync } = require('child_process');
+
+const npm_prefix = 'npm install --global';
 
 const packages = {
   // cli
-  node: "Node.js runtime for JavaScript",
-  nvim: "TBD",
-  tmux: "Terminal multiplexer",
-  tmuxinator: "Session manager for tmux",
-  npm: "NPM package manager",
-  yarn: "YARN package manager",
-  deno: "JS alternative runtime",
-  direnv: "Cli util to use .envrc config",
-  python: "Python bin",
-  python2: "Python2 bin",
-  python3: "Python3 bin",
-  go: "Go programming language",
-  lua: "Lua programming language",
-  ruby: "Ruby programming language",
+  node: { description: 'Node.js runtime for JavaScript' },
+  nvim: { description: 'TBD' },
+  tmux: { description: 'Terminal multiplexer' },
+  tmuxinator: { description: 'Session manager for tmux' },
+  npm: { description: 'NPM package manager' },
+  deno: { description: 'JS alternative runtime' },
+  direnv: { description: 'Cli util to use .envrc config' },
+  python: { description: 'Python bin' },
+  python2: { description: 'Python2 bin' },
+  python3: { description: 'Python3 bin' },
+  go: { description: 'Go programming language' },
+  lua: { description: 'Lua programming language' },
+  ruby: { description: 'Ruby programming language' },
 
   // npm global packages
-  prettier: "Code formatting tool",
-  tsc: "TypeScript compiler",
-  tsserver: "TypeScript server",
-  "ts-node": "Node.js + TypeScript",
-  mocha: "Node.js unit testing framework",
-  "create-react-app": "React boilerplate generator",
-  "typescript-language-server": "Language server for nvim",
-  serve: "Util to serve static files",
-  hrs: "Util for hot module reloading",
-  eslint: "JS linting tool",
-  parcel: "Convenient JS bundler",
+  nodemon: {
+    description: 'Tool to automatically restart scripts',
+    command: `${npm_prefix} nodemon`,
+  },
+  yarn: { description: 'YARN package manager', command: `${npm_prefix} yarn` },
+  prettier: {
+    description: 'Code formatting tool',
+    command: `${npm_prefix} prettier`,
+  },
+  tsc: { description: 'TypeScript compiler', command: `${npm_prefix} tsc` },
+  tsserver: {
+    description: 'TypeScript server',
+    command: `${npm_prefix} tsserver`,
+  },
+  'ts-node': {
+    description: 'Node.js + TypeScript',
+    command: `${npm_prefix} 'ts-node'`,
+  },
+  mocha: {
+    description: 'Node.js unit testing framework',
+    command: `${npm_prefix} mocha`,
+  },
+  'create-react-app': {
+    description: 'React boilerplate generator',
+    command: `${npm_prefix} 'create-react-app'`,
+  },
+  'typescript-language-server': {
+    description: 'Language server for nvim',
+    command: `${npm_prefix} 'typescript-language-server'`,
+  },
+  serve: {
+    description: 'Util to serve static files',
+    command: `${npm_prefix} serve`,
+  },
+  hrs: {
+    description: 'Util for hot module reloading',
+    command: `${npm_prefix} hrs`,
+  },
+  eslint: { description: 'JS linting tool', command: `${npm_prefix} eslint` },
+  parcel: {
+    description: 'Convenient JS bundler',
+    command: `${npm_prefix} parcel`,
+  },
 };
 
 const installed = [];
@@ -45,22 +78,22 @@ Object.keys(packages).forEach((pack) => {
   }
 });
 
-writeTitle(c.yellow("Installed:"));
+writeTitle(c.yellow('Installed:'));
 installed.forEach((pack) => {
-  writeRow(c.green(pack), packages[pack]);
+  writeRow(c.green(pack), packages[pack].description);
 });
 
-writeTitle(c.gray("Uninstalled:"));
+writeTitle(c.gray('Uninstalled:'));
 uninstalled.forEach((pack) => {
-  writeRow(c.red(pack), packages[pack]);
+  writeRow(c.red(pack), packages[pack].description);
 });
 console.log();
 
 function writeRow(name, des) {
-  console.log(" " + name.padEnd(40), des);
+  console.log(' ' + name.padEnd(40), des);
 }
 function writeTitle(title) {
   console.log();
-  console.log(" ", c.bold.underline(title));
+  console.log(' ', c.bold.underline(title));
   console.log();
 }

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+new_lines_unstaged=0
+new_lines_staged=0
+current_date=`date +"%Y-%m-%d"`
+current_detailed_date=`date +"[%H:%M:%S %Y.%m.%d]"`
+logs_file=~/logs/projects-commits.logs
+
+get_last_commit_date() {
+  git show -s --format="%cs"
+}
+
+cd ~/projects
+touch $logs_file
+
+for i in `ls`; do
+  cd $i
+
+  is_changed_bool=`git status --short | wc -l`
+  log_line="$current_detailed_date ($i)"
+  lines_unstaged=`git diff | grep "^+[^+]" | wc -l`
+  if [ `get_last_commit_date` != $current_date ]; then
+    if [ $is_changed_bool -ne 0 ]; then
+      git add --all
+      git commit -m "$current_date automatic commit ($lines_unstaged)"
+      log_line="$log_line automatic commiting ($lines_unstaged new lines)"
+    else
+      log_line="$log_line checking... no changes"
+    fi
+  else
+    log_line="$log_line already commited today"
+  fi
+  echo $log_line >> $logs_file
+
+  new_lines_unstaged=$(($new_lines_unstaged + $lines_unstaged))
+
+  cd ..
+done
+
+date +"[%H:%M:%S] Counter: ($new_lines_unstaged/100)" >> ~/logs/code_counter.log
+
+echo "($new_lines_unstaged/100)"
