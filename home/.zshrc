@@ -58,7 +58,7 @@ alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
 alias rn="ranger"
-alias mcal="gcal --with-week-number --starting-day=Monday"
+alias cal="gcal --with-week-number --starting-day=Monday --year 2021"
 alias xg="xdg-open"
 alias l="ls -gah --group-directories-first"
 alias ll="ls -lah"

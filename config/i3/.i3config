@@ -15,8 +15,7 @@ floating_modifier $alt
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "feh --bg-fill ~/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
-exec "setxkbmap -option ctrl:nocap"
-exec "gnome-screensaver"
+exec "setxkbmap -option caps:escape"
 
 for_window [class="^.*"] border pixel 1
 for_window [instance="Float_Alacritty"] floating enable
@@ -138,7 +137,7 @@ mode "$mode_utils" {
   bindsym a exec exec xrandr --auto; mode "default"
   bindsym o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
   bindsym s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
-  bindsym l exec gnome-screensaver-command --lock; mode "default"
+  bindsym l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
   bindsym d exec ~/bin/brightdown 100; mode "default"
   bindsym f exec ~/bin/brightup 100; mode "default"
 	bindsym Escape mode "default"

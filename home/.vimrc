@@ -34,6 +34,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'unblevable/quick-scope'
 Plug 'romgrk/github-light.vim'
+
+Plug 'joaohkfaria/vim-jest-snippets'
 call plug#end()
 
 set autoindent
