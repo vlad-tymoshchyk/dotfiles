@@ -4,7 +4,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'rafcamlet/nvim-luapad'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
-" Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
@@ -136,6 +136,7 @@ nnoremap vv ggVG
 noremap <silent> <Space>n :NERDTreeToggle<cr>
 noremap <silent> <Space>i :GFiles?<cr>
 noremap <silent> <Space>h :History<cr>
+noremap <silent> <Space>a :A<cr>
 vnoremap y may`a
 
 let $FZF_DEFAULT_COMMAND = "fd --ignore-case --hidden --type f --exclude .git --exclude .cache --exclude node_modules"
