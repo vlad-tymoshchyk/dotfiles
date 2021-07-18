@@ -1,4 +1,8 @@
 call plug#begin('~/.vim/plugged')
+" Plug 'hoob3rt/lualine.nvim'
+" Plug 'kyazdani42/nvim-web-devicons'
+" second option for icons for lualine " Plug 'ryanoasis/vim-devicons'
+Plug 'fatih/vim-go'
 Plug 'dracula/vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'rafcamlet/nvim-luapad'
@@ -168,9 +172,9 @@ let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
-let g:ale_linters = {
-      \   'javascript': ['flow-language-server']
-      \}
+" let g:ale_linters = {
+"       \   'javascript': ['flow-language-server']
+"       \}
 
 let g:NERDTreeDirArrowExpandable = "▸"
 let g:NERDTreeDirArrowCollapsible = "▾" 
@@ -327,6 +331,9 @@ let g:AutoPairsShortcutBackInsert = "<M-a>"
 
 autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
 autocmd BufWritePost */.vimrc :Conf
+autocmd BufWritePre *.go :GoImports
 
 autocmd BufEnter * lua require'completion'.on_attach()
 let g:completion_enable_snippet = 'UltiSnips'
+
+autocmd VimEnter * ALEDisable
