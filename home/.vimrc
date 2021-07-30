@@ -181,7 +181,11 @@ let g:NERDTreeDirArrowCollapsible = "▾"
 
 command! Conf source ~/.vimrc
 command! Vimrc tabe ~/.vimrc
+command! Vvimrc vs ~/.vimrc
+command! Luainit tabe ~/dotfiles/config/nvim/init.lua
+command! Vluainit vs ~/dotfiles/config/nvim/init.lua
 command! Zshrc tabe ~/.zshrc
+command! Vzshrc vs ~/.zshrc
 
 function! ToggleEndChar(char)
   let l:lastchar = getline('.')[col('$') - 2]
@@ -332,8 +336,21 @@ let g:AutoPairsShortcutBackInsert = "<M-a>"
 autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
 autocmd BufWritePost */.vimrc :Conf
 autocmd BufWritePre *.go :GoImports
+autocmd BufWritePost ~/test/lua-vim/main.lua :luafile ~/test/lua-vim/main.lua
+autocmd BufWritePost ~/dotfiles/config/nvim/init.lua :luafile ~/dotfiles/config/nvim/init.lua
 
 autocmd BufEnter * lua require'completion'.on_attach()
 let g:completion_enable_snippet = 'UltiSnips'
 
 autocmd VimEnter * ALEDisable
+
+let g:go_def_mapping_enabled=0
+
+inoremap <c-j> <esc>:m .+1<cr>==i
+inoremap <c-k> <esc>:m .-2<cr>==i
+nnoremap <c-j> :m .+1<cr>==
+nnoremap <c-k> :m .-2<cr>==
+vnoremap <c-j> :m '>+1<cr>gv=gv
+vnoremap <c-k> :m '<-2<cr>gv=gv
+
+luafile ~/dotfiles/config/nvim/init.lua
