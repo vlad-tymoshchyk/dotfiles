@@ -98,3 +98,12 @@ const ${1} = (${2}) => {
 	${0}
 }
 endsnippet
+
+snippet simplerender "simple unit test with render"
+import { render } from '@testing-library/react';
+import ${3:$1} from './container';
+
+test('renders <${1} />', () => {
+  render(<${2:$1} />);
+})
+endsnippet

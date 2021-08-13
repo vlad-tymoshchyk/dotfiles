@@ -1,0 +1,8 @@
+# ~/.tmuxinator/react-base-ui.yml
+
+name: react-base-ui
+root: ~/projects/react-base-ui
+
+windows:
+  - runs: npm start
+  - work:

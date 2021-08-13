@@ -1,0 +1,7 @@
+# ~/.tmuxinator/saas-bizops-ui.yml
+
+name: saas-bizops-ui
+root: ~/projects/saas-bizops-ui
+
+windows:
+  - work:

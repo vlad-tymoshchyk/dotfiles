@@ -353,4 +353,8 @@ nnoremap <c-k> :m .-2<cr>==
 vnoremap <c-j> :m '>+1<cr>gv=gv
 vnoremap <c-k> :m '<-2<cr>gv=gv
 
+nnoremap <silent> <leader>gv :GitGutterPreviewHunk<cr>
+nnoremap <silent> <leader>gc :GitGutterUndoHunk<cr>
+nnoremap <silent> <leader>gs :GitGutterStageHunk<cr>
+
 luafile ~/dotfiles/config/nvim/init.lua

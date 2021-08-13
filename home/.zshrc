@@ -24,6 +24,7 @@ hash -d bin=~/bin
 hash -d gl=~/gl
 hash -d im=~/gl/im
 
+alias ~~="cd \`git rev-parse --show-toplevel\`"
 alias ww="which"
 alias n="nvim"
 alias c="cd"
@@ -103,8 +104,14 @@ fi
 
 hash -d authn=~/projects/saas-authn-ui
 hash -d admin=~/projects/saas-admin-ui
+hash -d idls=~/projects/saas-api-idls
 hash -d bizops=~/projects/saas-bizops-ui
 hash -d animal=~/gl/AnimalRescue/Frontend
 hash -d words=~/words
 
 eval "$(direnv hook zsh)"
+
+autoload -U compinit
+compinit -i
+
+alias redoc="redoc-cli"

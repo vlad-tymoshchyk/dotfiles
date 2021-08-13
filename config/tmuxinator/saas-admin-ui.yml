@@ -1,0 +1,8 @@
+# ~/.tmuxinator/saas-admin-ui.yml
+
+name: saas-admin-ui
+root: ~/projects/saas-admin-ui
+
+windows:
+  - runs: npm start
+  - work:
