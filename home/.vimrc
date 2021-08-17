@@ -1,3 +1,9 @@
+if v:progname == 'vim'
+  inoremap jk <esc>
+  let mapleader = ","
+  finish
+endif
+
 call plug#begin('~/.vim/plugged')
 " Plug 'hoob3rt/lualine.nvim'
 " Plug 'kyazdani42/nvim-web-devicons'
@@ -5,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'dracula/vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 " Plug 'rafcamlet/nvim-luapad'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -336,10 +343,11 @@ let g:AutoPairsShortcutBackInsert = "<M-a>"
 autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
 autocmd BufWritePost */.vimrc :Conf
 autocmd BufWritePre *.go :GoImports
-autocmd BufWritePost ~/test/lua-vim/main.lua :luafile ~/test/lua-vim/main.lua
+autocmd BufWritePost ~/test/lua-vim/*.lua :luafile ~/test/lua-vim/main.lua
 autocmd BufWritePost ~/dotfiles/config/nvim/init.lua :luafile ~/dotfiles/config/nvim/init.lua
 
 autocmd BufEnter * lua require'completion'.on_attach()
+
 let g:completion_enable_snippet = 'UltiSnips'
 
 autocmd VimEnter * ALEDisable

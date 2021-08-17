@@ -9,5 +9,6 @@
         "usePlaceholders": true
       }
     }
-  }
+  },
+  "Lua.workspace.maxPreload": 2000
 }

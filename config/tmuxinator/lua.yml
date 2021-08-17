@@ -9,5 +9,5 @@ windows:
         - touch index.lua
       layout: even-horizontal
       panes:
-        - npm start
+        - make lua --makefile=../Makefile
         - sleep 0.5 && nvim index.lua

@@ -13,7 +13,7 @@ set $fheight 980
 floating_modifier $alt
 
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
-exec "feh --bg-fill ~/wallpapers/iss_sun_earth.jpg"
+exec "feh --bg-fill ~/Documents/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
 exec "setxkbmap -option caps:escape"
 
