@@ -6,8 +6,8 @@ startup_pane: 2
 windows:
   - editor:
       pre:
-        - touch index.js
+        - touch main.js
       layout: even-horizontal
       panes:
-        - npm start
-        - sleep 0.5 && nvim index.js
+        - make js --makefile=../Makefile
+        - sleep 0.5 && nvim main.js

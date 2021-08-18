@@ -9,5 +9,5 @@ windows:
         - touch main.go
       layout: even-horizontal
       panes:
-        - npm start
+        - make go --makefile=../Makefile
         - sleep 0.5 && nvim main.go
