@@ -30,12 +30,13 @@ LINKS = [
     ('~/.tmux.conf', '~/dotfiles/home/.tmux.conf'),
     ('~/.gitconfig', '~/dotfiles/home/.gitconfig'),
     ('~/.gitignore_global', '~/dotfiles/home/.gitignore_global'),
+    ('~/sandboxes', '~/dotfiles/sandboxes'),
     ('~/.config/nvim/init.vim', '~/dotfiles/home/.vimrc'),
     ('~/.config/alacritty', '~/dotfiles/config/alacritty'),
     ('~/.config/i3', '~/dotfiles/config/i3'),
     ('~/.config/i3blocks', '~/dotfiles/config/i3blocks'),
     ('~/.config/ranger', '~/dotfiles/config/ranger'),
-    ('~/.config/tmuxinator', '~/dotfiles/config/tmuxinator'),
+    ('~/.config/tmuxinator', '~/dotfiles/tmuxinator'),
     ('~/.config/zathura', '~/dotfiles/config/zathura'),
 ]
 
@@ -64,12 +65,15 @@ if command == 'CHECK':
     print('Checking symbolic links...')
 for link in LINKS:
     dest, src = link
-    if (os.path.exists(src)):
-        if (os.path.exists(dest)):
-            if(os.path.islink(dest) and os.readlink(dest) == src):
-                print(' - Correct: ', dest)
+    if os.path.exists(src):
+        if os.path.exists(dest):
+            if os.path.islink(dest):
+               if os.readlink(dest) == src:
+                   print(' - Correct: ', dest)
+               else:
+                   print(' - Link destination is not correct: ', os.readlink(dest), src)
             else:
-                print(' - File exists: ', dest)
+                print(' - File exists and is not a link: ', dest)
         else:
             print('Created:', dest)
             os.symlink(src, dest)
