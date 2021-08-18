@@ -8,3 +8,5 @@ bash:
 	nodemon -e bash -x "clear && bash main.bash || exit 1"
 go:
 	nodemon -e go -x "clear && go run main.go || exit 1"
+js:
+	nodemon -e js -x "clear && node main.js || exit 1"

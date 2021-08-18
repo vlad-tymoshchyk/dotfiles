@@ -5,8 +5,6 @@ startup_pane: 2
 
 windows:
   - editor:
-      pre:
-        - touch main.c
       layout: even-horizontal
       panes:
         - make c --makefile=../Makefile

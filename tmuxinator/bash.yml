@@ -7,5 +7,5 @@ windows:
   - editor:
       layout: even-horizontal
       panes:
-        - npm start
-        - sleep 0.5 && nvim index.bash
+        - make bash --makefile=../Makefile
+        - sleep 0.5 && nvim main.bash
