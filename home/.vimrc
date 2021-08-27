@@ -366,3 +366,7 @@ nnoremap <silent> <leader>gc :GitGutterUndoHunk<cr>
 nnoremap <silent> <leader>gs :GitGutterStageHunk<cr>
 
 luafile ~/dotfiles/config/nvim/init.lua
+
+" plugins
+luafile ~/dotfiles/plugins/addFinalChar.lua
+luafile ~/test/lua-vim/main.lua
