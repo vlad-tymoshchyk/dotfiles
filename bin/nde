@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if command -v nodemon > /dev/null; then
+  nodemon -e $1 -x "clear && $2 || exit 1"
+else
+  echo "\`nodemon\` is not installed"
+fi
