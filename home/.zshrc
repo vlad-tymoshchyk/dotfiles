@@ -65,7 +65,6 @@ alias tree4="tree -L 4"
 alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
-alias rn="ranger"
 alias cal="gcal --with-week-number --starting-day=Monday --year 2021"
 alias xg="xdg-open"
 alias _l="exa --long --icons --git --all --group-directories-first --sort=ext"

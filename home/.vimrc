@@ -41,8 +41,10 @@ Plug 'nvim-lua/telescope.nvim'
 Plug 'prettier/vim-prettier'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-endwise'
 Plug 'unblevable/quick-scope'
 Plug 'romgrk/github-light.vim'
 
@@ -93,6 +95,7 @@ set ruler
 set scrolloff=3
 set secure
 set shiftwidth=2
+set shiftround
 set shortmess+=Ia
 set sidescrolloff=5
 set smartcase
@@ -369,4 +372,5 @@ luafile ~/dotfiles/config/nvim/init.lua
 
 " plugins
 luafile ~/dotfiles/plugins/addFinalChar.lua
+luafile ~/dotfiles/plugins/switchToAlternative.lua
 luafile ~/test/lua-vim/main.lua
