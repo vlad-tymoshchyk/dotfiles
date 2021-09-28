@@ -1,0 +1,11 @@
+name: sandbox-java
+root: ~/sandboxes/sandbox-java
+
+startup_pane: 2
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - make java --makefile=../Makefile
+        - sleep 0.5 && nvim Main.java

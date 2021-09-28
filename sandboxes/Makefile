@@ -10,3 +10,5 @@ go:
 	nodemon -e go -x "clear && go run main.go || exit 1"
 js:
 	nodemon -e js -x "clear && node main.js || exit 1"
+java:
+	nodemon -e java -x "clear && javac *.java && java Main || exit 1"
