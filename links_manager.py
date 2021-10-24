@@ -31,7 +31,7 @@ LINKS = [
     ('~/.gitconfig', '~/dotfiles/home/.gitconfig'),
     ('~/.gitignore_global', '~/dotfiles/home/.gitignore_global'),
     ('~/sandboxes', '~/dotfiles/sandboxes'),
-    ('~/.config/nvim/init.vim', '~/dotfiles/home/.vimrc'),
+    ('~/.config/nvim/init.lua', '~/dotfiles/nvim/init.lua'),
     ('~/.config/alacritty', '~/dotfiles/config/alacritty'),
     ('~/.config/i3', '~/dotfiles/config/i3'),
     ('~/.config/i3blocks', '~/dotfiles/config/i3blocks'),

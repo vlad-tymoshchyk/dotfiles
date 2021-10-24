@@ -28,10 +28,11 @@ hash -d im=~/gl/im
 alias ~~="cd \`git rev-parse --show-toplevel\`"
 alias ww="which"
 alias n="nvim"
+alias t="tmux"
 alias nf="file=\`fzf\`; if [ ! -z \$file ]; then nvim \$file; fi"
 alias c="cd"
 alias vimrc="nvim ~/.vimrc"
-alias luainit="nvim ~/dotfiles/config/nvim/init.lua"
+alias luainit="nvim ~/dotfiles/nvim/init.lua"
 alias bashrc="nvim ~/.bashrc"
 alias zshrc="nvim ~/.zshrc && source ~/.zshrc"
 alias rnconfig="nvim ~/.config/ranger/rc.conf"
@@ -85,12 +86,12 @@ install-nvm-wget() { wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.3
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=nvim
 
-export EDITOR=$(which nvim)
-export PDF_VIEWER=$(which zathura)
-
 LC_TIME=en_IN.UTF-8
 export LC_TIME
-export PATH=$HOME/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
+export PATH=$HOME/bin:$HOME/bin/nvim/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
+
+export EDITOR=$(which nvim)
+export PDF_VIEWER=$(which zathura)
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 
