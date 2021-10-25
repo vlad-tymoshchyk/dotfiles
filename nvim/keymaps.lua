@@ -38,6 +38,7 @@ set_keymap('n', '<Space>n', ':NERDTreeToggle<cr>', { silent = true, noremap = tr
 set_keymap('n', '<Space>i', ':GFiles?<cr>', { silent = true, noremap = true })
 set_keymap('n', '<Space>h', ':History<cr>', { silent = true, noremap = true })
 set_keymap('n', '<Space>a', ':A<cr>', { silent = true, noremap = true })
+set_keymap('n', '<Space>s', ':Telescope find_files<cr>', { silent = true, noremap = true })
 set_keymap('n', '<esc>', ':noh<cr>', { silent = true, noremap = true })
 set_keymap('n', '[W', '<Plug>(ale_first)', { silent = true, noremap = true })
 set_keymap('n', ']W', '<Plug>(ale_last)', { silent = true, noremap = true })
@@ -58,3 +59,5 @@ set_keymap('n', '<C-w>', '<Nop>', { silent = true, noremap = true })
 
 set_keymap('n', 'vv', 'ggVG', { silent = true, noremap = true })
 set_keymap('v', 'y', 'may`a', { silent = true, noremap = true })
+
+set_keymap('n', '<leader>r', ':Reload<cr>', { noremap = true })

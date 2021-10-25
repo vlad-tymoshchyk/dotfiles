@@ -1,21 +1,25 @@
-local HOME = require('os').getenv('HOME')
-local nvim_dir = HOME .. '/dotfiles/nvim'
-package.path = package.path .. ";" .. nvim_dir .. "/?.lua"
+HOME = require('os').getenv('HOME')
+NVIM_DIR = HOME .. '/dotfiles/nvim'
+package.path = package.path .. ";" .. NVIM_DIR .. "/?.lua"
 
--- dofile(HOME .. "/.local/share/nvim/site/pack/packer/start/packer.nvim/lua/packer.lua")
+vim.lsp.set_log_level("debug")
 
-require 'options'
+dofile(HOME .. "/.local/share/nvim/site/pack/packer/start/packer.nvim/lua/packer.lua")
+
 require 'globals'
-require 'plugins'
-require 'keymaps'
+R 'options'
+R 'plugins'
+R 'keymaps'
 
-require 'custom-plugins.addFinalChar'
-require 'custom-plugins.switchToAlternative'
+R 'plugin_custom.addFinalChar'
+R 'plugin_custom.switchToAlternative'
+
+require('colorbuddy').colorscheme('gruvbuddy')
 
 vim.cmd [[
-	colorscheme dracula
+	" colorscheme dracula
 
-	command! Conf source ~/.vimrc
+	" command! Conf source ~/.vimrc
 	command! Vimrc tabe ~/.vimrc
 	command! Vvimrc vs ~/.vimrc
 	command! Luainit tabe ~/dotfiles/nvim/init.lua
@@ -29,4 +33,8 @@ vim.cmd [[
 	autocmd BufWritePre *.go :GoImports
 	autocmd BufWritePost ~/test/lua-vim/*.lua :luafile ~/test/lua-vim/main.lua
 	autocmd BufWritePost ~/dotfiles/config/nvim/init.lua :luafile ~/dotfiles/config/nvim/init.lua
+
+	autocmd BufWritePost ~/dotfiles/nvim/*.lua :PackerCompile | PackerInstall
 ]]
+
+require('snippets')

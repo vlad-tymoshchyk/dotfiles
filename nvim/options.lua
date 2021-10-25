@@ -1,71 +1,70 @@
 local opt = vim.opt
 local g = vim.g
 
-opt.relativenumber = true
-opt.number = true
-
--- " set autoindent
--- " set autoread
--- " set backspace=indent,eol,start
--- " set backupdir=~/.vim/temp
+-- opt.autoindent
+-- opt.autoread
+-- opt.backspace=indent,eol,start
+-- opt.backupdir=~/.vim/temp
 opt.clipboard = "unnamedplus"
--- " set colorcolumn=0
--- " set completeopt=longest,menuone
--- " set completeopt=menuone,noinsert,noselect
--- " set confirm
+-- opt.colorcolumn=0
+-- opt.completeopt=longest,menuone
+opt.completeopt = 'menu,menuone,noselect'
+-- opt.confirm
 opt.cursorline = true
--- " set directory=~/.vim/temp
--- " set display+=lastline
--- " set encoding=utf-8
--- " set expandtab
--- " set exrc
--- " set foldmethod=marker
--- " set foldnestmax=2
--- " set guifont=DroidSansMono\ Nerd\ Font\ 15
--- " set guifont=JetBrainsMono\ Nerd\ Font\ 15
--- " set hidden
--- " set history=1000
--- " set hlsearch
--- " set ignorecase
--- " set incsearch
--- " set laststatus=2
--- " set lazyredraw
--- " set linebreak
--- " set mouse=a
--- " set noerrorbells
--- " set nofoldenable
--- " set noshowmatch
--- " set nosmarttab
--- " set nospell
--- " set noswapfile
--- " set novisualbell
--- " set nowritebackup
--- " set number
--- " set omnifunc=syntaxcomplete#Complete
--- " set path+=**
--- " set relativenumber
--- " set ruler
+-- opt.directory=~/.vim/temp
+-- opt.display+=lastline
+-- opt.encoding=utf-8
+opt.expandtab = true
+-- opt.exrc
+-- opt.foldmethod=marker
+-- opt.foldnestmax=2
+-- opt.guifont=DroidSansMono\ Nerd\ Font\ 15
+-- opt.guifont=JetBrainsMono\ Nerd\ Font\ 15
+-- opt.hidden
+-- opt.history=1000
+opt.ignorecase = true
+-- opt.laststatus=2
+-- opt.lazyredraw
+-- opt.linebreak
+-- opt.mouse=a
+-- opt.noerrorbells
+-- opt.nofoldenable
+-- opt.noshowmatch
+-- opt.nosmarttab
+-- opt.nospell
+opt.swapfile = false
+-- opt.novisualbell
+-- opt.nowritebackup
+opt.number = true
+-- opt.omnifunc=syntaxcomplete#Complete
+-- opt.path+=**
+opt.relativenumber = true
+-- opt.ruler
 opt.scrolloff = 3
--- " set secure
--- " set shiftwidth=2
--- " set shiftround
--- " set shortmess+=Ia
+-- opt.secure
+opt.shiftwidth = 2
+opt.shiftround = true
+-- opt.shortmess+=Ia
 -- opt.sidescrolloff = 5
--- " set smartcase
--- " set smartindent
--- " set splitbelow
--- " set splitright
--- " set tabstop=2
--- " set textwidth=0
--- " set title
--- " set undodir=~/.vim/temp
--- " set wildmenu
--- " set wrap
--- " set grepprg="grep -R"
--- " set grepformat=%f:%l:%c:%m
--- " set fileformat=unix
--- " set updatetime=300
--- " se keywordprg=":h"
+-- opt.smartcase
+-- opt.smartindent
+-- opt.splitbelow
+-- opt.splitright
+opt.tabstop = 2
+-- opt.textwidth=0
+-- opt.title
+-- opt.undodir=~/.vim/temp
+-- opt.wildmenu
+-- opt.wrap
+-- opt.grepprg="grep -R"
+-- opt.grepformat=%f:%l:%c:%m
+-- opt.fileformat=unix
+-- opt.updatetime=300
+-- opt.keywordprg=":h"
+
+-- DEFAULT MAPPINGS:
+-- opt.hlsearch = true
+-- opt.incsearch = true
 
 g.mapleader = ','
 
@@ -80,4 +79,6 @@ g.ale_set_quickfix = 1
 
 g.startify_custom_header = ''
 g.startify_change_to_dir = 0
-g.NERDDefaultNesting=0
+g.NERDDefaultNesting=-1
+
+g.AutoPairsShortcutBackInsert = "<M-a>"
