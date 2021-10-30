@@ -1,52 +1,52 @@
-local telescope_config = require'plugin_configs.telescope'
-local nvim_tree_config = require'plugin_configs.nvim_tree'
-local lsp_config = require'plugin_configs.nvim_lspconfig'
-local nvim_cmp_config = require'plugin_configs.nvim_cmp'
-local nvim_reload_config = require'plugin_configs.nvim_reload'
+-- local telescope_config = require'plugin_configs.telescope'
+-- local nvim_tree_config = require'plugin_configs.nvim_tree'
+-- local lsp_config = require'plugin_configs.nvim_lspconfig'
+-- local nvim_cmp_config = require'plugin_configs.nvim_cmp'
+-- local nvim_reload_config = require'plugin_configs.nvim_reload'
 
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+local Plug = vim.fn['plug#']
+vim.call('plug#begin')
 
-  use { 'nvim-telescope/telescope.nvim', config = telescope_config }
-  use { 'kyazdani42/nvim-tree.lua', config = nvim_tree_config }
-  use { 'neovim/nvim-lspconfig', config = lsp_config }
-  use { 'hrsh7th/nvim-cmp', config = nvim_cmp_config }
-  use { 'famiu/nvim-reload', config = nvim_reload_config }
+Plug 'nvim-telescope/telescope.nvim'
+-- Plug 'kyazdani42/nvim-tree.lua'
+Plug 'neovim/nvim-lspconfig'
+-- Plug 'hrsh7th/nvim-cmp'
+-- Plug 'famiu/nvim-reload'
+-- 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+-- Plug 'L3MON4D3/LuaSnip'
+-- Plug 'rafamadriz/friendly-snippets'
 
-  use { 'nvim-lua/plenary.nvim'  }
-  use { 'kyazdani42/nvim-web-devicons' }
-  use { 'L3MON4D3/LuaSnip' }
-  use { 'rafamadriz/friendly-snippets' }
+-- Plug 'hrsh7th/cmp-buffer'
+-- Plug 'hrsh7th/cmp-path'
+-- Plug 'hrsh7th/cmp-nvim-lsp'
+-- Plug 'hrsh7th/cmp-nvim-lua'
+-- Plug 'saadparwaiz1/cmp_luasnip'
+--
+Plug 'fatih/vim-go'
+Plug 'dracula/vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-projectionist'
+Plug 'vim-airline/vim-airline'
+Plug 'w0rp/ale'
+Plug 'wellle/targets.vim'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'honza/vim-snippets'
+Plug 'jiangmiao/auto-pairs'
+Plug 'mhinz/vim-startify'
+-- Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'prettier/vim-prettier'
+Plug 'rcarriga/nvim-notify'
+-- Plug 'tjdevries/colorbuddy.nvim'
+-- Plug 'tjdevries/gruvbuddy.nvim'
 
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-nvim-lua' }
-  use { 'neovim/nvim-lspconfig' }
-  use { 'saadparwaiz1/cmp_luasnip' }
-
-  use { 'fatih/vim-go' }
-  use { 'dracula/vim' }
-  use { 'ryanoasis/vim-devicons' }
-  -- use { 'sheerun/vim-polyglot' }
-  -- use { 'tpope/vim-projectionist' }
-  -- use { 'vim-airline/vim-airline' }
-  -- use { 'w0rp/ale' }
-  -- use { 'wellle/targets.vim' }
-  -- use { 'SirVer/ultisnips' }
-  use { 'airblade/vim-gitgutter' }
-  use { 'easymotion/vim-easymotion' }
-  use { 'editorconfig/editorconfig-vim' }
-  -- use { 'honza/vim-snippets' }
-  use { 'jiangmiao/auto-pairs' }
-  use { 'mhinz/vim-startify' }
-  use { 'morhetz/gruvbox' }
-  use { 'tpope/vim-surround' }
-  use { 'tpope/vim-fugitive' }
-  use { 'scrooloose/nerdcommenter' }
-  use { 'prettier/vim-prettier' }
-  use { 'rcarriga/nvim-notify' }
-  use { 'tjdevries/colorbuddy.nvim' }
-  use { 'tjdevries/gruvbuddy.nvim' }
-
-end)
+vim.call('plug#end')

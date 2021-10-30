@@ -1,3 +1,7 @@
+if true then
+	return
+end
+
 local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet

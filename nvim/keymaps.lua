@@ -24,6 +24,7 @@ set_keymap('n', '<leader>gs', ':GitGutterStageHunk<cr>', { silent = true, norema
 set_keymap('n', '<c-x>a', ':!git add %<cr>', { silent = true, noremap = true })
 set_keymap('n', '<C-x>b', ':Gblame<cr>', { silent = true, noremap = true })
 set_keymap('n', '<C-x>f', ':NvimTreeFindFile<CR>', { silent = true, noremap = true })
+set_keymap('n', '<C-x>f', ':NERDTreeFind<CR>', { silent = true, noremap = true })
 set_keymap('n', '<C-x>s', ':Gstatus<cr>', { silent = true, noremap = true })
 set_keymap('n', '<C-w>t', ':tabe<cr>', { silent = true, noremap = true })
 set_keymap('n', '<c-w>Q', ':tabclose<cr>', { silent = true, noremap = true })
