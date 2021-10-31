@@ -70,8 +70,11 @@ g.mapleader = ','
 
 g.NERDDefaultAlign = 'left'
 g.NERDSpaceDelims = 1
+g.NERDDefaultNesting=-1
+g.NERDTreeWinPos = 'right'
 
 g.user_emmet_mode='in'
+
 g.ale_sign_error = '❌'
 g.ale_sign_warning = '⚠️'
 g.ale_set_loclist = 0
@@ -79,6 +82,5 @@ g.ale_set_quickfix = 1
 
 g.startify_custom_header = ''
 g.startify_change_to_dir = 0
-g.NERDDefaultNesting=-1
 
 g.AutoPairsShortcutBackInsert = "<M-a>"

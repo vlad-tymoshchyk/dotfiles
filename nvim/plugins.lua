@@ -7,13 +7,13 @@
 local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
-Plug 'nvim-telescope/telescope.nvim'
--- Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'neovim/nvim-lspconfig'
+-- Plug 'kyazdani42/nvim-tree.lua'
 -- Plug 'hrsh7th/nvim-cmp'
 -- Plug 'famiu/nvim-reload'
--- 
-Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+--
 Plug 'kyazdani42/nvim-web-devicons'
 -- Plug 'L3MON4D3/LuaSnip'
 -- Plug 'rafamadriz/friendly-snippets'
@@ -23,14 +23,14 @@ Plug 'kyazdani42/nvim-web-devicons'
 -- Plug 'hrsh7th/cmp-nvim-lsp'
 -- Plug 'hrsh7th/cmp-nvim-lua'
 -- Plug 'saadparwaiz1/cmp_luasnip'
---
+
 Plug 'fatih/vim-go'
 Plug 'dracula/vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
-Plug 'w0rp/ale'
+-- Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
@@ -48,5 +48,7 @@ Plug 'prettier/vim-prettier'
 Plug 'rcarriga/nvim-notify'
 -- Plug 'tjdevries/colorbuddy.nvim'
 -- Plug 'tjdevries/gruvbuddy.nvim'
+
+Plug ('neoclide/coc.nvim', { branch = 'release', ['do'] = 'yarn install --frozen-lockfile' })
 
 vim.call('plug#end')
