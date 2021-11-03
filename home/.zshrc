@@ -117,4 +117,11 @@ eval "$(direnv hook zsh)"
 autoload -U compinit
 compinit -i
 
-alias redoc="redoc-cli"
+# alias redoc="redoc-cli"
+
+private_zshrc="$HOME/.private.zshrc"
+if [ -f $private_zshrc ]; then
+  source "$private_zshrc"
+else
+  touch "$private_zshrc"
+fi

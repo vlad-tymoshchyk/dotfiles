@@ -5,9 +5,7 @@ startup_pane: 2
 
 windows:
   - editor:
-      pre:
-        - touch index.lua
       layout: even-horizontal
       panes:
         - make lua --makefile=../Makefile
-        - sleep 0.5 && nvim index.lua
+        - sleep 0.5 && nvim main.lua
