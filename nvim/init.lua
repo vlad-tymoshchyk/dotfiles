@@ -1,11 +1,3 @@
-HOME = require('os').getenv('HOME')
-NVIM_DIR = HOME .. '/dotfiles/nvim'
-package.path = package.path .. ";" .. NVIM_DIR .. "/?.lua"
-
--- vim.lsp.set_log_level("debug")
-
--- dofile(HOME .. "/.local/share/nvim/site/pack/packer/start/packer.nvim/lua/packer.lua")
-
 require 'options'
 require 'plugins'
 require 'keymaps'

@@ -5,7 +5,7 @@
 -- local nvim_reload_config = require'plugin_configs.nvim_reload'
 
 local Plug = vim.fn['plug#']
-vim.call('plug#begin')
+vim.call('plug#begin', '~/.config/nvim-plugged')
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'neovim/nvim-lspconfig'
