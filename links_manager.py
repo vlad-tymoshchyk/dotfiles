@@ -31,11 +31,10 @@ LINKS = [
     ('~/.gitconfig', '~/dotfiles/home/.gitconfig'),
     ('~/.gitignore_global', '~/dotfiles/home/.gitignore_global'),
     ('~/sandboxes', '~/dotfiles/sandboxes'),
-    ('~/.config/nvim/init.lua', '~/dotfiles/nvim/init.lua'),
+    ('~/.config/nvim', '~/dotfiles/nvim'),
     ('~/.config/alacritty', '~/dotfiles/config/alacritty'),
     ('~/.config/i3', '~/dotfiles/config/i3'),
     ('~/.config/i3blocks', '~/dotfiles/config/i3blocks'),
-    ('~/.config/ranger', '~/dotfiles/config/ranger'),
     ('~/.config/tmuxinator', '~/dotfiles/tmuxinator'),
     ('~/.config/zathura', '~/dotfiles/config/zathura'),
 ]
