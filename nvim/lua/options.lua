@@ -20,7 +20,7 @@ opt.expandtab = true
 -- opt.foldnestmax=2
 -- opt.guifont=DroidSansMono\ Nerd\ Font\ 15
 -- opt.guifont=JetBrainsMono\ Nerd\ Font\ 15
--- opt.hidden
+opt.hidden = true
 -- opt.history=1000
 opt.ignorecase = true
 -- opt.laststatus=2

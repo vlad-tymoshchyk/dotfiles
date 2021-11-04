@@ -1,4 +1,4 @@
--- local telescope_config = require'plugin_configs.telescope'
+local telescope_config = R'plugin_configs.telescope'
 -- local nvim_tree_config = require'plugin_configs.nvim_tree'
 -- local lsp_config = require'plugin_configs.nvim_lspconfig'
 -- local nvim_cmp_config = require'plugin_configs.nvim_cmp'
@@ -52,3 +52,5 @@ Plug 'rcarriga/nvim-notify'
 Plug ('neoclide/coc.nvim', { branch = 'release', ['do'] = 'yarn install --frozen-lockfile' })
 
 vim.call('plug#end')
+
+telescope_config()
