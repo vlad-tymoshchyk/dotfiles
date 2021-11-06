@@ -63,7 +63,7 @@ map('n', '<C-e>', '<C-w>', { silent = true, noremap = true })
 map('n', '<C-w>', '<Nop>', { silent = true, noremap = true })
 
 map('n', 'vv', 'ggVG', { silent = true, noremap = true })
-map('v', 'y', 'may`a', { silent = true, noremap = true })
+map('v', 'y', 'y`]', { silent = true, noremap = true }) -- blocked coping to registers, trying to do without it
 
 map('n', '<leader>r', ':Reload<cr>', { noremap = true })
 
