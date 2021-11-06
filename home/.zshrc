@@ -127,3 +127,24 @@ if [ -f $private_zshrc ]; then
 else
   touch "$private_zshrc"
 fi
+
+UPDATE_TIME=`expr 60 \* 60 \* 24`
+dotfiles_dir="$HOME/dotfiles"
+lastupdate_file="$dotfiles_dir/.lastupdate"
+lastupdate=$(touch $lastupdate_file && cat $lastupdate_file)
+[ -z $lastupdate ] && lastupdate=0
+now=$(date +"%s")
+difference=$(expr $now - $lastupdate)
+if [ $difference -gt $UPDATE_TIME ]; then
+  echo $now > $lastupdate_file
+  echo "checking dotfiles..."
+  git -C $dotfiles_dir fetch --all > /dev/null
+  upstream=`git -C $dotfiles_dir rev-parse @{u}`
+  base=`git -C $dotfiles_dir rev-parse @`
+  if [ $base != $upstream ]; then
+    echo "updating..."
+    git -C $dotfiles_dir pull
+  else
+    echo "Up to date"
+  fi
+fi
