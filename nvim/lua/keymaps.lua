@@ -9,6 +9,7 @@ map('v', 'y', 'y`]', opts)
 map('n', 'g==', 'ggVG=<C-o>', opts)
 map('n', '<C-e>', '<C-w>', opts)
 map('n', '<C-w>', '<Nop>', opts)
+map('n', '?', '/\\C', opts)
 
 map('i', '<c-j>', '<esc>:m .+1<cr>==i', opts)
 map('i', '<c-k>', '<esc>:m .-2<cr>==i', opts)

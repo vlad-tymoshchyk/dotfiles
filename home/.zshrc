@@ -10,6 +10,8 @@ bindkey jk vi-cmd-mode
 bindkey ^q push-line
 
 hash -d dotfiles=~/dotfiles
+hash -d nvim=~/dotfiles/nvim
+hash -d plugged=~/.config/nvim-plugged
 hash -d sandbox=~/sandbox
 hash -d sandboxes=~/sandboxes
 hash -d github=~/github
@@ -29,6 +31,7 @@ alias ~~="cd \`git rev-parse --show-toplevel\`"
 alias ww="which"
 alias n="nvim"
 alias nu="nvim -u ~/.vimrc"
+alias no="nvim  +'norm! \`0'"
 alias t="tmux"
 alias nf="file=\`fzf\`; if [ ! -z \$file ]; then nvim \$file; fi"
 alias c="cd"

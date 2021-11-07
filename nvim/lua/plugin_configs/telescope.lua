@@ -24,7 +24,6 @@ end
 
 local function getRoot()
   local file_dir = vim.fn.expand('%:p:h')
-  print('file_dir ' .. file_dir)
   return execute([[ 
     git_dir=$(git -C ]] .. file_dir .. [[ rev-parse --show-toplevel 2>/dev/null);
     if [ $? -eq 0 ]; then
