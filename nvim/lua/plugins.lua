@@ -1,6 +1,6 @@
 local telescope_config = R'plugin_configs.telescope'
 -- local nvim_tree_config = require'plugin_configs.nvim_tree'
--- local lsp_config = require'plugin_configs.nvim_lspconfig'
+local lsp_config = require'plugin_configs.nvim_lspconfig'
 -- local nvim_cmp_config = require'plugin_configs.nvim_cmp'
 -- local nvim_reload_config = require'plugin_configs.nvim_reload'
 
@@ -9,6 +9,8 @@ vim.call('plug#begin', '~/.config/nvim-plugged')
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'neovim/nvim-lspconfig'
+
+Plug 'williamboman/nvim-lsp-installer'
 -- Plug 'kyazdani42/nvim-tree.lua'
 -- Plug 'hrsh7th/nvim-cmp'
 -- Plug 'famiu/nvim-reload'
@@ -49,8 +51,12 @@ Plug 'rcarriga/nvim-notify'
 -- Plug 'tjdevries/colorbuddy.nvim'
 -- Plug 'tjdevries/gruvbuddy.nvim'
 
-Plug ('neoclide/coc.nvim', { branch = 'release', ['do'] = 'yarn install --frozen-lockfile' })
+-- Plug ('neoclide/coc.nvim', { branch = 'release', ['do'] = 'yarn install --frozen-lockfile' })
+
+Plug ('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSupdate' })
+Plug ('nvim-treesitter/playground')
 
 vim.call('plug#end')
 
 telescope_config()
+lsp_config()

@@ -18,13 +18,15 @@ local function execute(command)
   return response
 end
 
-local function openTelescopeAt(dir)
+local function openFindFilesAt(dir)
   require'telescope.builtin'.find_files({ cwd = dir, hidden = true })
 end
 
 local function getRoot()
+  local file_dir = vim.fn.expand('%:p:h')
+  print('file_dir ' .. file_dir)
   return execute([[ 
-    git_dir=$(git rev-parse --show-toplevel 2>/dev/null);
+    git_dir=$(git -C ]] .. file_dir .. [[ rev-parse --show-toplevel 2>/dev/null);
     if [ $? -eq 0 ]; then
       echo $git_dir
     else
@@ -34,7 +36,7 @@ local function getRoot()
 end
 
 function _M.telescope_find_files_in_root()
-  openTelescopeAt(getRoot())
+  openFindFilesAt(getRoot())
 end
 
 function _M.telescope_find_files_in_dir(dir)
@@ -42,7 +44,7 @@ function _M.telescope_find_files_in_dir(dir)
   local root = git_root .. dir
 
   if exists(root) then
-    openTelescopeAt(root)
+    openFindFilesAt(root)
   else
     print('NO SUCH FOLDER: ' .. dir)
   end
@@ -53,10 +55,14 @@ function _M.telescope_open_dotfiles()
   local dotfiles_dir = home_dir .. "/dotfiles"
 
   if exists(dotfiles_dir) then
-    openTelescopeAt(dotfiles_dir)
+    openFindFilesAt(dotfiles_dir)
   else
     print('NO SUCH FOLDER: ' .. dotfiles_dir)
   end
+end
+
+function _M.telescope_live_grep()
+  require'telescope.builtin'.live_grep{ cwd = getRoot() }
 end
 
 local telescope_config = function()
@@ -72,22 +78,29 @@ local telescope_config = function()
             prompt_position = "bottom"
           }
         },
-        file_ignore_patterns = { "%.git", "node%_modules" }
+        file_ignore_patterns = { "%.git", "node%_modules" },
       },
     })
 
-  map('n', '<space>s', ':lua _M.telescope_find_files_in_root()<cr>', { silent = true, noremap = true })
-  map('n', ',<space>s', ':lua _M.telescope_find_files_in_dir(\'/src\')<cr>', { silent = true, noremap = true })
-  map('n', ',<space>t', ':lua _M.telescope_find_files_in_dir(\'/testcafe\')<cr>', { silent = true, noremap = true })
-  map('n', ',<space>a', ':lua _M.telescope_find_files_in_dir(\'/api-mock\')<cr>', { silent = true, noremap = true })
+  local opts = { silent = true, noremap = true }
 
-  map('n', '\\d', ':lua _M.telescope_open_dotfiles()<cr>', { silent = true, noremap = true })
+  map('n', '<space>s', '<cmd>lua _M.telescope_find_files_in_root()<cr>', opts)
+  map('n', ',<space>s', '<cmd>lua _M.telescope_find_files_in_dir(\'/src\')<cr>', opts)
+  map('n', ',<space>t', '<cmd>lua _M.telescope_find_files_in_dir(\'/testcafe\')<cr>', opts)
+  map('n', ',<space>a', '<cmd>lua _M.telescope_find_files_in_dir(\'/api-mock\')<cr>', opts)
+  map('n', '<space>g', '<cmd>lua _M.telescope_live_grep()<cr>', opts)
+  map('n', '<space>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', opts)
+  map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
+  map('n', '\\r', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
+  map('n', '\\s', '<cmd>lua require"telescope.builtin".git_status({ cwd = "' .. getRoot() .. '" })<cr>', opts)
+  map('n', '\\d', '<cmd>lua require"telescope.builtin".lsp_workspace_diagnostics()<cr>', opts)
+  map('n', '\\c', '<cmd>lua require"telescope.builtin".commands()<cr>', opts)
+  map('n', '\\\\h', '<cmd>lua require"telescope.builtin".help_tags()<cr>', opts)
 
-  map('n', '<leader>l', ':Telescope current_buffer_fuzzy_find<cr>', { silent = true, noremap = true })
-  map('n', '\\h', ':Telescope help_tags<cr>', { silent = true, noremap = true })
-  map('n', '\\r', ':Telescope lsp_references<cr>', { silent = true, noremap = true })
-  map('n', '\\a', ':Telescope lsp_code_actions<cr>', { silent = true, noremap = true })
-  map('n', '\\c', ':Telescope commands<cr>', { silent = true, noremap = true })
+  map('n', '\\\\d', '<cmd>lua _M.telescope_open_dotfiles()<cr>', opts)
+  map('n', '\\\\b', '<cmd>lua require"telescope.builtin".builtin()<cr>', opts)
+
+  map('n', '\\a', ':Telescope lsp_code_actions<cr>', opts)
 end
 
 return telescope_config
