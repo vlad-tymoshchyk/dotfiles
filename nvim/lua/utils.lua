@@ -45,7 +45,6 @@ end
 
 function _M.getRoot()
   local file_dir = _M.getFileDir()
-  print('file_dir', file_dir)
   return _M.execute([[ 
     git_dir=$(git -C ]] .. file_dir .. [[ rev-parse --show-toplevel 2>/dev/null);
     if [ $? -eq 0 ]; then
@@ -58,6 +57,10 @@ end
 
 function _M.getHome()
   return _M.execute('echo $HOME')
+end
+
+function _M.getCwd()
+  return vim.cmd'pwd'
 end
 
 return _M
