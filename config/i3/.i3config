@@ -140,6 +140,10 @@ mode "$mode_utils" {
   bindsym l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
   bindsym d exec ~/bin/brightdown 100; mode "default"
   bindsym f exec ~/bin/brightup 100; mode "default"
+  bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
+  bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
+  bindsym Shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
+  bindsym Shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
 	bindsym Escape mode "default"
 	bindsym Return mode "default"
 }

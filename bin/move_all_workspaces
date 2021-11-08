@@ -1,0 +1,104 @@
+#!/usr/bin/env node
+
+const cp = require("child_process");
+
+class Ctrl {
+  constructor() {
+    this.raw = JSON.parse(cp.execSync("i3-msg -t get_workspaces").toString());
+
+    this.root = {};
+    this.ws_to_desktop = {};
+    this.workspaces = [];
+    this.desktops = [];
+    this.focusedWs = undefined;
+
+    this.raw.forEach((ws) => {
+      const { output, name, focused } = ws;
+      this.ws_to_desktop[name] = output;
+      this.workspaces.push(name);
+      if (!this.desktops.includes(output)) {
+        this.desktops.push(output);
+      }
+
+      if (this.root[output]) {
+        this.root[output].push(name);
+      } else {
+        this.root[output] = [name];
+      }
+      if (focused) {
+        this.focusedWs = name;
+      }
+    });
+  }
+
+  moveWsTo(ws, desktop) {
+    if (!this.desktops.includes(desktop))
+      return console.error(
+        "NO SUCH DESKTOP:",
+        desktop,
+        `( ${this.desktops.join(", ")} )`
+      );
+
+    if (this.ws_to_desktop[ws] === desktop)
+      return console.error("ALREADY ON TARGET DESKTOP");
+
+    cp.execSync(
+      `i3-msg "[workspace=${ws}] move workspace to output ${desktop}"`
+    );
+  }
+
+  moveAllWsTo(desktop, opts = { except: [] }) {
+    const except = opts.except || [];
+    this.workspaces.forEach((ws) => {
+      if (this.ws_to_desktop[ws] !== desktop && !except.includes(ws)) {
+        this.moveWsTo(ws, desktop);
+      }
+    });
+  }
+
+  goTo(name) {
+    cp.execSync(`i3-msg "workspace ${name}"`);
+  }
+
+  dump() {
+    console.log("root", this.root);
+    console.log("desktops", this.desktops);
+    console.log("workspaces", this.workspaces);
+    console.log("ws_to_desktop", this.ws_to_desktop);
+    console.log("focusedWs", this.focusedWs);
+  }
+
+  MoveAllTo(i, includingCurrent = false) {
+    const target = this.desktops[i - 1];
+
+    if (!target)
+      return console.error(
+        "NO SUCH WORKSPACE:",
+        i,
+        `(only ${this.desktops.length} are availabe)`
+      );
+
+    this.moveAllWsTo(target, {
+      except: includingCurrent ? [] : [this.focusedWs],
+    });
+    this.goTo(this.focusedWs);
+  }
+}
+
+const ctrl = new Ctrl();
+
+const arg = process.argv[2];
+switch (arg) {
+  case "1":
+    ctrl.MoveAllTo(1, false);
+    break;
+  case "2":
+    ctrl.MoveAllTo(2, false);
+    break;
+  case "!":
+    ctrl.MoveAllTo(1, true);
+    break;
+  case "@":
+    ctrl.MoveAllTo(2, true);
+    break;
+}
