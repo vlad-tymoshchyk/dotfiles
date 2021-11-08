@@ -2,23 +2,53 @@ local _M = {}
 
 function _M.trimPath(path, fromStart, fromEnd)
   local s = path;
+  local startTrimmed = ''
+  local endTrimmed = ''
+
   local function trim(s)
     local i = string.find(s, '/');
-    return string.sub(s, i + 1, string.len(s))
+    -- print('trim:', s:sub(i + 1), s:sub(1, i))
+    return s:sub(i + 1), s:sub(1, i)
   end
 
-  if fromStart and fromStart > 1 then
+  local function backTrim(s)
+    local i = string.find(s, "/[^/]*$");
+    -- print('back:', s:sub(1, i - 1), s:sub(i))
+    return s:sub(1, i - 1), s:sub(i)
+  end
+
+  if fromStart and fromStart > 0 then
     if string.sub(path, 1, 1) == '/' then
-      s = trim(s)
+      s, startTrim = trim(s)
     end
 
     for i = 1, fromStart do
-      s = trim(s)
+      local trimmed;
+      s, trimmed = trim(s)
+      startTrimmed = startTrimmed .. trimmed;
     end
   end
 
-  -- return trim(s)
-  return (s)
+  if fromEnd and fromEnd > 0 then
+    if string.sub(path, path:len()) == '/' then
+      s, endTrimmed = backTrim(s)
+    end
+
+    for i = 1, fromEnd do
+      local trimmed;
+      s, trimmed = backTrim(s)
+      endTrimmed = trimmed .. endTrimmed;
+    end
+  end
+
+  return s, startTrimmed, endTrimmed
+end
+
+function _M.getProjectFilePath(root_path, file_path)
+  if root_path:len() > file_path:len() then
+    print('ERROR: root_path longer than file_path')
+  end
+  return file_path:sub(root_path:len() + 2);
 end
 
 function _M.exists(file)

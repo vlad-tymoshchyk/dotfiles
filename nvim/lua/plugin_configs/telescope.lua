@@ -1,4 +1,4 @@
-local u = require'utils'
+local u = R'utils'
 local map = vim.api.nvim_set_keymap
 
 local function showNoSuchFolder(dir)
@@ -26,10 +26,26 @@ function _M.find_files_in_root_dir(dir) find_files( u.getRoot() .. (dir or '') )
 function _M.find_files_in_home_dir(dir) find_files( u.getHome() .. (dir or '') ) end
 function _M.find_files_in_current_dir(dir) find_files( u.getCwd() .. (dir or '') ) end
 
+function _M.find_files_in_up_root_dir(i) 
+  local root = u.getRoot();
+  local proj_rel_path = u.getProjectFilePath(root, u.getFileDir())
+  local _, trimmed = u.trimPath(proj_rel_path, i)
+  local target_path = root .. '/' .. trimmed 
+  find_files(target_path) 
+end
+
 function _M.live_grep_in_file_dir(dir) live_grep( u.getFileDir() .. (dir or '') ) end
 function _M.live_grep_in_root_dir(dir) live_grep( u.getRoot() .. (dir or '') ) end
 function _M.live_grep_in_home_dir(dir) live_grep( u.getHome() .. (dir or '') ) end
 function _M.live_grep_in_current_dir(dir) live_grep( u.getCwd() .. (dir or '') ) end
+
+function _M.live_grep_in_up_root_dir(i) 
+  local root = u.getRoot();
+  local proj_rel_path = u.getProjectFilePath(root, u.getFileDir())
+  local _, trimmed = u.trimPath(proj_rel_path, i)
+  local target_path = root .. '/' .. trimmed 
+  live_grep(target_path) 
+end
 
 function _M.git_status_in_file_dir(dir) 
   require'telescope.builtin'.git_status({ cwd = u.getFileDir() })
@@ -63,17 +79,24 @@ local telescope_config = function()
 
   local opts = { silent = true, noremap = true }
 
-  map('n', '<space>s',  '<cmd>lua _M.find_files_in_root_dir()<cr>', opts)
   map('n', 'g<space>s',  '<cmd>lua _M.find_files_in_current_dir()<cr>', opts)
   map('n', ',<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
   map('n', ',<space>t', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
   map('n', ',<space>a', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
   map('n', '<space>c',  '<cmd>lua _M.find_files_in_file_dir()<cr>', opts)
   map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
+  map('n', '<space>s',  '<cmd>lua _M.find_files_in_root_dir()<cr>', opts)
+  map('n', '1<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(1)<cr>', opts)
+  map('n', '2<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(2)<cr>', opts)
+  map('n', '3<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(3)<cr>', opts)
 
-  map('n', '<space>g',  '<cmd>lua _M.live_grep_in_root_dir()<cr>', opts)
   map('n', ',<space>g', '<cmd>lua _M.live_grep_in_file_dir()<cr>', opts)
   map('n', 'g<space>g', '<cmd>lua _M.live_grep_in_current_dir()<cr>', opts)
+
+  map('n', '<space>g',  '<cmd>lua _M.live_grep_in_root_dir()<cr>', opts)
+  map('n', '1<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(1)<cr>', opts)
+  map('n', '2<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(2)<cr>', opts)
+  map('n', '3<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(3)<cr>', opts)
 
   map('n', '<space>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', opts)
   map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
