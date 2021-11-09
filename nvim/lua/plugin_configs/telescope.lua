@@ -80,7 +80,7 @@ local telescope_config = function()
   local opts = { silent = true, noremap = true }
 
   map('n', 'g<space>s',  '<cmd>lua _M.find_files_in_current_dir()<cr>', opts)
-  map('n', ',<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
+  map('n', '<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
   map('n', ',<space>t', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
   map('n', ',<space>a', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
   map('n', '<space>c',  '<cmd>lua _M.find_files_in_file_dir()<cr>', opts)
@@ -92,6 +92,9 @@ local telescope_config = function()
 
   map('n', ',<space>g', '<cmd>lua _M.live_grep_in_file_dir()<cr>', opts)
   map('n', 'g<space>g', '<cmd>lua _M.live_grep_in_current_dir()<cr>', opts)
+  map('n', 'g<space>s', '<cmd>lua _M.live_grep_in_current_dir("/src")<cr>', opts)
+  map('n', 'g<space>t', '<cmd>lua _M.live_grep_in_current_dir("/testcafe")<cr>', opts)
+  map('n', 'g<space>a', '<cmd>lua _M.live_grep_in_current_dir("/api-mock")<cr>', opts)
 
   map('n', '<space>g',  '<cmd>lua _M.live_grep_in_root_dir()<cr>', opts)
   map('n', '1<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(1)<cr>', opts)
@@ -108,7 +111,7 @@ local telescope_config = function()
 
   map('n', '\\\\b', '<cmd>lua require"telescope.builtin".builtin()<cr>', opts)
 
-  map('n', '\\a', '<cmd>lua require"telescope.builtin".lsp_code_actions()<cr>', opts)
+  map('n', ',a', '<cmd>lua require"telescope.builtin".lsp_code_actions({ layout_config = { width = 0.5, height = 0.5 } })<cr>', opts)
 end
 
 return telescope_config

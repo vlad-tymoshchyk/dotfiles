@@ -1,6 +1,7 @@
 local _M = {}
 
 function _M.trimPath(path, fromStart, fromEnd)
+  print('path', path)
   local s = path;
   local startTrimmed = ''
   local endTrimmed = ''

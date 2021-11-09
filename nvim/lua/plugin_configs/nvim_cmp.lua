@@ -21,7 +21,7 @@ local nvim_cmp_config = function()
           { name = 'path' },
           -- { name = 'luasnip' },
           { name = 'ultisnips', max_item_count = 5 },
-          { name = 'buffer' },
+          { name = 'buffer', max_item_count = 10 },
         }),
       formatting = {
         format = lspkind.cmp_format {
