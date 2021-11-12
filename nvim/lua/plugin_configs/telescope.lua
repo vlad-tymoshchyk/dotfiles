@@ -5,47 +5,48 @@ local function showNoSuchFolder(dir)
   print('NO SUCH FOLDER: ' .. u.trimPath(dir, 2))
 end
 
-local function find_files(dir)
+local function find_files(dir, i)
   if u.exists(dir) then
-    require'telescope.builtin'.find_files({ cwd = dir, hidden = true, prompt_title = u.trimPath(dir, 2) })
+    if i == 0 then i = 0 end
+    local navNumber = i ~= nil and ' (' .. i .. ')' or ''
+    require'telescope.builtin'.find_files({ cwd = dir, hidden = true, prompt_title = u.trimPath(dir, 2) .. navNumber })
   else
     showNoSuchFolder(dir)
   end
 end
 
-local function live_grep(dir)
+local function live_grep(dir, i)
   if u.exists(dir) then
-    require'telescope.builtin'.live_grep{ cwd = dir, prompt_title = 'GREP: ' .. u.trimPath(dir, 2) }
+    if i == 0 then i = 0 end
+    local navNumber = i ~= nil and ' (' .. i .. ')' or ''
+    require'telescope.builtin'.live_grep{ cwd = dir, prompt_title = 'GREP: ' .. u.trimPath(dir, 2) .. navNumber }
   else
     showNoSuchFolder(dir)
   end
 end
 
-function _M.find_files_in_file_dir(dir) find_files( u.getFileDir() .. (dir or '') ) end
 function _M.find_files_in_root_dir(dir) find_files( u.getRoot() .. (dir or '') ) end
 function _M.find_files_in_home_dir(dir) find_files( u.getHome() .. (dir or '') ) end
 function _M.find_files_in_current_dir(dir) find_files( u.getCwd() .. (dir or '') ) end
 
-function _M.find_files_in_up_root_dir(i) 
-  local root = u.getRoot();
-  local proj_rel_path = u.getProjectFilePath(root, u.getFileDir())
-  local _, trimmed = u.trimPath(proj_rel_path, i)
-  local target_path = root .. '/' .. trimmed 
-  find_files(target_path) 
+function getUpRootDir(i) 
+  if i == nil or i == 0 then
+    return u.getRoot()
+  else
+    return u.getRoot() .. '/' .. u.trimPath(u.getProjectFilePath(u.getRoot(), u.getFileDir()), -i) 
+  end
 end
+function getDownFileDir(i) return '/' .. u.trimPath(u.getFileDir(), 0, i) end
+
+function _M.find_files_up_root_dir(i) find_files(getUpRootDir(i), i) end
+function _M.find_files_down_file_dir(i) find_files(getDownFileDir(i), -i) end
+function _M.live_grep_up_root_dir(i) live_grep(getUpRootDir(i), i) end
+function _M.live_grep_down_file_dir(i) live_grep(getDownFileDir(i), -i) end
 
 function _M.live_grep_in_file_dir(dir) live_grep( u.getFileDir() .. (dir or '') ) end
 function _M.live_grep_in_root_dir(dir) live_grep( u.getRoot() .. (dir or '') ) end
 function _M.live_grep_in_home_dir(dir) live_grep( u.getHome() .. (dir or '') ) end
 function _M.live_grep_in_current_dir(dir) live_grep( u.getCwd() .. (dir or '') ) end
-
-function _M.live_grep_in_up_root_dir(i) 
-  local root = u.getRoot();
-  local proj_rel_path = u.getProjectFilePath(root, u.getFileDir())
-  local _, trimmed = u.trimPath(proj_rel_path, i)
-  local target_path = root .. '/' .. trimmed 
-  live_grep(target_path) 
-end
 
 function _M.git_status_in_file_dir(dir) 
   require'telescope.builtin'.git_status({ cwd = u.getFileDir() })
@@ -79,27 +80,50 @@ local telescope_config = function()
 
   local opts = { silent = true, noremap = true }
 
-  map('n', 'g<space>s',  '<cmd>lua _M.find_files_in_current_dir()<cr>', opts)
-  map('n', '<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
-  map('n', ',<space>t', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
-  map('n', ',<space>a', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
-  map('n', '<space>c',  '<cmd>lua _M.find_files_in_file_dir()<cr>', opts)
+  --[[
+-- Logic behind keymaps
+-- <space>s - search files in root directory (add number to go up forward file directory) (add dir to search in dir)
+-- <space>c - search files in file directory (add number to go down forward root directory)
+-- <space>g - live grep in root directory (add number to go up forward file directory) (add dir to search in dir)
+-- ,<space>g - live grep in file directory (add number to go down forward root directory)
+-- ,m<space> a/s/t - search in special directories
+-- ,mm<space> a/s/t - live grep in special directories
+--]]
+
+  map('n', '<space>s',  '<cmd>lua _M.find_files_up_root_dir(0)<cr>', opts)
+  map('n', '1<space>s',  '<cmd>lua _M.find_files_up_root_dir(1)<cr>', opts)
+  map('n', '2<space>s',  '<cmd>lua _M.find_files_up_root_dir(2)<cr>', opts)
+  map('n', '3<space>s',  '<cmd>lua _M.find_files_up_root_dir(3)<cr>', opts)
+  map('n', '4<space>s',  '<cmd>lua _M.find_files_up_root_dir(4)<cr>', opts)
+  map('n', '5<space>s',  '<cmd>lua _M.find_files_up_root_dir(5)<cr>', opts)
+  map('n', '<space>c',  '<cmd>lua _M.find_files_down_file_dir(0)<cr>', opts)
+  map('n', '1<space>c',  '<cmd>lua _M.find_files_down_file_dir(1)<cr>', opts)
+  map('n', '2<space>c',  '<cmd>lua _M.find_files_down_file_dir(2)<cr>', opts)
+  map('n', '3<space>c',  '<cmd>lua _M.find_files_down_file_dir(3)<cr>', opts)
+  map('n', '4<space>c',  '<cmd>lua _M.find_files_down_file_dir(4)<cr>', opts)
+  map('n', '5<space>c',  '<cmd>lua _M.find_files_down_file_dir(5)<cr>', opts)
+
+  map('n', '<space>g',  '<cmd>lua _M.live_grep_up_root_dir(0)<cr>', opts)
+  map('n', '1<space>g',  '<cmd>lua _M.live_grep_up_root_dir(1)<cr>', opts)
+  map('n', '2<space>g',  '<cmd>lua _M.live_grep_up_root_dir(2)<cr>', opts)
+  map('n', '3<space>g',  '<cmd>lua _M.live_grep_up_root_dir(3)<cr>', opts)
+  map('n', '4<space>g',  '<cmd>lua _M.live_grep_up_root_dir(4)<cr>', opts)
+  map('n', '5<space>g',  '<cmd>lua _M.live_grep_up_root_dir(5)<cr>', opts)
+  map('n', ',<space>g',  '<cmd>lua _M.live_grep_down_file_dir(0)<cr>', opts)
+  map('n', '1,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(1)<cr>', opts)
+  map('n', '2,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(2)<cr>', opts)
+  map('n', '3,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(3)<cr>', opts)
+  map('n', '4,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(4)<cr>', opts)
+  map('n', '5,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(5)<cr>', opts)
+
+  map('n', ',m<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
+  map('n', ',m<space>t', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
+  map('n', ',m<space>a', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
+  map('n', ',mm<space>s', '<cmd>lua _M.live_grep_in_current_dir("/src")<cr>', opts)
+  map('n', ',mm<space>t', '<cmd>lua _M.live_grep_in_current_dir("/testcafe")<cr>', opts)
+  map('n', ',mm<space>a', '<cmd>lua _M.live_grep_in_current_dir("/api-mock")<cr>', opts)
+
   map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
-  map('n', '<space>s',  '<cmd>lua _M.find_files_in_root_dir()<cr>', opts)
-  map('n', '1<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(1)<cr>', opts)
-  map('n', '2<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(2)<cr>', opts)
-  map('n', '3<space>s',  '<cmd>lua _M.find_files_in_up_root_dir(3)<cr>', opts)
-
-  map('n', ',<space>g', '<cmd>lua _M.live_grep_in_file_dir()<cr>', opts)
-  map('n', 'g<space>g', '<cmd>lua _M.live_grep_in_current_dir()<cr>', opts)
-  map('n', 'g<space>s', '<cmd>lua _M.live_grep_in_current_dir("/src")<cr>', opts)
-  map('n', 'g<space>t', '<cmd>lua _M.live_grep_in_current_dir("/testcafe")<cr>', opts)
-  map('n', 'g<space>a', '<cmd>lua _M.live_grep_in_current_dir("/api-mock")<cr>', opts)
-
-  map('n', '<space>g',  '<cmd>lua _M.live_grep_in_root_dir()<cr>', opts)
-  map('n', '1<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(1)<cr>', opts)
-  map('n', '2<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(2)<cr>', opts)
-  map('n', '3<space>g',  '<cmd>lua _M.live_grep_in_up_root_dir(3)<cr>', opts)
 
   map('n', '<space>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', opts)
   map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
