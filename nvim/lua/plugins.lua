@@ -3,6 +3,8 @@ local telescope_config = R'plugin_configs.telescope'
 local lsp_config = require'plugin_configs.nvim_lspconfig'
 local nvim_cmp_config = require'plugin_configs.nvim_cmp'
 -- local nvim_reload_config = require'plugin_configs.nvim_reload'
+local lualine_config = R'plugin_configs.lualine'
+local neoscroll_config = R'plugin_configs.neoscroll'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -33,7 +35,7 @@ Plug 'dracula/vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-projectionist'
-Plug 'vim-airline/vim-airline'
+-- Plug 'vim-airline/vim-airline'
 -- Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 Plug 'SirVer/ultisnips'
@@ -57,8 +59,13 @@ Plug 'rcarriga/nvim-notify'
 
 Plug ('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSupdate' })
 Plug 'nvim-treesitter/playground'
+
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'karb94/neoscroll.nvim'
 vim.call('plug#end')
 
 telescope_config()
 lsp_config()
 nvim_cmp_config()
+lualine_config()
+neoscroll_config()

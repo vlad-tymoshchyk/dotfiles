@@ -138,6 +138,10 @@ function _M.getProjectFilePath(root_path, file_path)
   return file_path:sub(root_path:len() + 2);
 end
 
+function _M.getFileRelativePath()
+  return _M.getProjectFilePath(_M.getRoot(), _M.getFilePath())
+end
+
 function _M.exists(file)
   local ok, _, code = os.rename(file, file)
   if not ok then
@@ -158,6 +162,10 @@ end
 
 function _M.getFileDir()
   return vim.fn.expand('%:p:h')
+end
+
+function _M.getFilePath()
+  return vim.fn.expand('%:p')
 end
 
 function _M.getRoot()
