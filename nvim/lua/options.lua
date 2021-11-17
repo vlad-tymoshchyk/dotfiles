@@ -40,8 +40,7 @@ opt.number = true
 -- opt.path+=**
 opt.relativenumber = true
 -- opt.ruler
--- opt.scrolloff = 3
-opt.scrolloff = 0
+opt.scrolloff = 3
 -- opt.secure
 opt.shiftwidth = 2
 opt.shiftround = true

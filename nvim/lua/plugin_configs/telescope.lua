@@ -116,12 +116,12 @@ local telescope_config = function()
   map('n', '4,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(4)<cr>', opts)
   map('n', '5,<space>g',  '<cmd>lua _M.live_grep_down_file_dir(5)<cr>', opts)
 
-  map('n', ',m<space>s', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
-  map('n', ',m<space>t', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
-  map('n', ',m<space>a', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
-  map('n', ',mm<space>s', '<cmd>lua _M.live_grep_in_current_dir("/src")<cr>', opts)
-  map('n', ',mm<space>t', '<cmd>lua _M.live_grep_in_current_dir("/testcafe")<cr>', opts)
-  map('n', ',mm<space>a', '<cmd>lua _M.live_grep_in_current_dir("/api-mock")<cr>', opts)
+  map('n', ',ms', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
+  map('n', ',mt', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
+  map('n', ',ma', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
+  map('n', ',mms', '<cmd>lua _M.live_grep_in_root_dir("/src")<cr>', opts)
+  map('n', ',mmt', '<cmd>lua _M.live_grep_in_root_dir("/testcafe")<cr>', opts)
+  map('n', ',mma', '<cmd>lua _M.live_grep_in_root_dir("/api-mock")<cr>', opts)
 
   map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
 

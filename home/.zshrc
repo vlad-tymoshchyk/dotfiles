@@ -28,6 +28,9 @@ hash -d gl=~/gl
 hash -d im=~/gl/im
 
 alias ~~="cd \`git rev-parse --show-toplevel\`"
+alias ~s="cd \`git rev-parse --show-toplevel\`/src"
+alias ~t="cd \`git rev-parse --show-toplevel\`/testcafe"
+alias ~a="cd \`git rev-parse --show-toplevel\`/api-mock"
 alias ww="which"
 alias n="nvim"
 alias nu="nvim -u ~/.vimrc"
