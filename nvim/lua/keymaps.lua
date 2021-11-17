@@ -3,8 +3,13 @@ local opts = { silent = true, noremap = true }
 
 local u = R('utils')
 function _M.tmux_split_horizontal()
-  -- local pwd = u.getCwd()
-  -- print('pwd:' .. pwd)
+  u.execute('tmux split-window -h -c ' .. u.getFileDir())
+end
+function _M.tmux_split_vertical()
+  u.execute('tmux split-window -v -c ' .. u.getFileDir())
+end
+function _M.tmux_new_window()
+  u.execute('tmux new-window -c ' .. u.getFileDir())
 end
 
 map('i', 'jk', '<esc>', opts)
@@ -58,3 +63,5 @@ map('n', '<esc>', ':noh<cr>', opts)
 
 map('n', '\\\\r', '<cmd>lua R("init")<cr>', opts)
 map('n', '<C-e>|', '<cmd>lua _M.tmux_split_horizontal()<cr>', opts)
+map('n', '<C-e>_', '<cmd>lua _M.tmux_split_vertical()<cr>', opts)
+map('n', '<C-e>c', '<cmd>lua _M.tmux_new_window()<cr>', opts)
