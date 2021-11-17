@@ -62,10 +62,60 @@ Plug 'nvim-treesitter/playground'
 
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'karb94/neoscroll.nvim'
+
+Plug 'AckslD/nvim-neoclip.lua'
+Plug 'tami5/sqlite.lua'
+
+-- Plug 'wbthomason/packer.nvim'
+
 vim.call('plug#end')
+
+-- require('packer').startup(function(use)
+  -- use 'wbthomason/packer.nvim'
+  -- use {
+  --   "AckslD/nvim-neoclip.lua",
+  --   requires = {'tami5/sqlite.lua', module = 'sqlite'},
+  --   config = function()
+  --     require('neoclip').setup()
+  --   end,
+  -- }
+-- end)
 
 telescope_config()
 lsp_config()
 nvim_cmp_config()
 lualine_config()
 neoscroll_config()
+
+local neoclip_config = function()
+  require('neoclip').setup({
+      history = 1000,
+      enable_persistant_history = true,
+      db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
+      filter = nil,
+      preview = true,
+      default_register = '"',
+      content_spec_column = false,
+      on_paste = {
+        set_reg = false,
+      },
+      keys = {
+        i = {
+          select = '<cr>',
+          paste = '<c-p>',
+          paste_behind = '<c-k>',
+          custom = {},
+        },
+        n = {
+          select = '<cr>',
+          paste = 'p',
+          paste_behind = 'P',
+          custom = {},
+        },
+      },
+    })
+end
+
+neoclip_config()
+
+-- require'telescope'.load_extension'neoclip'

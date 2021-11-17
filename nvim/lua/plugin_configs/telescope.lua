@@ -128,14 +128,14 @@ local telescope_config = function()
   map('n', '<space>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', opts)
   map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
   map('n', '\\r', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
+  map('n', '\\o', '<cmd>lua require"telescope.builtin".oldfiles()<cr>', opts)
   map('n', '\\s', '<cmd>lua _M.git_status_in_file_dir()<cr>', opts)
   map('n', '\\d', '<cmd>lua require"telescope.builtin".lsp_workspace_diagnostics()<cr>', opts)
-  map('n', '\\c', '<cmd>lua require"telescope.builtin".commands()<cr>', opts)
+  map('n', '\\\\c', '<cmd>lua require"telescope.builtin".commands()<cr>', opts)
   map('n', '\\\\h', '<cmd>lua require"telescope.builtin".help_tags()<cr>', opts)
-
   map('n', '\\\\b', '<cmd>lua require"telescope.builtin".builtin()<cr>', opts)
-
   map('n', ',a', '<cmd>lua require"telescope.builtin".lsp_code_actions({ layout_config = { width = 0.5, height = 0.5 } })<cr>', opts)
+  map('n', '\\c', '<cmd>lua require"telescope".extensions.neoclip.default()<cr>', opts)
 end
 
 return telescope_config

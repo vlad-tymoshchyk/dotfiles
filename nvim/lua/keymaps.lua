@@ -45,4 +45,4 @@ map('n', '<esc>', ':noh<cr>', opts)
 -- map('n', 'ĥ', ']', { silent = true })
 -- map('n', 'Ñ', ':', opts)
 
-map('n', '\\\\r', ':lua R("init")<cr>', opts)
+map('n', '\\\\r', '<cmd>lua R("init")<cr>', opts)
