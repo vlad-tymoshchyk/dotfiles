@@ -80,7 +80,7 @@ local telescope_config = function()
 
   local opts = { silent = true, noremap = true }
 
-  --[[
+--[[
 -- Logic behind keymaps
 -- <space>s - search files in root directory (add number to go up forward file directory) (add dir to search in dir)
 -- <space>c - search files in file directory (add number to go down forward root directory)
