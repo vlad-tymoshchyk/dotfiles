@@ -108,11 +108,26 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || p
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-tmux has -t default 2>/dev/null
-if [ $? -ne 0 ]
-then
-  tmux new-session -s default -d
-fi
+# check_and_create_placeholder_session() {
+#   echo "checking for placeholder_session..."
+#   notify-send "checking for placeholder_session..."
+#   placeholder_session="__placeholder__"
+#   sessions_count=`tmux ls 2>/dev/null | wc -l`
+#   if [ $sessions_count -eq 0 ]; then
+#     tmux new-session -s $placeholder_session -d
+
+#     tmux set-hook -g session-closed "run-shell \"check_and_create_placeholder_session\""
+#   else
+#     if [ $sessions_count -gt 1 ]; then
+#       tmux has -t $placeholder_session 2>/dev/null
+#       if [ $? -eq 0 ]; then
+#         tmux kill-session -t $placeholder_session
+#       fi
+#     fi
+#   fi
+# }
+
+# ~/dotfiles/bin/check_and_create_placeholder_session
 
 hash -d authn=~/projects/saas-authn-ui
 hash -d admin=~/projects/saas-admin-ui
