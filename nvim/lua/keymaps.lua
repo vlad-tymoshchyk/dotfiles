@@ -65,3 +65,6 @@ map('n', '\\\\r', '<cmd>lua R("init")<cr>', opts)
 map('n', '<C-e>|', '<cmd>lua _M.tmux_split_horizontal()<cr>', opts)
 map('n', '<C-e>_', '<cmd>lua _M.tmux_split_vertical()<cr>', opts)
 map('n', '<C-e>c', '<cmd>lua _M.tmux_new_window()<cr>', opts)
+
+map('n', 'g/', ':%s/', opts)
+map('v', 'g/', ':s/', opts)

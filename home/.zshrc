@@ -4,6 +4,8 @@ ZSH_THEME="awesomepanda"
 
 plugins=(git z vi-mode jump colorize command-not-found)
 
+export PATH=$HOME/bin:$HOME/bin/nvim/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
+
 source $ZSH/oh-my-zsh.sh
 set -g mouse on
 bindkey jk vi-cmd-mode
@@ -97,7 +99,6 @@ alias -s {uml,yaml}=nvim
 
 LC_TIME=en_IN.UTF-8
 export LC_TIME
-export PATH=$HOME/bin:$HOME/bin/nvim/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
 
 export EDITOR=$(which nvim)
 export PDF_VIEWER=$(which zathura)
