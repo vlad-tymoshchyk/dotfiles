@@ -5,6 +5,7 @@ local nvim_cmp_config = require'plugin_configs.nvim_cmp'
 -- local nvim_reload_config = require'plugin_configs.nvim_reload'
 local lualine_config = R'plugin_configs.lualine'
 local neoscroll_config = R'plugin_configs.neoscroll'
+local prettier_config = R'plugin_configs.prettier'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -86,6 +87,7 @@ lsp_config()
 nvim_cmp_config()
 lualine_config()
 neoscroll_config()
+prettier_config()
 
 local neoclip_config = function()
   require('neoclip').setup({
