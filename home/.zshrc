@@ -1,3 +1,11 @@
+private_zshrc_before="$HOME/.private.before.zshrc"
+if [ -f $private_zshrc_before ]; then
+  source "$private_zshrc_before"
+else
+  echo "...creating $private_zshrc_before"
+  touch "$private_zshrc_before"
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="awesomepanda"
@@ -144,13 +152,6 @@ compinit -i
 
 # alias redoc="redoc-cli"
 
-private_zshrc="$HOME/.private.zshrc"
-if [ -f $private_zshrc ]; then
-  source "$private_zshrc"
-else
-  touch "$private_zshrc"
-fi
-
 UPDATE_TIME=`expr 60 \* 60 \* 24`
 dotfiles_dir="$HOME/dotfiles"
 lastupdate_file="$dotfiles_dir/.lastupdate"
@@ -170,4 +171,12 @@ if [ $difference -gt $UPDATE_TIME ]; then
   else
     echo "Up to date"
   fi
+fi
+
+private_zshrc_after="$HOME/.private.after.zshrc"
+if [ -f $private_zshrc_after ]; then
+  source "$private_zshrc_after"
+else
+  echo "...creating $private_zshrc_after"
+  touch "$private_zshrc_after"
 fi
