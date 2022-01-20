@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
-old_names_array=($@)
+old_names_array=("$@")
 
 # checking for file existance
 not_existing_files=()
-for old_name in ${old_names_array[@]}
+for old_name in "${old_names_array[@]}"
 do
-  if [ ! -f $old_name ] && [ ! -d $old_name ];
+  if [ ! -f "$old_name" ] && [ ! -d "$old_name" ];
   then
-    not_existing_files[${#not_existing_files[@]}]=$old_name
+    not_existing_files["${#not_existing_files[@]}"]=$old_name
   fi
 done
+
+# print message and exit if any file does not exists
 if [ ${#not_existing_files[@]} -gt 0 ];
 then
-  for file_name in ${not_existing_files[@]}
+  for file_name in "${not_existing_files[@]}"
   do
     echo "No such file or directory: ${file_name}"
   done
@@ -30,8 +32,11 @@ done
 nvim $tempfile
 
 # reading edited filenames and removing temp file
-new_names=`cat ${tempfile}`
-new_names_array=($new_names)
+new_names_array=()
+while read line;
+do
+  new_names_array[${#new_names_array[@]}]=$line
+done < "${tempfile}"
 rm "$tempfile"
 
 # finding files that are to be changed, also making record of unchanged
@@ -39,9 +44,11 @@ file_indices_to_rename=()
 file_indices_unchanged=()
 for ((i=0;i<${#old_names_array[@]};i++))
 do
-  old_name=${old_names_array[$i]}
-  new_name=${new_names_array[$i]}
-  if [ $old_name != $new_name ];
+  old_name="${old_names_array[$i]}"
+  new_name="${new_names_array[$i]}"
+  echo oldname "$old_name"
+  echo newname "$new_name"
+  if [ "$old_name" != "$new_name" ];
   then
     file_indices_to_rename[${#file_indices_to_rename[@]}]=$i
   else
@@ -88,10 +95,10 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   # rename files
-  for filenames in ${file_indices_to_rename[@]}
+  for file_index in ${file_indices_to_rename[@]}
   do
-    old_name=${old_names_array[$file_index]}
-    new_name=${new_names_array[$file_index]}
+    old_name="${old_names_array[$file_index]}"
+    new_name="${new_names_array[$file_index]}"
     mv "${old_name}" "${new_name}"
   done
 else
