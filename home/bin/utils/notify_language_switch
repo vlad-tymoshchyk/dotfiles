@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+notify-send -h string:x-canonical-private-synchronous:language-switch -t 10 Layout $1

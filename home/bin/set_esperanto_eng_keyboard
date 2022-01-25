@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+setxkbmap -layout us,epo
+setxkbmap -option grp:win_space_toggle
+xkb-switch -s epo
+~/bin/utils/notify_language_switch "Esperanto"

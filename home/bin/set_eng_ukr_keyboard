@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+setxkbmap -layout us,ua
+setxkbmap -option grp:win_space_toggle
+xkb-switch -s us
+~/bin/utils/notify_language_switch "English"
+
+setxkbmap -option caps:escape

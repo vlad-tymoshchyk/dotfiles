@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+notify-send "Set DVORAK"
+
+setxkbmap -query
+setxkbmap -option
+setxkbmap -layout dvorak,ua
+setxkbmap -option grp:win_space_toggle
+echo ---
+setxkbmap -query
