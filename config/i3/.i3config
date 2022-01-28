@@ -1,11 +1,45 @@
-set $mod Mod4
+set $qwerty_q 24
+set $alt_r 108
+
+set $a 38
+set $b 56
+set $c 54
+set $d 40
+set $e 26
+set $f 41
+set $g 42
+set $h 43
+set $i 31
+set $j 44
+set $k 45
+set $l 46
+set $m 58
+set $n 57
+set $o 32
+set $p 33
+set $q 24
+set $r 27
+set $s 39
+set $t 28
+set $u 30
+set $v 55
+set $w 25
+set $x 53
+set $y 29
+set $z 52
+
 set $alt Mod1
+set $mod Mod4
 set $ctrl Control
+set $shift Shift
+set $return Return
+
 set $mode_launcher [u]:Utils [g]:Chrome [f]:Files [e]:Telegram [k]:Skype [s]:Slack [p]:Postman
 set $mode_utils [l]:Lock [o]:One screen [s]:Separate screens [a]:Auto screen [d]:Dark screen [f]:Bright screen
 set $mode_workspaces Go To Workspace
 set $mode_move_to_workspace Move To Workspace
 set $mode_move_and_go_to_workspace Move And Go To Workspace
+
 set $fmarginright 200
 set $fmargintop 50
 set $fwidth 1520
@@ -17,6 +51,7 @@ exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "feh --bg-fill ~/Documents/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
 exec "setxkbmap -option caps:escape"
+exec "guake"
 
 for_window [class="^.*"] border pixel 1
 for_window [instance="Float_Alacritty"] floating enable
@@ -34,45 +69,45 @@ assign [class="Skype"] k
 assign [class="Postman"] p
 assign [class="Telegram"] e
 
-bindsym $mod+o workspace back_and_forth
-bindsym $mod+Shift+Return  exec alacritty --class "Float_Alacritty"
-bindsym $mod+Return exec alacritty
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
-bindsym $mod+Shift+d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
-bindsym $mod+i exec rofi -show window
+bindcode $mod+$o workspace back_and_forth
+# dropdown terminal on semicolon
+bindcode $mod+47 exec guake -t
+bindsym $mod+$return exec alacritty
+bindcode $mod+$shift+$q kill
+bindcode $mod+$d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
+bindcode $mod+$shift+$d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
+bindcode $mod+$i exec rofi -show window
 bindsym Print 					exec flameshot gui
-bindsym $mod+p 					exec flameshot gui
+bindcode $mod+$p 					exec flameshot gui
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-# bindsym $mod+Tab focus down
+bindcode $mod+$h focus left
+bindcode $mod+$j focus down
+bindcode $mod+$k focus up
+bindcode $mod+$l focus right
+bindcode $mod+$shift+$h move left
+bindcode $mod+$shift+$j move down
+bindcode $mod+$shift+$k move up
+bindcode $mod+$shift+$l move right
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+v split v
-bindsym $mod+Shift+v split h
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s layout stacking
+bindcode $mod+$v split v
+bindcode $mod+$shift+$v split h
+bindcode $mod+$f fullscreen toggle
+bindcode $mod+$s layout stacking
 # bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+z floating toggle
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+m move workspace to output left
+bindcode $mod+$e layout toggle split
+bindcode $mod+$z floating toggle
+bindcode $mod+$shift+$r restart
+bindcode $mod+$shift+$m move workspace to output left
 
 bindsym $ctrl+1 exec ~/bin/set_eng_ukr_keyboard
 bindsym $ctrl+2 exec ~/bin/set_ukr_eng_keyboard
 bindsym $ctrl+3 exec ~/bin/set_rus_eng_keyboard
 bindsym $ctrl+4 exec ~/bin/set_spanish_eng_keyboard
 bindsym $ctrl+5 exec ~/bin/set_esperanto_eng_keyboard
-bindsym $mod+u workspace u
-bindsym $mod+y workspace y
+bindsym $ctrl+$shift+6 exec ~/bin/set_dvorak_keyboard
+bindcode $mod+$u workspace u
+bindcode $mod+$y workspace y
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -83,16 +118,16 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+Shift+1 move container to workspace 1; workspace 1;
-bindsym $mod+Shift+2 move container to workspace 2; workspace 2;
-bindsym $mod+Shift+3 move container to workspace 3; workspace 3;
-bindsym $mod+Shift+4 move container to workspace 4; workspace 4;
-bindsym $mod+Shift+5 move container to workspace 5; workspace 5;
-bindsym $mod+Shift+6 move container to workspace 6; workspace 6;
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7;
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8;
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9;
-bindsym $mod+Shift+0 move container to workspace 10; workspace 10;
+bindsym $mod+$shift+1 move container to workspace 1; workspace 1;
+bindsym $mod+$shift+2 move container to workspace 2; workspace 2;
+bindsym $mod+$shift+3 move container to workspace 3; workspace 3;
+bindsym $mod+$shift+4 move container to workspace 4; workspace 4;
+bindsym $mod+$shift+5 move container to workspace 5; workspace 5;
+bindsym $mod+$shift+6 move container to workspace 6; workspace 6;
+bindsym $mod+$shift+7 move container to workspace 7; workspace 7;
+bindsym $mod+$shift+8 move container to workspace 8; workspace 8;
+bindsym $mod+$shift+9 move container to workspace 9; workspace 9;
+bindsym $mod+$shift+0 move container to workspace 10; workspace 10;
 bindsym XF86AudioRaiseVolume exec volume -i 5 && volume -n
 bindsym XF86AudioLowerVolume exec volume -d 5 && volume -n
 bindsym XF86AudioMute exec volume -m && volume -n
@@ -104,10 +139,10 @@ bindsym XF86MonBrightnessDown exec ~/bin/brightdown 30
 bindsym XF86MonBrightnessUp exec ~/bin/brightup 30
 bindsym $mod+Up exec volume -i 5 && volume -n
 bindsym $mod+Down exec volume -d 5 && volume -n
-bindsym $mod+m exec volume -m && volume -n
+bindcode $mod+$m exec volume -m && volume -n
 bindsym $mod+Left exec ~/bin/brightdown
 bindsym $mod+Right exec ~/bin/brightup
-bindsym $mod+c exec copyq toggle
+bindcode $mod+$c exec copyq toggle
 
 bar {
 	font pango:mono 18
@@ -117,37 +152,38 @@ bar {
 	modifier None
 }
 
-bindsym $mod+a mode "$mode_launcher"
-bindsym $mod+w mode "$mode_workspaces"
-bindsym $mod+Shift+w mode "$mode_move_to_workspace"
-bindsym $mod+Ctrl+Shift+w mode "$mode_move_and_go_to_workspace"
+bindcode $mod+$a mode "$mode_launcher"
+bindcode $mod+$w mode "$mode_workspaces"
+bindcode $mod+$shift+$w mode "$mode_move_to_workspace"
+bindcode $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
 mode "$mode_launcher" {
-	bindsym g exec google-chrome; mode "default"
-	bindsym f exec xdg-open ~; mode "default"
-  bindsym h exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
-  bindsym b exec --no-startup-id ~/dotfiles/bin/rbook;    mode "default"
-	bindsym s workspace s; exec slack;                      mode "default"
-	bindsym k workspace k; exec skypeforlinux;              mode "default"
-	bindsym p workspace p; exec postman;                    mode "default"
-  bindsym e workspace e; exec telegram-desktop;           mode "default"
-  bindsym t workspace t; exec gnome-control-center;       mode "default"
-  bindsym u mode "$mode_utils"
+	bindcode $g exec google-chrome; mode "default"
+	bindcode $f exec xdg-open ~; mode "default"
+  bindcode $h exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
+  bindcode $b exec --no-startup-id ~/dotfiles/bin/rbook;    mode "default"
+	bindcode $s workspace s; exec slack;                      mode "default"
+	bindcode $k workspace k; exec skypeforlinux;              mode "default"
+	bindcode $p workspace p; exec postman;                    mode "default"
+  bindcode $e workspace e; exec telegram-desktop;           mode "default"
+  bindcode $t workspace t; exec gnome-control-center;       mode "default"
+  bindcode $u mode "$mode_utils"
 	bindsym Escape mode "default"
-	bindsym Return mode "default"
+	bindsym $return mode "default"
 }
 mode "$mode_utils" {
-  bindsym a exec exec xrandr --auto; mode "default"
-  bindsym o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
-  bindsym s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
-  bindsym l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
-  bindsym d exec ~/bin/brightdown 100; mode "default"
-  bindsym f exec ~/bin/brightup 100; mode "default"
+  bindcode $a exec exec xrandr --auto; mode "default"
+  bindcode $o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
+  bindcode $s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
+  bindcode $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
+  bindcode $d exec ~/bin/brightdown 100; mode "default"
+  bindcode $f exec ~/bin/brightup 100; mode "default"
+  bindcode $w exec alacritty --class "Float_Alacritty" --command nwork;   mode "default"
   bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
   bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
-  bindsym Shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
-  bindsym Shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
+  bindsym $shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
+  bindsym $shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
 	bindsym Escape mode "default"
-	bindsym Return mode "default"
+	bindsym $return mode "default"
 }
 mode "$mode_workspaces" {
   bindsym a workspace a;   mode "default"
@@ -193,7 +229,7 @@ mode "$mode_workspaces" {
   bindsym Y move container to workspace y; workspace y;   mode "default"
   bindsym Z move container to workspace z; workspace z;   mode "default"
 	bindsym Escape mode "default"
-	bindsym Return mode "default"
+	bindsym $return mode "default"
 }
 mode "$mode_move_to_workspace" {
   bindsym 1 move container to workspace 1; mode "default"
@@ -232,7 +268,7 @@ mode "$mode_move_to_workspace" {
   bindsym y move container to workspace y; mode "default"
   bindsym z move container to workspace z; mode "default"
 	bindsym Escape mode "default"
-	bindsym Return mode "default"
+	bindsym $return mode "default"
 }
 
 mode "$mode_move_and_go_to_workspace" {
@@ -272,5 +308,5 @@ mode "$mode_move_and_go_to_workspace" {
   bindsym y move container to workspace y; workspace y; mode "default"
   bindsym z move container to workspace z; workspace z; mode "default"
 	bindsym Escape mode "default"
-	bindsym Return mode "default"
+	bindsym $return mode "default"
 }
