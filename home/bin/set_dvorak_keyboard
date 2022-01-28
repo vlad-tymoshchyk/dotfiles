@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-notify-send "Set DVORAK"
-
-setxkbmap -query
-setxkbmap -option
-setxkbmap -layout dvorak,ua
+setxkbmap -layout dvorak
 setxkbmap -option grp:win_space_toggle
-echo ---
-setxkbmap -query
+xkb-switch -s us
+~/dotfiles/home/bin/utils/notify_language_switch "English_(dvorak)"
+
+setxkbmap -option caps:escape

@@ -100,12 +100,12 @@ bindcode $mod+$z floating toggle
 bindcode $mod+$shift+$r restart
 bindcode $mod+$shift+$m move workspace to output left
 
-bindsym $ctrl+1 exec ~/bin/set_eng_ukr_keyboard
+bindsym $ctrl+1 exec ~/bin/set_dvorak_keyboard
 bindsym $ctrl+2 exec ~/bin/set_ukr_eng_keyboard
 bindsym $ctrl+3 exec ~/bin/set_rus_eng_keyboard
 bindsym $ctrl+4 exec ~/bin/set_spanish_eng_keyboard
 bindsym $ctrl+5 exec ~/bin/set_esperanto_eng_keyboard
-bindsym $ctrl+$shift+6 exec ~/bin/set_dvorak_keyboard
+bindsym $ctrl+$shift+6 exec ~/bin/set_eng_ukr_keyboard
 bindcode $mod+$u workspace u
 bindcode $mod+$y workspace y
 bindsym $mod+1 workspace 1
