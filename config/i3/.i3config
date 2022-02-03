@@ -1,36 +1,36 @@
 set $qwerty_q 24
 set $alt_r 108
 
-set $a 38
-set $b 56
-set $c 54
-set $d 40
-set $e 26
-set $f 41
-set $g 42
-set $h 43
-set $i 31
-set $j 44
-set $k 45
-set $l 46
-set $m 58
-set $n 57
-set $o 32
-set $p 33
-set $q 24
-set $r 27
-set $s 39
-set $t 28
-set $u 30
-set $v 55
-set $w 25
-set $x 53
-set $y 29
-set $z 52
+set $a a
+set $b b
+set $c c
+set $d d
+set $e e
+set $f f
+set $g g
+set $h h
+set $i i
+set $j j
+set $k k
+set $l l
+set $m m
+set $n n
+set $o o
+set $p p
+set $q q
+set $r r
+set $s s
+set $t t
+set $u u
+set $v v
+set $w w
+set $x x
+set $y y
+set $z z
 
-set $alt Mod1
-set $mod Mod4
 set $ctrl Control
+set $mod Mod4
+set $alt Mod1
 set $shift Shift
 set $return Return
 
@@ -60,45 +60,41 @@ for_window [instance="Float_Alacritty"] resize set $fwidth $fheight
 for_window [instance="copyq"] floating enable border pixel 1
 for_window [instance="copyq"] move position 500 100
 for_window [instance="copyq"] resize set 920 880
-# for_window [class="Slack"] focus
-# for_window [class="Skype"] focus
-# for_window [class="Postman"] focus
-# for_window [class="Telegram"] focus
 assign [class="Slack"] s
 assign [class="Skype"] k
 assign [class="Postman"] p
 assign [class="Telegram"] e
 
-bindcode $mod+$o workspace back_and_forth
+bindsym $mod+$o workspace back_and_forth
 # dropdown terminal on semicolon
-bindcode $mod+47 exec guake -t
+bindcode $mod+52 exec guake -t
 bindsym $mod+$return exec alacritty
-bindcode $mod+$shift+$q kill
-bindcode $mod+$d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
-bindcode $mod+$shift+$d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
-bindcode $mod+$i exec rofi -show window
-bindsym Print 					exec flameshot gui
-bindcode $mod+$p 					exec flameshot gui
+bindsym $mod+$shift+$q kill
+bindsym $mod+$d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
+bindsym $mod+$shift+$d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
+bindsym $mod+$i exec rofi -show window
+bindsym Print	exec flameshot gui
+bindsym $mod+$p exec flameshot gui
 
-bindcode $mod+$h focus left
-bindcode $mod+$j focus down
-bindcode $mod+$k focus up
-bindcode $mod+$l focus right
-bindcode $mod+$shift+$h move left
-bindcode $mod+$shift+$j move down
-bindcode $mod+$shift+$k move up
-bindcode $mod+$shift+$l move right
+bindsym $mod+$h focus left
+bindsym $mod+$j focus down
+bindsym $mod+$k focus up
+bindsym $mod+$l focus right
+bindsym $mod+$shift+$h move left
+bindsym $mod+$shift+$j move down
+bindsym $mod+$shift+$k move up
+bindsym $mod+$shift+$l move right
 bindsym $mod+Tab workspace back_and_forth
 
-bindcode $mod+$v split v
-bindcode $mod+$shift+$v split h
-bindcode $mod+$f fullscreen toggle
-bindcode $mod+$s layout stacking
+bindsym $mod+$v split v
+bindsym $mod+$shift+$v split h
+bindsym $mod+$f fullscreen toggle
+bindsym $mod+$s layout stacking
 # bindsym $mod+w layout tabbed
-bindcode $mod+$e layout toggle split
-bindcode $mod+$z floating toggle
-bindcode $mod+$shift+$r restart
-bindcode $mod+$shift+$m move workspace to output left
+bindsym $mod+$e layout toggle split
+bindsym $mod+$z floating toggle
+bindsym $mod+$shift+$r restart
+bindsym $mod+$shift+$m move workspace to output left
 
 bindsym $ctrl+1 exec ~/bin/set_dvorak_keyboard
 bindsym $ctrl+2 exec ~/bin/set_ukr_eng_keyboard
@@ -106,8 +102,8 @@ bindsym $ctrl+3 exec ~/bin/set_rus_eng_keyboard
 bindsym $ctrl+4 exec ~/bin/set_spanish_eng_keyboard
 bindsym $ctrl+5 exec ~/bin/set_esperanto_eng_keyboard
 bindsym $ctrl+$shift+6 exec ~/bin/set_eng_ukr_keyboard
-bindcode $mod+$u workspace u
-bindcode $mod+$y workspace y
+bindsym $mod+$u workspace u
+bindsym $mod+$y workspace y
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -139,10 +135,10 @@ bindsym XF86MonBrightnessDown exec ~/bin/brightdown 30
 bindsym XF86MonBrightnessUp exec ~/bin/brightup 30
 bindsym $mod+Up exec volume -i 5 && volume -n
 bindsym $mod+Down exec volume -d 5 && volume -n
-bindcode $mod+$m exec volume -m && volume -n
+bindsym $mod+$m exec volume -m && volume -n
 bindsym $mod+Left exec ~/bin/brightdown
 bindsym $mod+Right exec ~/bin/brightup
-bindcode $mod+$c exec copyq toggle
+bindsym $mod+$c exec copyq toggle
 
 bar {
 	font pango:mono 18
@@ -152,161 +148,161 @@ bar {
 	modifier None
 }
 
-bindcode $mod+$a mode "$mode_launcher"
-bindcode $mod+$w mode "$mode_workspaces"
-bindcode $mod+$shift+$w mode "$mode_move_to_workspace"
-bindcode $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
+bindsym $mod+$a mode "$mode_launcher"
+bindsym $mod+$w mode "$mode_workspaces"
+bindsym $mod+$shift+$w mode "$mode_move_to_workspace"
+bindsym $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
 mode "$mode_launcher" {
-	bindcode $g exec google-chrome; mode "default"
-	bindcode $f exec xdg-open ~; mode "default"
-  bindcode $h exec alacritty --class "Float_Alacritty" --command "htop";   mode "default"
-  bindcode $b exec --no-startup-id ~/dotfiles/bin/rbook;    mode "default"
-	bindcode $s workspace s; exec slack;                      mode "default"
-	bindcode $k workspace k; exec skypeforlinux;              mode "default"
-	bindcode $p workspace p; exec postman;                    mode "default"
-  bindcode $e workspace e; exec telegram-desktop;           mode "default"
-  bindcode $t workspace t; exec gnome-control-center;       mode "default"
-  bindcode $u mode "$mode_utils"
+	bindsym $g exec google-chrome; mode "default"
+	bindsym $f exec xdg-open ~; mode "default"
+	bindsym $h exec alacritty --class "Float_Alacritty" --command "htop"; mode "default"
+	bindsym $b exec --no-startup-id ~/dotfiles/bin/rbook; mode "default"
+	bindsym $s workspace s; exec slack; mode "default"
+	bindsym $k workspace k; exec skypeforlinux; mode "default"
+	bindsym $p workspace p; exec postman; mode "default"
+	bindsym $e workspace e; exec telegram-desktop; mode "default"
+	bindsym $t workspace t; exec gnome-control-center; mode "default"
+	bindsym $u mode "$mode_utils"
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
 mode "$mode_utils" {
-  bindcode $a exec exec xrandr --auto; mode "default"
-  bindcode $o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
-  bindcode $s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
-  bindcode $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
-  bindcode $d exec ~/bin/brightdown 100; mode "default"
-  bindcode $f exec ~/bin/brightup 100; mode "default"
-  bindcode $w exec alacritty --class "Float_Alacritty" --command nwork;   mode "default"
-  bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
-  bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
-  bindsym $shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
-  bindsym $shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
+	bindsym $a exec exec xrandr --auto; mode "default"
+	bindsym $o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
+	bindsym $s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
+	bindsym $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
+	bindsym $d exec ~/bin/brightdown 100; mode "default"
+	bindsym $f exec ~/bin/brightup 100; mode "default"
+	bindsym $w exec alacritty --class "Float_Alacritty" --command nwork; mode "default"
+	bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
+	bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
+	bindsym $shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
+	bindsym $shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
 mode "$mode_workspaces" {
-  bindsym a workspace a;   mode "default"
-  bindsym b workspace b;   mode "default"
-  bindsym c workspace c;   mode "default"
-  bindsym d workspace d;   mode "default"
-  bindsym e workspace e;   mode "default"
-  bindsym f workspace f;   mode "default"
-  bindsym g workspace g;   mode "default"
-  bindsym h workspace h;   mode "default"
-  bindsym k workspace k;   mode "default"
-  bindsym l workspace l;   mode "default"
-  bindsym m workspace m;   mode "default"
-  bindsym n workspace n;   mode "default"
-  # bindsym i workspace i;   mode "default"
-  bindsym i workspace vdi;   mode "defau
-  bindsym v workspace vpn;   mode "default"
-  bindsym w workspace w;   mode "default"
-  bindsym x workspace x;   mode "default"
-  bindsym y workspace y;   mode "default"
-  bindsym z workspace z;   mode "default"
-  bindsym A move container to workspace a; workspace a;   mode "default"
-  bindsym B move container to workspace b; workspace b;   mode "default"
-  bindsym C move container to workspace c; workspace c;   mode "default"
-  bindsym D move container to workspace d; workspace d;   mode "default"
-  bindsym E move container to workspace e; workspace e;   mode "default"
-  bindsym F move container to workspace f; workspace f;   mode "default"
-  bindsym G move container to workspace g; workspace g;   mode "default"
-  bindsym H move container to workspace h; workspace h;   mode "default"
-  bindsym K move container to workspace k; workspace k;   mode "default"
-  bindsym L move container to workspace l; workspace l;   mode "default"
-  bindsym M move container to workspace m; workspace m;   mode "default"
-  bindsym N move container to workspace n; workspace n;   mode "default"
-  bindsym O move container to workspace o; workspace o;   mode "default"
-  bindsym P move container to workspace p; workspace p;   mode "default"
-  bindsym R move container to workspace r; workspace r;   mode "default"
-  bindsym S move container to workspace s; workspace s;   mode "default"
-  bindsym T move container to workspace t; workspace t;   mode "default"
-  bindsym U move container to workspace u; workspace u;   mode "default"
-  bindsym V move container to workspace v; workspace v;   mode "default"
-  bindsym W move container to workspace u; workspace u;   mode "default"
-  bindsym X move container to workspace x; workspace x;   mode "default"
-  bindsym Y move container to workspace y; workspace y;   mode "default"
-  bindsym Z move container to workspace z; workspace z;   mode "default"
+	bindsym a workspace a; mode "default"
+	bindsym b workspace b; mode "default"
+	bindsym c workspace c; mode "default"
+	bindsym d workspace d; mode "default"
+	bindsym e workspace e; mode "default"
+	bindsym f workspace f; mode "default"
+	bindsym g workspace g; mode "default"
+	bindsym h workspace h; mode "default"
+	bindsym k workspace k; mode "default"
+	bindsym l workspace l; mode "default"
+	bindsym m workspace m; mode "default"
+	bindsym n workspace n; mode "default"
+	# bindsym i workspace i; mode "default"
+	bindsym i workspace vdi; mode "defau
+	bindsym v workspace vpn; mode "default"
+	bindsym w workspace w; mode "default"
+	bindsym x workspace x; mode "default"
+	bindsym y workspace y; mode "default"
+	bindsym z workspace z; mode "default"
+	bindsym A move container to workspace a; workspace a; mode "default"
+	bindsym B move container to workspace b; workspace b; mode "default"
+	bindsym C move container to workspace c; workspace c; mode "default"
+	bindsym D move container to workspace d; workspace d; mode "default"
+	bindsym E move container to workspace e; workspace e; mode "default"
+	bindsym F move container to workspace f; workspace f; mode "default"
+	bindsym G move container to workspace g; workspace g; mode "default"
+	bindsym H move container to workspace h; workspace h; mode "default"
+	bindsym K move container to workspace k; workspace k; mode "default"
+	bindsym L move container to workspace l; workspace l; mode "default"
+	bindsym M move container to workspace m; workspace m; mode "default"
+	bindsym N move container to workspace n; workspace n; mode "default"
+	bindsym O move container to workspace o; workspace o; mode "default"
+	bindsym P move container to workspace p; workspace p; mode "default"
+	bindsym R move container to workspace r; workspace r; mode "default"
+	bindsym S move container to workspace s; workspace s; mode "default"
+	bindsym T move container to workspace t; workspace t; mode "default"
+	bindsym U move container to workspace u; workspace u; mode "default"
+	bindsym V move container to workspace v; workspace v; mode "default"
+	bindsym W move container to workspace u; workspace u; mode "default"
+	bindsym X move container to workspace x; workspace x; mode "default"
+	bindsym Y move container to workspace y; workspace y; mode "default"
+	bindsym Z move container to workspace z; workspace z; mode "default"
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
 mode "$mode_move_to_workspace" {
-  bindsym 1 move container to workspace 1; mode "default"
-  bindsym 2 move container to workspace 2; mode "default"
-  bindsym 3 move container to workspace 3; mode "default"
-  bindsym 4 move container to workspace 4; mode "default"
-  bindsym 5 move container to workspace 5; mode "default"
-  bindsym 6 move container to workspace 6; mode "default"
-  bindsym 7 move container to workspace 7; mode "default"
-  bindsym 8 move container to workspace 8; mode "default"
-  bindsym 9 move container to workspace 9; mode "default"
-  bindsym 0 move container to workspace 0; mode "default"
+	bindsym 1 move container to workspace 1; mode "default"
+	bindsym 2 move container to workspace 2; mode "default"
+	bindsym 3 move container to workspace 3; mode "default"
+	bindsym 4 move container to workspace 4; mode "default"
+	bindsym 5 move container to workspace 5; mode "default"
+	bindsym 6 move container to workspace 6; mode "default"
+	bindsym 7 move container to workspace 7; mode "default"
+	bindsym 8 move container to workspace 8; mode "default"
+	bindsym 9 move container to workspace 9; mode "default"
+	bindsym 0 move container to workspace 0; mode "default"
 
-  bindsym a move container to workspace a; mode "default"
-  bindsym b move container to workspace b; mode "default"
-  bindsym c move container to workspace c; mode "default"
-  bindsym d move container to workspace d; mode "default"
-  bindsym e move container to workspace e; mode "default"
-  bindsym f move container to workspace f; mode "default"
-  bindsym g move container to workspace g; mode "default"
-  bindsym h move container to workspace h; mode "default"
-  bindsym k move container to workspace k; mode "default"
-  bindsym l move container to workspace l; mode "default"
-  bindsym m move container to workspace m; mode "default"
-  bindsym n move container to workspace n; mode "default"
-  bindsym i move container to workspace i; mode "default"
-  bindsym o move container to workspace o; mode "default"
-  bindsym p move container to workspace p; mode "default"
-  bindsym r move container to workspace r; mode "default"
-  bindsym s move container to workspace s; mode "default"
-  bindsym t move container to workspace t; mode "default"
-  bindsym u move container to workspace u; mode "default"
-  bindsym v move container to workspace v; mode "default"
-  bindsym w move container to workspace u; mode "default"
-  bindsym x move container to workspace x; mode "default"
-  bindsym y move container to workspace y; mode "default"
-  bindsym z move container to workspace z; mode "default"
+	bindsym a move container to workspace a; mode "default"
+	bindsym b move container to workspace b; mode "default"
+	bindsym c move container to workspace c; mode "default"
+	bindsym d move container to workspace d; mode "default"
+	bindsym e move container to workspace e; mode "default"
+	bindsym f move container to workspace f; mode "default"
+	bindsym g move container to workspace g; mode "default"
+	bindsym h move container to workspace h; mode "default"
+	bindsym k move container to workspace k; mode "default"
+	bindsym l move container to workspace l; mode "default"
+	bindsym m move container to workspace m; mode "default"
+	bindsym n move container to workspace n; mode "default"
+	bindsym i move container to workspace i; mode "default"
+	bindsym o move container to workspace o; mode "default"
+	bindsym p move container to workspace p; mode "default"
+	bindsym r move container to workspace r; mode "default"
+	bindsym s move container to workspace s; mode "default"
+	bindsym t move container to workspace t; mode "default"
+	bindsym u move container to workspace u; mode "default"
+	bindsym v move container to workspace v; mode "default"
+	bindsym w move container to workspace u; mode "default"
+	bindsym x move container to workspace x; mode "default"
+	bindsym y move container to workspace y; mode "default"
+	bindsym z move container to workspace z; mode "default"
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
 
 mode "$mode_move_and_go_to_workspace" {
-  bindsym 1 move container to workspace 1; workspace 1; mode "default"
-  bindsym 2 move container to workspace 2; workspace 2; mode "default"
-  bindsym 3 move container to workspace 3; workspace 3; mode "default"
-  bindsym 4 move container to workspace 4; workspace 4; mode "default"
-  bindsym 5 move container to workspace 5; workspace 5; mode "default"
-  bindsym 6 move container to workspace 6; workspace 6; mode "default"
-  bindsym 7 move container to workspace 7; workspace 7; mode "default"
-  bindsym 8 move container to workspace 8; workspace 8; mode "default"
-  bindsym 9 move container to workspace 9; workspace 9; mode "default"
-  bindsym 0 move container to workspace 0; workspace 0; mode "default"
+	bindsym 1 move container to workspace 1; workspace 1; mode "default"
+	bindsym 2 move container to workspace 2; workspace 2; mode "default"
+	bindsym 3 move container to workspace 3; workspace 3; mode "default"
+	bindsym 4 move container to workspace 4; workspace 4; mode "default"
+	bindsym 5 move container to workspace 5; workspace 5; mode "default"
+	bindsym 6 move container to workspace 6; workspace 6; mode "default"
+	bindsym 7 move container to workspace 7; workspace 7; mode "default"
+	bindsym 8 move container to workspace 8; workspace 8; mode "default"
+	bindsym 9 move container to workspace 9; workspace 9; mode "default"
+	bindsym 0 move container to workspace 0; workspace 0; mode "default"
 
-  bindsym a move container to workspace a; workspace a; mode "default"
-  bindsym b move container to workspace b; workspace b; mode "default"
-  bindsym c move container to workspace c; workspace c; mode "default"
-  bindsym d move container to workspace d; workspace d; mode "default"
-  bindsym e move container to workspace e; workspace e; mode "default"
-  bindsym f move container to workspace f; workspace f; mode "default"
-  bindsym g move container to workspace g; workspace g; mode "default"
-  bindsym h move container to workspace h; workspace h; mode "default"
-  bindsym k move container to workspace k; workspace k; mode "default"
-  bindsym l move container to workspace l; workspace l; mode "default"
-  bindsym m move container to workspace m; workspace m; mode "default"
-  bindsym n move container to workspace n; workspace n; mode "default"
-  bindsym i move container to workspace i; workspace i; mode "default"
-  bindsym o move container to workspace o; workspace o; mode "default"
-  bindsym p move container to workspace p; workspace p; mode "default"
-  bindsym r move container to workspace r; workspace r; mode "default"
-  bindsym s move container to workspace s; workspace s; mode "default"
-  bindsym t move container to workspace t; workspace t; mode "default"
-  bindsym u move container to workspace u; workspace u; mode "default"
-  bindsym v move container to workspace v; workspace v; mode "default"
-  bindsym w move container to workspace u; workspace u; mode "default"
-  bindsym x move container to workspace x; workspace x; mode "default"
-  bindsym y move container to workspace y; workspace y; mode "default"
-  bindsym z move container to workspace z; workspace z; mode "default"
+	bindsym a move container to workspace a; workspace a; mode "default"
+	bindsym b move container to workspace b; workspace b; mode "default"
+	bindsym c move container to workspace c; workspace c; mode "default"
+	bindsym d move container to workspace d; workspace d; mode "default"
+	bindsym e move container to workspace e; workspace e; mode "default"
+	bindsym f move container to workspace f; workspace f; mode "default"
+	bindsym g move container to workspace g; workspace g; mode "default"
+	bindsym h move container to workspace h; workspace h; mode "default"
+	bindsym k move container to workspace k; workspace k; mode "default"
+	bindsym l move container to workspace l; workspace l; mode "default"
+	bindsym m move container to workspace m; workspace m; mode "default"
+	bindsym n move container to workspace n; workspace n; mode "default"
+	bindsym i move container to workspace i; workspace i; mode "default"
+	bindsym o move container to workspace o; workspace o; mode "default"
+	bindsym p move container to workspace p; workspace p; mode "default"
+	bindsym r move container to workspace r; workspace r; mode "default"
+	bindsym s move container to workspace s; workspace s; mode "default"
+	bindsym t move container to workspace t; workspace t; mode "default"
+	bindsym u move container to workspace u; workspace u; mode "default"
+	bindsym v move container to workspace v; workspace v; mode "default"
+	bindsym w move container to workspace u; workspace u; mode "default"
+	bindsym x move container to workspace x; workspace x; mode "default"
+	bindsym y move container to workspace y; workspace y; mode "default"
+	bindsym z move container to workspace z; workspace z; mode "default"
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
