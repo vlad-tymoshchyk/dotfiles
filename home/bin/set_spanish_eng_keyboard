@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-setxkbmap -layout us,es
+setxkbmap -layout dvorak,es
 setxkbmap -option grp:win_space_toggle
 xkb-switch -s es
 ~/bin/utils/notify_language_switch "Español"

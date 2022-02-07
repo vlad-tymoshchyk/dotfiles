@@ -25,7 +25,7 @@ set $x x
 set $y y
 set $z z
 
-set $semicolon 47
+set $semicolon 52
 set $quote 24
 set $comma 25
 set $dot 26
@@ -69,7 +69,7 @@ assign [class="Telegram"] e
 
 bindsym $mod+$o workspace back_and_forth
 # dropdown terminal on semicolon
-bindcode $mod+$semicolon exec guake -t
+# bindcode $mod+$semicolon exec guake -t
 bindsym $mod+$return exec alacritty
 bindsym $mod+$shift+$q kill
 bindsym $mod+$d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
