@@ -29,3 +29,5 @@
 [core]
   excludesfile = ~/.gitignore_global
   pager = less -RFX
+[init]
+  defaultBranch = main
