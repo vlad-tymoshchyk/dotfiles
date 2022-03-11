@@ -1,4 +1,4 @@
--- mocking R function until it's defined in `globals`
+vim.g.mapleader = ','
 
 require 'globals' -- `globals` uses plenary plugin
 R 'plugins'

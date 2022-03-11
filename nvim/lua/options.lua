@@ -66,8 +66,6 @@ opt.tabstop = 2
 -- opt.hlsearch = true
 -- opt.incsearch = true
 
-g.mapleader = ','
-
 g.NERDDefaultAlign = 'left'
 g.NERDSpaceDelims = 1
 g.NERDDefaultNesting=-1

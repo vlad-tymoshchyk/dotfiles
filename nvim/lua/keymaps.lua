@@ -14,6 +14,8 @@ end
 
 map('i', 'jk', '<esc>', opts)
 
+map('n', 'ZZ', ':w<cr>', opts)
+
 map('n', ',,', ',', opts)
 map('n', 'vv', 'ggVG', opts)
 map('v', 'y', 'y`]', opts)
