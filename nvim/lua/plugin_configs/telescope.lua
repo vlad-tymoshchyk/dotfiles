@@ -116,12 +116,12 @@ local telescope_config = function()
   map('n', '44<space>g',  '<cmd>lua _M.live_grep_down_file_dir(4)<cr>', opts)
   map('n', '55<space>g',  '<cmd>lua _M.live_grep_down_file_dir(5)<cr>', opts)
 
-  map('n', ',ms', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
-  map('n', ',mt', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
-  map('n', ',ma', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
-  map('n', ',mms', '<cmd>lua _M.live_grep_in_root_dir("/src")<cr>', opts)
-  map('n', ',mmt', '<cmd>lua _M.live_grep_in_root_dir("/testcafe")<cr>', opts)
-  map('n', ',mma', '<cmd>lua _M.live_grep_in_root_dir("/api-mock")<cr>', opts)
+  map('n', '<leader>ms', '<cmd>lua _M.find_files_in_root_dir("/src")<cr>', opts)
+  map('n', '<leader>mt', '<cmd>lua _M.find_files_in_root_dir("/testcafe")<cr>', opts)
+  map('n', '<leader>ma', '<cmd>lua _M.find_files_in_root_dir("/api-mock")<cr>', opts)
+  map('n', '<leader>mms', '<cmd>lua _M.live_grep_in_root_dir("/src")<cr>', opts)
+  map('n', '<leader>mmt', '<cmd>lua _M.live_grep_in_root_dir("/testcafe")<cr>', opts)
+  map('n', '<leader>mma', '<cmd>lua _M.live_grep_in_root_dir("/api-mock")<cr>', opts)
 
   map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
 
@@ -137,7 +137,7 @@ local telescope_config = function()
   map('n', ',a', '<cmd>lua require"telescope.builtin".lsp_code_actions({ layout_config = { width = 0.5, height = 0.5 } })<cr>', opts)
   map('n', '\\c', '<cmd>lua require"telescope".extensions.neoclip.default()<cr>', opts)
 
-  map('n', ',gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
+  map('n', '<leader>gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
 end
 
 return telescope_config
