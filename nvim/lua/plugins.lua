@@ -6,6 +6,7 @@ local nvim_cmp_config = require'plugin_configs.nvim_cmp'
 local lualine_config = R'plugin_configs.lualine'
 local neoscroll_config = R'plugin_configs.neoscroll'
 local prettier_config = R'plugin_configs.prettier'
+local hop_config = R'plugin_configs.hop'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -41,7 +42,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'wellle/targets.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
-Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 -- Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
@@ -66,6 +66,7 @@ Plug 'karb94/neoscroll.nvim'
 
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'tami5/sqlite.lua'
+Plug 'phaazon/hop.nvim'
 
 -- Plug 'wbthomason/packer.nvim'
 
@@ -88,6 +89,7 @@ nvim_cmp_config()
 lualine_config()
 neoscroll_config()
 prettier_config()
+hop_config()
 
 local neoclip_config = function()
   require('neoclip').setup({

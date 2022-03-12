@@ -36,12 +36,6 @@ map('n', '<c-k>', '<cmd>lua print("CTRL pressed!!!")<cr>', opts)
 map('v', '<c-j>', ':m \'>+1<cr>gv=gv', opts)
 map('v', '<c-k>', ':m \'<-2<cr>gv=gv', opts)
 
-map('', '<leader>f', '<Plug>(easymotion-bd-f)', {})
-map('', '-j', '<Plug>(easymotion-j)', {})
-map('', '-k', '<Plug>(easymotion-k)', {})
-map('', '<leader>w', '<Plug>(easymotion-w)', {})
-map('', '<leader>b', '<Plug>(easymotion-b)', {})
-
 map('n', 'q;', 'q:', opts)
 map('v', 'q;', 'q:', opts)
 
