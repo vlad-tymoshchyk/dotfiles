@@ -126,6 +126,7 @@ Logic behind keymaps
   map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
 
   map('n', '<space>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', opts)
+  map('n', '<space>o', '<cmd>lua require"telescope.builtin".oldfiles()<cr>', opts)
   map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
   map('n', '\\r', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
   map('n', '\\o', '<cmd>lua require"telescope.builtin".oldfiles()<cr>', opts)
