@@ -7,8 +7,8 @@ local nvim_cmp_config = function()
       snippet = {
         expand = function(args)
           -- P(args)
-          -- require('luasnip').lsp_expand(args.body)
-          vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+          require('luasnip').lsp_expand(args.body)
+          -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end
       },
       mapping = {

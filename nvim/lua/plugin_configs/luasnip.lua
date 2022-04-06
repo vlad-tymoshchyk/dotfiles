@@ -1,56 +1,87 @@
-local luasnip_config = function()
-  local function prequire(...)
-    local status, lib = pcall(require, ...)
-    if (status) then return lib end
-    return nil
-  end
+function luasnip_config()
+  local ls = require'luasnip'
+  local s = ls.snippet
+  local types = require'luasnip.util.types'
 
-  local luasnip = prequire('luasnip')
-  local cmp = prequire("cmp")
+  ls.config.set_config {
+    history = true,
+    updateevents = "textchanged,textchangedi",
+    enable_autosnippets = true,
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { "<-", "error" } },
+        }
+      }
+    }
+  }
 
-  local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-  end
-
-  local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-      return true
-    else
-      return false
+  vim.keymap.set({ "i", "s" }, "<c-t>", function()
+    if ls.expand_or_jumpable() then
+      ls.expand_or_jump()
     end
-  end
-
-  _G.tab_complete = function()
-    if cmp and cmp.visible() then
-      cmp.select_next_item()
-    elseif luasnip and luasnip.expand_or_jumpable() then
-      return t("<Plug>luasnip-expand-or-jump")
-    elseif check_back_space() then
-      return t "<Tab>"
-    else
-      cmp.complete()
+  end)
+  vim.keymap.set({ "i", "s" }, "<a-t>", function()
+    if ls.jumpable(-1) then
+      ls.jump(-1)
     end
-    return ""
-  end
-  _G.s_tab_complete = function()
-    if cmp and cmp.visible() then
-      cmp.select_prev_item()
-    elseif luasnip and luasnip.jumpable(-1) then
-      return t("<Plug>luasnip-jump-prev")
-    else
-      return t "<S-Tab>"
+  end)
+  vim.keymap.set({ "i", "s" }, "<c-u>", require'luasnip.extras.select_choice')
+  vim.keymap.set({ "i", "s" }, "<c-l>", function()
+    if ls.choice_active() then
+      ls.change_choice(1)
     end
-    return ""
-  end
+  end)
 
-  -- vim.api.nvim_set_keymap("i", "<Tab>", "<Plug>luasnip-expand-or-jump", {expr = true})
-  -- vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-  -- vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-  -- vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-  -- vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-  -- vim.api.nvim_set_keymap("i", "<C-E>", "<Plug>luasnip-next-choice", {})
-  -- vim.api.nvim_set_keymap("s", "<C-E>", "<Plug>luasnip-next-choice", {})
+
+
+  local ls = require'luasnip'
+  local s = ls.s
+  local i = ls.insert_node
+  local c = ls.choice_node
+  local t = ls.text_node
+  local f = ls.function_node
+  local fmt = require'luasnip.extras.fmt'.fmt
+  local rep = require'luasnip.extras'.rep
+
+  local last_import = function(index)
+    return f(function(arg)
+      local input = arg[1][1]
+
+      return string.gmatch(input .. "-", "[^.]+$")()
+    end, { index })
 end
 
-return luasnip_config
+ls.snippets = {
+  javascript = R'plugin_configs.snippets.javascript',
+  javascriptreact = R'plugin_configs.snippets.javascriptreact',
+  typescript = R'plugin_configs.snippets.typescript',
+  typescriptreact = R'plugin_configs.snippets.typescriptreact',
+  lua = {
+    s("req", fmt("local {} = require'{}'", { last_import(1), i(1) }))
+    -- s("des", fmt("describe('{}', {} ({}) => {{\n{}\n}})", { 
+    --       c(1, {
+    --           t"Some here",
+    --           t"Another",
+    --           t"",
+    --         }),
+    --       i(2),
+    --       i(3),
+    --       c(4, {
+    --           t"it('test', () => {{}})",
+    --           t"",
+    --         })
+    --   }))
+  }
+}
+end
+
+function luasnip_config_error()
+  print("Version is too low for snips -", vim.version().minor)
+end
+
+if vim.version().minor >= 7 then
+  return luasnip_config
+else
+  return luasnip_config_error
+end

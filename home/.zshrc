@@ -42,13 +42,13 @@ alias ~s="cd \`git rev-parse --show-toplevel\`/src"
 alias ~t="cd \`git rev-parse --show-toplevel\`/testcafe"
 alias ~a="cd \`git rev-parse --show-toplevel\`/api-mock"
 alias ww="which"
+alias c=`which cat`
 alias n="`which nvim`"
 alias nu="nvim -u ~/.vimrc"
 alias no="nvim  +'norm! \`0'"
 alias t="tmux"
 alias nf="file=\`fzf --height \"10%\"\`; if [ ! -z \$file ]; then nvim \$file; fi"
 alias gcob="branch=\`git branch --all | fzf --height \"10%\" | xargs\`; if [ ! -z \$branch ]; then git checkout \$branch; fi"
-alias c="cd"
 # alias vimrc="nvim ~/.vimrc"
 alias vimrc="nvim ~/.config/nvim/init.lua"
 alias luainit="nvim ~/dotfiles/nvim/init.lua"
@@ -180,3 +180,7 @@ else
   echo "...creating $private_zshrc_after"
   touch "$private_zshrc_after"
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

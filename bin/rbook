@@ -1,11 +1,6 @@
 #!/bin/bash
 
-books_path="${HOME}/books/"
-sedcommand="s/${books_path//\//\\/}//g"
 
-find "${books_path}" |
-  sed "${sedcommand}" |
-  grep -v "^.git" |
-  grep -v "^$" |
+${HOME}/books/list-books |
   dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24' |
   xargs -I{} zathura $HOME/books/{}

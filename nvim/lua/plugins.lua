@@ -4,6 +4,7 @@ local lsp_config = require'plugin_configs.nvim_lspconfig'
 local nvim_cmp_config = require'plugin_configs.nvim_cmp'
 -- local nvim_reload_config = require'plugin_configs.nvim_reload'
 local lualine_config = R'plugin_configs.lualine'
+local luasnip_config = R'plugin_configs.luasnip'
 local neoscroll_config = R'plugin_configs.neoscroll'
 local prettier_config = R'plugin_configs.prettier'
 local hop_config = R'plugin_configs.hop'
@@ -20,7 +21,7 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-telescope/telescope.nvim'
 --
 Plug 'kyazdani42/nvim-web-devicons'
--- Plug 'L3MON4D3/LuaSnip'
+Plug 'L3MON4D3/LuaSnip'
 -- Plug 'rafamadriz/friendly-snippets'
 
 Plug 'onsails/lspkind-nvim'
@@ -29,7 +30,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+-- Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 -- Plug 'saadparwaiz1/cmp_luasnip'
 
 Plug 'fatih/vim-go'
@@ -40,7 +41,7 @@ Plug 'tpope/vim-projectionist'
 -- Plug 'vim-airline/vim-airline'
 -- Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
-Plug 'SirVer/ultisnips'
+-- Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 -- Plug 'honza/vim-snippets'
@@ -87,6 +88,7 @@ telescope_config()
 lsp_config()
 nvim_cmp_config()
 lualine_config()
+luasnip_config()
 neoscroll_config()
 prettier_config()
 hop_config()

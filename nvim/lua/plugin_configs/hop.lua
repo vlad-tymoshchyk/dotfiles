@@ -1,6 +1,6 @@
 local hop_config = function()
   require'hop'.setup{
-    keys = 'aoeuidhtns-\',.pyfgcrl;jkxbmwvz'
+    keys = 'aoeuidhtns-\',pyfgcrl;jkxbmwvz'
   }
 
   vim.api.nvim_set_keymap('n', '<leader>h', "<cmd>lua require'hop'.hint_char1()<cr>", {})

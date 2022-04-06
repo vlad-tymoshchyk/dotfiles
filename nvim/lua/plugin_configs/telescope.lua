@@ -81,13 +81,13 @@ local telescope_config = function()
   local opts = { silent = true, noremap = true }
 
 --[[
--- Logic behind keymaps
--- <space>s - search files in root directory (add number to go up forward file directory) (add dir to search in dir)
--- <space>c - search files in file directory (add number to go down forward root directory)
--- <space>g - live grep in root directory (add number to go up forward file directory) (add dir to search in dir)
--- ,<space>g - live grep in file directory (add number to go down forward root directory)
--- ,m<space> a/s/t - search in special directories
--- ,mm<space> a/s/t - live grep in special directories
+Logic behind keymaps
+<space>s - search files in root directory (add number to go up forward file directory) (add dir to search in dir)
+<space>c - search files in file directory (add number to go down forward root directory)
+<space>g - live grep in root directory (add number to go up forward file directory) (add dir to search in dir)
+,<space>g - live grep in file directory (add number to go down forward root directory)
+,m<space> a/s/t - search in special directories
+,mm<space> a/s/t - live grep in special directories
 --]]
 
   map('n', '<space>s',  '<cmd>lua _M.find_files_up_root_dir(0)<cr>', opts)
