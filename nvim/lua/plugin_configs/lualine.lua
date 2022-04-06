@@ -8,7 +8,7 @@ local lualine_config = function()
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'diff', 'diagnostics'},
+      lualine_b = {'diff', { 'diagnostics', sources = {'nvim'}}},
       lualine_c = {'filename'},
       lualine_x = {'filetype'},
       lualine_y = {'%3p%% (%l/%L)'},
