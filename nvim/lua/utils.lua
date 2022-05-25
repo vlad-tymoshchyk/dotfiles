@@ -142,6 +142,10 @@ function _M.getFileRelativePath()
   return _M.getProjectFilePath(_M.getRoot(), _M.getFilePath())
 end
 
+function _M.getRelativePath(dir)
+  return _M.getProjectFilePath(_M.getRoot(), dir)
+end
+
 function _M.exists(file)
   local ok, _, code = os.rename(file, file)
   if not ok then
@@ -186,6 +190,24 @@ end
 
 function _M.getCwd()
   return vim.cmd'pwd'
+end
+
+function _M.mergeTables(t1, t2)
+  local t1_len = tableLength(t1)
+  for index,value in pairs(t2) do
+    if (type(index) == "string") then
+      t1[index] = value
+    else
+      t1[t1_len + index] = value
+    end
+  end
+  return t1
+end
+
+function tableLength(t)
+  local count = 0
+  for _ in pairs(t) do count = count + 1 end
+  return count
 end
 
 return _M
