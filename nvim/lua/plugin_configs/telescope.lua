@@ -152,6 +152,10 @@ vim.keymap.set({ 'n' }, '<leader>mu', find_with_options("/src", { "-regex", rege
 vim.keymap.set({ 'n' }, '<leader>mS', find_with_options("/src", {}), opts)
 vim.keymap.set({ 'n' }, '<leader>mt', find_with_options("/testcafe", {}), opts)
 vim.keymap.set({ 'n' }, '<leader>ma', find_with_options("/api-mock", {}), opts)
+vim.keymap.set({ 'n' }, '<leader>mg', function() _M.git_status_in_file_dir() end, opts)
+
+vim.keymap.set({ 'n' }, '<leader>md', function() tb.lsp_workspace_diagnostics() end, opts)
+vim.keymap.set({ 'n' }, '<leader>gr', function() tb.lsp_references() end, opts)
 
 vim.keymap.set({ 'n' }, '<leader>mms', live_grep_in_root_dir("/src"), opts)
 vim.keymap.set({ 'n' }, '<leader>mmt', live_grep_in_root_dir("/testcafe"), opts)
@@ -190,15 +194,12 @@ map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opt
 
 map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
 map('n', '\\r', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
-map('n', '\\s', '<cmd>lua _M.git_status_in_file_dir()<cr>', opts)
-map('n', '\\d', '<cmd>lua require"telescope.builtin".lsp_workspace_diagnostics()<cr>', opts)
 map('n', '\\\\c', '<cmd>lua require"telescope.builtin".commands()<cr>', opts)
 map('n', '\\\\h', '<cmd>lua require"telescope.builtin".help_tags()<cr>', opts)
 map('n', '\\\\b', '<cmd>lua require"telescope.builtin".builtin()<cr>', opts)
 map('n', ',a', '<cmd>lua require"telescope.builtin".lsp_code_actions({ layout_config = { width = 0.5, height = 0.5 } })<cr>', opts)
 map('n', '\\c', '<cmd>lua require"telescope".extensions.neoclip.default()<cr>', opts)
 
-map('n', '<leader>gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
 end
 
 return telescope_config
