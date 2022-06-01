@@ -8,6 +8,8 @@ local luasnip_config = R'plugin_configs.luasnip'
 local neoscroll_config = R'plugin_configs.neoscroll'
 local prettier_config = R'plugin_configs.prettier'
 local hop_config = R'plugin_configs.hop'
+local indent_blankline_config = R'plugin_configs.indent_blankline'
+local neoclip_config = R'plugin_configs.neoclip'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -22,7 +24,7 @@ Plug 'nvim-telescope/telescope.nvim'
 --
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'L3MON4D3/LuaSnip'
--- Plug 'rafamadriz/friendly-snippets'
+Plug 'rafamadriz/friendly-snippets'
 
 Plug 'onsails/lspkind-nvim'
 Plug 'hrsh7th/cmp-buffer'
@@ -68,20 +70,23 @@ Plug 'karb94/neoscroll.nvim'
 Plug 'AckslD/nvim-neoclip.lua'
 Plug 'tami5/sqlite.lua'
 Plug 'phaazon/hop.nvim'
-
+Plug 'jghauser/mkdir.nvim'
 -- Plug 'wbthomason/packer.nvim'
+Plug 'cljoly/telescope-repo.nvim'
+Plug 'Xuyuanp/scrollbar.nvim'
+-- Plug 'lukas-reineke/indent-blankline.nvim'
 
 vim.call('plug#end')
 
 -- require('packer').startup(function(use)
-  -- use 'wbthomason/packer.nvim'
-  -- use {
-  --   "AckslD/nvim-neoclip.lua",
-  --   requires = {'tami5/sqlite.lua', module = 'sqlite'},
-  --   config = function()
-  --     require('neoclip').setup()
-  --   end,
-  -- }
+-- use 'wbthomason/packer.nvim'
+-- use {
+--   "AckslD/nvim-neoclip.lua",
+--   requires = {'tami5/sqlite.lua', module = 'sqlite'},
+--   config = function()
+--     require('neoclip').setup()
+--   end,
+-- }
 -- end)
 
 telescope_config()
@@ -92,36 +97,8 @@ luasnip_config()
 neoscroll_config()
 prettier_config()
 hop_config()
-
-local neoclip_config = function()
-  require('neoclip').setup({
-      history = 1000,
-      enable_persistant_history = false,
-      db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
-      filter = nil,
-      preview = true,
-      default_register = '"',
-      content_spec_column = false,
-      on_paste = {
-        set_reg = false,
-      },
-      keys = {
-        i = {
-          select = '<cr>',
-          paste = '<c-p>',
-          paste_behind = '<c-k>',
-          custom = {},
-        },
-        n = {
-          select = '<cr>',
-          paste = 'p',
-          paste_behind = 'P',
-          custom = {},
-        },
-      },
-    })
-end
-
 neoclip_config()
+
+-- indent_blankline_config()
 
 require'telescope'.load_extension'neoclip'

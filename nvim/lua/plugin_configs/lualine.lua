@@ -3,12 +3,12 @@ local u = R'utils'
 local lualine_config = function()
   require'lualine'.setup{
     options = {
-      -- section_separators = { left = '', right = 'RIGHT' },
-      -- components_separators = { left = 'LC', right = 'RC' }
+      component_separators = { left = '', right = ''},
+      section_separators = { left = '', right = ''},
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'diff', { 'diagnostics', sources = {'nvim'}}},
+      lualine_b = {'diff', { 'diagnostics', sources = {'nvim_diagnostic'}}},
       lualine_c = {'filename'},
       lualine_x = {'filetype'},
       lualine_y = {'%3p%% (%l/%L)'},
