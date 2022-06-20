@@ -182,7 +182,7 @@ function _M.getRoot(dir)
       echo $PWD
     fi
   ]])
-  return git_root .. '/' .. dir
+  return git_root .. '/' .. (dir or '')
 end
 
 function _M.getHome()
