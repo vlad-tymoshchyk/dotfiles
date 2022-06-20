@@ -172,9 +172,9 @@ function _M.getFilePath()
   return vim.fn.expand('%:p')
 end
 
-function _M.getRoot()
+function _M.getRoot(dir)
   local file_dir = _M.getFileDir()
-  return _M.execute([[ 
+  local git_root = _M.execute([[ 
     git_dir=$(git -C ]] .. file_dir .. [[ rev-parse --show-toplevel 2>/dev/null);
     if [ $? -eq 0 ]; then
       echo $git_dir
@@ -182,6 +182,7 @@ function _M.getRoot()
       echo $PWD
     fi
   ]])
+  return git_root .. '/' .. dir
 end
 
 function _M.getHome()

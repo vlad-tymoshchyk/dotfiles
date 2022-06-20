@@ -72,6 +72,7 @@ g.NERDDefaultNesting=-1
 g.NERDTreeWinPos = 'right'
 
 g.user_emmet_mode='in'
+g.user_emmet_leader_key='<C-z>'
 
 g.ale_sign_error = '❌'
 g.ale_sign_warning = '⚠️'

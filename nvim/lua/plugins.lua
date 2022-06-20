@@ -10,6 +10,7 @@ local prettier_config = R'plugin_configs.prettier'
 local hop_config = R'plugin_configs.hop'
 local indent_blankline_config = R'plugin_configs.indent_blankline'
 local neoclip_config = R'plugin_configs.neoclip'
+local treesitter_config = R'plugin_configs.treesitter'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -62,6 +63,7 @@ Plug 'rcarriga/nvim-notify'
 -- Plug ('neoclide/coc.nvim', { branch = 'release', ['do'] = 'yarn install --frozen-lockfile' })
 
 Plug ('nvim-treesitter/nvim-treesitter', { ['do'] = 'TSupdate' })
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 
 Plug 'nvim-lualine/lualine.nvim'
@@ -75,6 +77,8 @@ Plug 'jghauser/mkdir.nvim'
 Plug 'cljoly/telescope-repo.nvim'
 Plug 'Xuyuanp/scrollbar.nvim'
 -- Plug 'lukas-reineke/indent-blankline.nvim'
+
+Plug 'mattn/emmet-vim'
 
 vim.call('plug#end')
 
@@ -98,6 +102,7 @@ neoscroll_config()
 prettier_config()
 hop_config()
 neoclip_config()
+treesitter_config()
 
 -- indent_blankline_config()
 
