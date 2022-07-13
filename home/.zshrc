@@ -73,6 +73,10 @@ alias gpnv="git push --no-verify"
 alias gcnv="git commit --no-verify"
 alias glg="git log --pretty='%Cred%h%Creset | %s %C(cyan)[%an]%Creset %C(green)(%cr)%Creset %C(yellow)%d%Creset'"
 alias glgg="git log --pretty='%Cred%h%Creset | %s %C(cyan)[%an]%Creset %C(green)(%cr)%Creset %C(yellow)%d%Creset' --graph --all"
+alias gw="git worktree"
+alias gwa="git worktree add"
+alias gwr="git worktree remove"
+alias gwl="git worktree list"
 alias gs="git status"
 alias ghr="gh run"
 alias ghrl="gh run list"
@@ -151,7 +155,76 @@ eval "$(direnv hook zsh)"
 autoload -U compinit
 compinit -i
 
-# alias redoc="redoc-cli"
+git_root() {
+  echo `git rev-parse --show-toplevel`
+}
+
+git_bare_path() {
+  echo `git_root | xargs dirname`
+}
+
+git_bare_name() {
+  echo `git_bare_path | xargs basename`
+}
+
+add_worktree() {
+  branch_name=$1
+  repo_path=`git_bare_path`
+
+  if ! git rev-parse --verify "$branch_name"; then
+    git branch $branch_name
+  fi
+
+  sh -c "cd $repo_path && git worktree add $branch_name"
+}
+
+switch_tmux_client() {
+  session_name=$1
+  branch_name=$2
+  repo_path=$3
+
+  if ! tmux has-session -t "$session_name" 2> /dev/null; then
+    tmux new-session -d -s "$session_name" -c "$repo_path/$branch_name"
+  fi
+
+  if [[ -z $TMUX ]]; then
+    tmux attach -t "$session_name"
+  else
+    tmux switch-client -t "$session_name"
+  fi
+}
+
+select_branch() {
+  branches=`git branch -a | sed "s/^[*+ ] //g" | sed "s/remotes\/origin\///g" | sort | uniq`
+  echo `echo "$branches" | fzf --height "10%" --print-query | tail -n 1`
+}
+
+twa() {
+  branch_name=$1
+  
+  if [[ -z "$branch_name" ]]; then
+    branch_name=`select_branch`
+  fi
+
+  add_worktree "$branch_name"
+  repo_name=`git_bare_name`
+  repo_path=`git_bare_path`
+  session_name="${repo_name}--${branch_name}"
+
+  switch_tmux_client "${session_name}" "${branch_name}" "${repo_path}"
+}
+
+tw() {
+  worktrees=`git worktree list | tail -n +2`
+  branches=`echo $worktrees | sed "s/.*\[\(.*\)\]/\1/g"`
+  branch_name=`echo $branches | fzf --height "10%"`
+
+  repo_path=`git_bare_path`
+  repo_name=`git_bare_name`
+  session_name="${repo_name}--${branch_name}"
+
+  switch_tmux_client "${session_name}" "${branch_name}" "${repo_path}"
+}
 
 UPDATE_TIME=`expr 60 \* 60 \* 24`
 dotfiles_dir="$HOME/dotfiles"
