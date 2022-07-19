@@ -23,6 +23,7 @@
   codev = co development
   comas = co master
   cob = checkout -b
+	root = !pwd
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk@gmail.com
