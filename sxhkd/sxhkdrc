@@ -1,0 +1,24 @@
+super + {0-9}
+  i3-msg workspace {0-9}	
+
+super + shift + {0-9}
+  w={0-9}; i3-msg move container to workspace $w; i3-msg workspace $w;
+
+super + g ; {a-z}
+  i3-msg workspace {a-z}	
+
+super + {h, j, k, l}
+  i3-msg focus {left, down, up, right}
+
+super + shift + {h, j, k, l}
+  i3-msg move {left, down, up, right}
+
+ctrl + {1-5}
+  { ~/dotfiles/bin/set_dvorak_keyboard, \
+    ~/dotfiles/bin/set_ukr_eng_keyboard, \
+    ~/dotfiles/bin/set_rus_eng_keyboard, \
+    ~/dotfiles/bin/set_spanish_eng_keyboard, \
+    ~/dotfiles/bin/set_esperanto_eng_keyboard }
+
+ctrl + shift + 6
+  ~/bin/set_eng_ukr_keyboard
