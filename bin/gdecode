@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+# decodes git object content
+
+import sys
+import os
+import zlib
+
+relpath = sys.argv[1]
+cwd = os.getcwd()
+file = os.path.join(cwd, relpath)
+compressed_content = open(file, 'rb').read()
+print(zlib.decompress(compressed_content))

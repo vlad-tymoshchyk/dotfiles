@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+template=`ls ~/project-templates | fzf --height 10%`
+echo "Template: ${template}"
+
+project_name=""
+if [ ! -z $1 ]; then
+  project_name=$1
+else
+  echo -n "Enter name of the project: "
+  read entered_name
+  project_name=$entered_name
+fi
+
+project_path="${PWD}/${project_name}"
+cp -r "${HOME}/project-templates/${template}" "${project_path}"
+(
+  cd "$project_path"
+  sed -i "s/%TEMPLATE_TO_REPLACE_TITLE%/${project_name}/" src/index.html
+  sed -i "s/%TEMPLATE_TO_REPLACE_PACKAGE_NAME%/template-project-${project_name}/" package.json
+  if [ ! -z .git ]; then
+    git init 
+    git add .
+    git commit -am "basic structure"
+  fi
+)
+
+session_name="template-project--${project_name}"
+tmux new-session -d -s "${session_name}" -c "${project_path}"
+
+echo "Created project \"${project_name}\" from ~/project-templates/${template}"
+
+if [[ -z $TMUX ]]; then
+  tmux attach -t "${session_name}"
+else
+  tmux switch-client -t "${session_name}"
+fi
