@@ -12,7 +12,22 @@ ZSH_THEME="awesomepanda"
 
 plugins=(git z vi-mode jump colorize command-not-found)
 
-export PATH=$HOME/bin:$HOME/bin/nvim/bin:$HOME/dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
+if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
+  export PATH=$PATH\
+:/usr/local/go/bin\
+:/usr/libexec/docker/cli-plugins\
+:$HOME/go/bin\
+:$HOME/bin/nvim/bin\
+:$HOME/dotfiles/bin
+
+# :$HOME/bin\
+# :$HOME/.local/bin\
+# :$HOME/.cargo/bin\
+else
+  echo "Path loaded already"
+fi
+
+# echo $PATH | sed "s/:/\n/g" | sort
 
 source $ZSH/oh-my-zsh.sh
 set -g mouse on
@@ -46,11 +61,11 @@ alias c=`which cat`
 alias n="`which nvim`"
 alias nu="nvim -u ~/.vimrc"
 alias no="nvim  +'norm! \`0'"
+alias lg="lazygit"
 alias t="tmux"
 alias rr="clear && r"
 alias nf="file=\`fzf --height \"10%\"\`; if [ ! -z \$file ]; then nvim \$file; fi"
 alias gcob="branch=\`git branch --all | fzf --height \"10%\" | xargs\`; if [ ! -z \$branch ]; then git checkout \$branch; fi"
-# alias vimrc="nvim ~/.vimrc"
 alias vimrc="nvim ~/.config/nvim/init.lua"
 alias luainit="nvim ~/dotfiles/nvim/init.lua"
 alias bashrc="nvim ~/.bashrc"
@@ -90,7 +105,7 @@ alias tree4="tree -L 4"
 alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
-alias cal="gcal --with-week-number --starting-day=Monday --year 2021"
+alias cal="gcal --with-week-number --starting-day=Monday --year 2022"
 alias xg="xdg-open"
 alias _l="exa --long --icons --all --group-directories-first --sort=ext"
 alias _lt="_l --tree"
@@ -156,11 +171,17 @@ autoload -U compinit
 compinit -i
 
 git_root() {
-  echo `git rev-parse --show-toplevel`
+  echo `git root`
 }
 
 git_bare_path() {
-  echo `git_root | xargs dirname`
+  root=`git_root`
+  up_root=`dirname $root`
+  if [[ -f "${root}/HEAD" ]]; then
+    echo $root
+  else
+    echo $up_root
+  fi
 }
 
 git_bare_name() {
