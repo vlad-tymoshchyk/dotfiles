@@ -2,7 +2,7 @@
 
 setxkbmap -layout dvorak
 setxkbmap -option grp:win_space_toggle
-xkb-switch -s us
-~/dotfiles/home/bin/utils/notify_language_switch "English_(dvorak)"
+# xkb-switch -s us
+~/dotfiles/bin/notify_language_switch "English_(dvorak)"
 
 setxkbmap -option caps:escape

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
+
 setxkbmap -layout dvorak,ua
 setxkbmap -option grp:win_space_toggle
 xkb-switch -s ua
-~/bin/utils/notify_language_switch "Українська"
+~/dotfiles/bin/notify_language_switch "Українська"

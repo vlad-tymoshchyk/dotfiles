@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+
 setxkbmap -layout us,ua
 setxkbmap -option grp:win_space_toggle
 xkb-switch -s us
-~/dotfiles/home/bin/utils/notify_language_switch "English_(qwerty)"
+~/dotfiles/bin/notify_language_switch "English_(qwerty)"
 
 setxkbmap -option caps:escape
