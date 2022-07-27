@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 
-tmux ls | fzf | sed "s/^\([^:]*\).*/\1/g" | xargs tmux switch-client -t
+session_name=`tmux ls | fzf | sed "s/^\([^:]*\).*/\1/g"`
+
+if [ -z $TMUX ]; then
+  tmux attach -t "${session_name}"
+else
+  tmux switch-client -t "${session_name}"
+fi

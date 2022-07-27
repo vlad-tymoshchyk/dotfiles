@@ -101,6 +101,7 @@ local telescope_config = function()
 
   require('telescope').setup({
       defaults = {
+        shorten_path = true,
         prompt_prefix = "❯ ",
         selection_caret = "❯ ",
 
@@ -191,9 +192,9 @@ map('n', '44<space>g',  '<cmd>lua _M.live_grep_down_file_dir(4)<cr>', opts)
 map('n', '55<space>g',  '<cmd>lua _M.live_grep_down_file_dir(5)<cr>', opts)
 
 map('n', '\\\\d',     '<cmd>lua _M.find_files_in_home_dir("/dotfiles")<cr>', opts)
+map('n', ',gc', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
 
 map('n', '<space>l', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find()<cr>', opts)
-map('n', '\\r', '<cmd>lua require"telescope.builtin".resume()<cr>', opts)
 map('n', '\\\\c', '<cmd>lua require"telescope.builtin".commands()<cr>', opts)
 map('n', '\\\\h', '<cmd>lua require"telescope.builtin".help_tags()<cr>', opts)
 map('n', '\\\\b', '<cmd>lua require"telescope.builtin".builtin()<cr>', opts)

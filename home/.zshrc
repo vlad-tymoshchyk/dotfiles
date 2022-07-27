@@ -18,13 +18,11 @@ if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
 :/usr/libexec/docker/cli-plugins\
 :$HOME/go/bin\
 :$HOME/bin/nvim/bin\
+:$HOME/.cargo/bin\
 :$HOME/dotfiles/bin
 
 # :$HOME/bin\
 # :$HOME/.local/bin\
-# :$HOME/.cargo/bin\
-else
-  echo "Path loaded already"
 fi
 
 # echo $PATH | sed "s/:/\n/g" | sort
@@ -110,7 +108,7 @@ alias xg="xdg-open"
 alias _l="exa --long --icons --all --group-directories-first --sort=ext"
 alias _lt="_l --tree"
 alias l="_l"
-alias lt="_lt --level=2"
+alias lt2="_lt --level=2"
 alias lt3="_lt --level=3"
 alias lt4="_lt --level=4"
 alias lt5="_lt --level=5"
@@ -130,10 +128,6 @@ export LC_TIME
 
 export EDITOR=$(which nvim)
 export PDF_VIEWER=$(which zathura)
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-
-[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -205,6 +199,13 @@ if [ $difference -gt $UPDATE_TIME ]; then
   fi
 fi
 
+pr_list() {
+  echo "AUTHN"
+  gh pr --repo imprivata-cloud/saas-authn-ui ls
+  echo "ADMIN"
+  gh pr --repo imprivata-cloud/saas-admin-ui ls
+}
+
 private_zshrc_after="$HOME/.private.after.zshrc"
 if [ -f $private_zshrc_after ]; then
   source "$private_zshrc_after"
@@ -216,3 +217,6 @@ fi
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
