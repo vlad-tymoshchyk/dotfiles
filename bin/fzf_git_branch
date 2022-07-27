@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+branches=`git branch -a | sed "s/^[*+ ] //g" | sed "s/remotes\/origin\///g" | sort | uniq`
+echo `echo "$branches" | fzf --height "10%" --print-query | tail -n 1`

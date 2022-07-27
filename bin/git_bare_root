@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+is_dot_git_dir() {
+  if [ \
+    -f HEAD \
+    -a -d objects \
+    -a -d refs \
+  ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+while ! is_dot_git_dir; do
+  if [ $PWD = "/" ]; then
+    exit 1
+  fi
+
+  cd ..
+done
+
+echo $PWD

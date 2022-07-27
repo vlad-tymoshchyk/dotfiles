@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+root=`~/dotfiles/bin/git_bare_root`
+
+if [[ -z $root ]]; then
+  echo "Not in git bare repo"
+  exit 1
+fi
+
+branches=`git worktree list | tail -n +2 | sed "s/.*\[\([^]]*\)\]/\1/g"`
+branch_name=`echo $branches | sed "s/ /\n/g" | fzf --height "10%"`
+
+if [ -z $branch_name ]; then
+  echo "No worktree selected"
+  exit
+fi
+
+repo_name=`basename "${root}"`
+session_name="${repo_name}--${branch_name}"
+
+if ! tmux has-session -t "$session_name" 2> /dev/null; then
+  tmux new-session -d -s "$session_name" -c "$root/$branch_name"
+fi
+
+if [[ -z $TMUX ]]; then
+  tmux attach -t "$session_name"
+else
+  tmux switch-client -t "$session_name"
+fi

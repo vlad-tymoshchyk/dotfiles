@@ -137,27 +137,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || p
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# check_and_create_placeholder_session() {
-#   echo "checking for placeholder_session..."
-#   notify-send "checking for placeholder_session..."
-#   placeholder_session="__placeholder__"
-#   sessions_count=`tmux ls 2>/dev/null | wc -l`
-#   if [ $sessions_count -eq 0 ]; then
-#     tmux new-session -s $placeholder_session -d
-
-#     tmux set-hook -g session-closed "run-shell \"check_and_create_placeholder_session\""
-#   else
-#     if [ $sessions_count -gt 1 ]; then
-#       tmux has -t $placeholder_session 2>/dev/null
-#       if [ $? -eq 0 ]; then
-#         tmux kill-session -t $placeholder_session
-#       fi
-#     fi
-#   fi
-# }
-
-# ~/dotfiles/bin/check_and_create_placeholder_session
-
 hash -d authn=~/projects/saas-authn-ui
 hash -d admin=~/projects/saas-admin-ui
 hash -d idls=~/projects/saas-api-idls
@@ -174,23 +153,13 @@ git_root() {
   echo `git root`
 }
 
-git_bare_path() {
-  root=`git_root`
-  up_root=`dirname $root`
-  if [[ -f "${root}/HEAD" ]]; then
-    echo $root
-  else
-    echo $up_root
-  fi
-}
-
 git_bare_name() {
-  echo `git_bare_path | xargs basename`
+  echo `git_bare_repo | xargs basename`
 }
 
 add_worktree() {
   branch_name=$1
-  repo_path=`git_bare_path`
+  repo_path=`git_bare_repo`
 
   if ! git rev-parse --verify "$branch_name"; then
     git branch $branch_name
@@ -213,38 +182,6 @@ switch_tmux_client() {
   else
     tmux switch-client -t "$session_name"
   fi
-}
-
-select_branch() {
-  branches=`git branch -a | sed "s/^[*+ ] //g" | sed "s/remotes\/origin\///g" | sort | uniq`
-  echo `echo "$branches" | fzf --height "10%" --print-query | tail -n 1`
-}
-
-twa() {
-  branch_name=$1
-  
-  if [[ -z "$branch_name" ]]; then
-    branch_name=`select_branch`
-  fi
-
-  add_worktree "$branch_name"
-  repo_name=`git_bare_name`
-  repo_path=`git_bare_path`
-  session_name="${repo_name}--${branch_name}"
-
-  switch_tmux_client "${session_name}" "${branch_name}" "${repo_path}"
-}
-
-tw() {
-  worktrees=`git worktree list | tail -n +2`
-  branches=`echo $worktrees | sed "s/.*\[\(.*\)\]/\1/g"`
-  branch_name=`echo $branches | fzf --height "10%"`
-
-  repo_path=`git_bare_path`
-  repo_name=`git_bare_name`
-  session_name="${repo_name}--${branch_name}"
-
-  switch_tmux_client "${session_name}" "${branch_name}" "${repo_path}"
 }
 
 UPDATE_TIME=`expr 60 \* 60 \* 24`
