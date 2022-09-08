@@ -7,32 +7,17 @@ if [[ -z $root ]]; then
   exit 1
 fi
 
-branch_name=$1
+branches=`git worktree list | tail -n +2 | sed "s/.*\[\([^]]*\)\]/\1/g"`
+branch_name=`echo $branches | sed "s/ /\n/g" | fzf --height "10%"`
 
-if [[ -z "$branch_name" ]]; then
-  selected_branch=`~/dotfiles/bin/fzf_git_branch`
-
-  if [[ -z "$selected_branch" ]]; then
-    echo "No branch selected"
-    exit 0;
-  fi
-
-  branch_name="${selected_branch}"
-else
-  git branch "${branch_name}"
+if [ -z $branch_name ]; then
+  echo "No worktree selected"
+  exit
 fi
-
-worktree_path="${root}/trees/${branch_name}"
-
-echo root $root
-echo branch_name $branch_name
-echo worktree_path $worktree_path
 
 repo_name=`basename "${root}"`
 short_branch_name=`~/dotfiles/bin/split_string "$branch_name" "/" -1`
 session_name="${repo_name}--${short_branch_name}"
 
-
-git worktree add "${worktree_path}" "${branch_name}"
 ~/dotfiles/bin/create_tmux_session_if_not_exists "${session_name}" "${root}/trees/${branch_name}"
 ~/dotfiles/bin/attach_or_switch_tmux_session "${session_name}"

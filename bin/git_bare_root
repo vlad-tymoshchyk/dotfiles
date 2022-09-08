@@ -3,6 +3,8 @@
 is_dot_git_dir() {
   if [ \
     -f HEAD \
+    -a -d branches \
+    -a -d hooks \
     -a -d objects \
     -a -d refs \
   ]; then

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+string=$1
+delimiter=$2
+index=$3
+
+IFS="$delimiter" read -ra SPLIT <<< "$string"
+echo "${SPLIT[$index]}"
