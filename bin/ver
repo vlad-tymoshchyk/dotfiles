@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo "node " `node --version`
+echo "npm  " `npm --version`
