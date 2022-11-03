@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 executable_name=$1
+if [[ -z "${executable_name}" ]]; then
+  echo "Executable name not provide"
+  exit 0
+fi
+
 executable_path=`which "${executable_name}"`
 
 if [[ -z "${executable_path}" ]]; then
