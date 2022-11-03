@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+executable_name=$1
+executable_path=`which "${executable_name}"`
+
+if [[ -z "${executable_path}" ]]; then
+  echo "Executable not found... ${executable_name}"
+else 
+  nvim "${executable_path}"
+fi
