@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+session_name=`basename $PWD`
+
+create_tmux_session_if_not_exists "${session_name}"
+attach_or_switch_tmux_session "${session_name}"
