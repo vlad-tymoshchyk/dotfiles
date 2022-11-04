@@ -17,7 +17,7 @@ if [ -e $node_modules_src ]; then # source exists
     if [ -h $node_modules_target ]; then # is symlink
       link_address="$(readlink $node_modules_target)"
       if [ $link_address == $node_modules_src ]; then # link address is correct
-        echo "[node_modules] OK: is symlink and adress is correct"
+        echo "[node_modules] OK"
       else
         echo "[node_modules] ERROR: is symlink but address is incorrect"
         echo "[node_modules] ..expected: ${node_modules_src}"
@@ -37,22 +37,49 @@ env_target=$target_path/.env
 if [ -e $env_src ]; then
   if [ ! -e $env_target ]; then
     cp $env_src $env_target;
-    echo "[.env] COPIED:"
+    echo "[.env] COPIED"
   else # target exists
     if cmp --silent $env_src $env_target; then
-      echo "[.env] OK: file identical"
+      echo "[.env] OK"
     else
       echo "[.env] WARN: files are different"
-      echo "-------------"
       git diff $env_src $env_target
-      echo "-------------"
     fi
   fi
 else
-  echo [.env] WARN: no .env file in source directory
+  echo "[.env] WARN: no .env in source directory"
 fi
 
-echo "---- REST ----"
-cp -r "${husky_dir}" .
-cp "${envs_dir}" .
+# .husky
+husky_src=$root/.husky
+husky_targe=$target_path/.husky
+if [ -d $husky_src ]; then
+  if [ ! -d $husky_targe ]; then
+    cp -r $husky_src $target_path
+    echo "[.husky] COPIED"
+  else
+    echo "[.husky] OK"
+  fi
+else
+  echo "[.husky] WARN: no .husky in source directory"
+fi
 
+# .env.*
+envs_src=$root/.env.*
+if ls ${envs_src} > /dev/null 2>&1; then
+  for env_src in ${envs_src}; do
+    file_name=`basename ${env_src}`
+    env_target=$target_path/$file_name
+    if [ ! -e $env_target ]; then
+      cp $env_src $env_target;
+      echo "[.env.* ${file_name}] COPIED"
+    else # target exists
+      if cmp --silent $env_src $env_target; then
+        echo "[.env.* ${file_name}] OK"
+      else
+        echo "[.env.* ${file_name}] WARN: files are different"
+        git diff $env_src $env_target
+      fi
+    fi
+  done
+fi
