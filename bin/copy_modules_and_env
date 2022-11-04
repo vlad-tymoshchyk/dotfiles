@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+git_root=`git_bare_root`
+root=${git_root}/trees/main
+target_path=`pwd`
+envs_dir=${root}/trees/main/.env.*
+husky_dir=${root}/trees/main/.husky
+
+# checking node_modules
+node_modules_src=$root/node_modules
+node_modules_target=$target_path/node_modules
+if [ -e $node_modules_src ]; then # source exists
+  if [ ! -e $node_modules_target ]; then # target not exists
+    ln -s $node_modules_src $target_path
+    echo "[node_modules] CREATED: symlink"
+  else # target not exists
+    if [ -h $node_modules_target ]; then # is symlink
+      link_address="$(readlink $node_modules_target)"
+      if [ $link_address == $node_modules_src ]; then # link address is correct
+        echo "[node_modules] OK: is symlink and adress is correct"
+      else
+        echo "[node_modules] ERROR: is symlink but address is incorrect"
+        echo "[node_modules] ..expected: ${node_modules_src}"
+        echo "[node_modules] ..received: ${link_address}"
+      fi
+    else
+      echo "[node_modules] ERROR: node_modules exists and it's NOT symlink"
+    fi
+  fi
+else
+  echo "[node_modules] ERROR: no node_modules found in source folder"
+fi
+
+# check .env file
+env_src=$root/.env
+env_target=$target_path/.env
+if [ -e $env_src ]; then
+  if [ ! -e $env_target ]; then
+    cp $env_src $env_target;
+    echo "[.env] COPIED:"
+  else # target exists
+    if cmp --silent $env_src $env_target; then
+      echo "[.env] OK: file identical"
+    else
+      echo "[.env] WARN: files are different"
+      echo "-------------"
+      git diff $env_src $env_target
+      echo "-------------"
+    fi
+  fi
+else
+  echo [.env] WARN: no .env file in source directory
+fi
+
+echo "---- REST ----"
+cp -r "${husky_dir}" .
+cp "${envs_dir}" .
+
