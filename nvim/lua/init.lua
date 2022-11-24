@@ -23,8 +23,9 @@ vim.cmd [[
 	command! Zshrc tabe ~/.zshrc
 	command! Vzshrc vs ~/.zshrc
 	command! Delete call delete(expand('%')) | bdelete!
+	command! Q q
 
-	autocmd BufWritePost *.{js,ts,jsx,tsx,css,scss} :PrettierAsync
+	autocmd BufWritePre *.{js,ts,jsx,tsx,css,scss} :Prettier
 	autocmd BufWritePost */.vimrc :Conf
 	autocmd BufWritePre *.go :GoImports
 	" autocmd BufWritePost ~/dotfiles/config/nvim/init.lua :luafile ~/dotfiles/config/nvim/init.lua
