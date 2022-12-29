@@ -1,6 +1,7 @@
 - name: Add PPA
   become_user: root
-  shell: add-apt-repository ppa:spvkgn/exa
+  shell: add-apt-repository ppa:spvkgn/exa && \
+    add-apt-repository universe
   tags:
     - core-setup
 
