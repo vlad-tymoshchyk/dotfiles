@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+  - include_tasks: tasks/core-setup.yml
+    tags:
+      - core-setup
+
+  - include_tasks: tasks/dotfiles-setup.yml
+    tags:
+      - dotfiles-setup
+
+  - include_tasks: tasks/zsh-setup.yml
+    tags:
+      - zsh-setup

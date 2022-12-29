@@ -1,0 +1,23 @@
+- name: Add PPA
+  become_user: root
+  shell: add-apt-repository ppa:spvkgn/exa
+  tags:
+    - core-setup
+
+- name: Install core commands
+  become_user: root
+  apt:
+    name: ["curl", "tree", "nodejs", "npm", "python2", "python3", "python3-neovim", "cargo", "direnv", "exa", "zsh"]
+  tags:
+    - core-setup
+
+- name: Create empty .zshrc
+  shell: touch ~/.zshrc
+  tags: 
+    - core-setup
+
+- name: Oh-My-Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  tags:
+    - core-setup
+    - zsh-setup

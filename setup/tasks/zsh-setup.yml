@@ -1,0 +1,14 @@
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  tags:
+    - zsh-setup
+
+- name: Replace new .zshrc with correct one
+  shell: rm ~/.zshrc; ~/dotfiles/links_manager.py
+  tags:
+    - zsh-setup
+
+- name: Change zsh theme
+  shell: sed -i "s/awesomepanda/darkblood/" ~/.zshrc
+  tags:
+    - zsh-setup

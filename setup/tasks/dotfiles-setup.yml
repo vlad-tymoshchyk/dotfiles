@@ -1,0 +1,9 @@
+- name: Create .config folder
+  shell: mkdir -p ~/.config
+  tags:
+    - dotfiles-setup
+
+- name: Creaty symlinks
+  shell: ~/dotfiles/links_manager.py
+  tags:
+    - dotfiles-setup

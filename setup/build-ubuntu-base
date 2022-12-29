@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker build . -f base.Dockerfile -t ubuntu-base

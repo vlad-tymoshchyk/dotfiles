@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+
+apt-get update
+apt-get upgrade --yes
+apt-get install --yes software-properties-common git
+
+apt-add-repository --yes --update ppa:ansible/ansible
+apt-get install --yes ansible
+
+git clone https://github.com/vlad-tymoshchyk/dotfiles.git
+
+~/dotfiles/setup/run-ansible
