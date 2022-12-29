@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo ansible-playbook -v --become --become-user=vtymoshchyk ~/dotfiles/setup/local.yml
+sudo ansible-playbook -v --become --become-user=$USER ~/dotfiles/setup/local.yml
