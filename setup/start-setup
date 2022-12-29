@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 
-apt-get update
-apt-get upgrade --yes
-apt-get install --yes software-properties-common git
+sudo apt-get update
+sudo apt-get upgrade --yes
+sudo apt-add-repository --yes --update ppa:ansible/ansible
 
-apt-add-repository --yes --update ppa:ansible/ansible
-apt-get install --yes ansible
+sudo apt-get install --yes software-properties-common git ansible
 
 git clone https://github.com/vlad-tymoshchyk/dotfiles.git
 
