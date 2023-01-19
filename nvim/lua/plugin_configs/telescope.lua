@@ -97,6 +97,7 @@ end
 
 local telescope_config = function()
   local actions = require('telescope.actions')
+  local layout_actions = require('telescope.actions.layout')
   tb = require'telescope.builtin'
 
   require('telescope').setup({
@@ -111,6 +112,7 @@ local telescope_config = function()
           },
           n = {
             ["dd"] = actions.delete_buffer,
+            ["T"] = layout_actions.toggle_preview,
           }
         },
 
@@ -151,11 +153,12 @@ local regexTestFiles = ".*\\.\\(test\\|spec\\)\\.[a-z]*"
 vim.keymap.set({ 'n' }, '<leader>ms', find_with_options("/src", { "-not", "-regex", regexTestFiles }), opts)
 vim.keymap.set({ 'n' }, '<leader>mu', find_with_options("/src", { "-regex", regexTestFiles }), opts)
 vim.keymap.set({ 'n' }, '<leader>mS', find_with_options("/src", {}), opts)
+vim.keymap.set({ 'n' }, '<leader>M', find_with_options("", {}), opts)
 vim.keymap.set({ 'n' }, '<leader>mt', find_with_options("/testcafe", {}), opts)
 vim.keymap.set({ 'n' }, '<leader>ma', find_with_options("/api-mock", {}), opts)
 vim.keymap.set({ 'n' }, '<leader>mg', function() _M.git_status_in_file_dir() end, opts)
 
-vim.keymap.set({ 'n' }, '<leader>md', function() tb.lsp_workspace_diagnostics() end, opts)
+vim.keymap.set({ 'n' }, '<leader>md', function() tb.diagnostics() end, opts)
 vim.keymap.set({ 'n' }, '<leader>gr', function() tb.lsp_references() end, opts)
 
 vim.keymap.set({ 'n' }, '<leader>mms', live_grep_in_root_dir("/src"), opts)
