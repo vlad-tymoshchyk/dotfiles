@@ -1,0 +1,12 @@
+{
+  "name": "sandboxes",
+  "version": "1.0.0",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "d3": "^7.6.1",
+    "lokijs": "^1.5.12",
+    "redux": "^4.2.0",
+    "short-uuid": "^4.2.2"
+  }
+}
