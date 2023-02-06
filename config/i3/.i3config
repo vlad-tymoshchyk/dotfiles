@@ -127,20 +127,20 @@ bindsym $mod+$shift+7 move container to workspace 7; workspace 7;
 bindsym $mod+$shift+8 move container to workspace 8; workspace 8;
 bindsym $mod+$shift+9 move container to workspace 9; workspace 9;
 bindsym $mod+$shift+0 move container to workspace 10; workspace 10;
-bindsym XF86AudioRaiseVolume exec volume -i 5 && volume -n
-bindsym XF86AudioLowerVolume exec volume -d 5 && volume -n
-bindsym XF86AudioMute exec volume -m && volume -n
+bindsym XF86AudioRaiseVolume exec ~/dotfiles/bin/volume -i 5 && ~/dotfiles/bin/volume -n
+bindsym XF86AudioLowerVolume exec ~/dotfiles/bin/volume -d 5 && ~/dotfiles/bin/volume -n
+bindsym XF86AudioMute exec ~/dotfiles/bin/volume -m && ~/dotfiles/bin/volume -n
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86MonBrightnessDown exec ~/bin/brightdown 30
-bindsym XF86MonBrightnessUp exec ~/bin/brightup 30
-bindsym $mod+Up exec volume -i 5 && volume -n
-bindsym $mod+Down exec volume -d 5 && volume -n
-bindsym $mod+$m exec volume -m && volume -n
-bindsym $mod+Left exec ~/bin/brightdown
-bindsym $mod+Right exec ~/bin/brightup
+bindsym XF86MonBrightnessDown exec ~/dotfiles/bin/brightdown 30
+bindsym XF86MonBrightnessUp exec ~/dotfiles/bin/brightup 30
+bindsym $mod+Up exec ~/dotfiles/bin/volume -i 5 && ~/dotfiles/bin/volume -n
+bindsym $mod+Down exec ~/dotfiles/bin/volume -d 5 && ~/dotfiles/bin/volume -n
+bindsym $mod+$m exec ~/dotfiles/bin/volume -m && ~/dotfiles/bin/volume -n
+bindsym $mod+Left exec ~/dotfiles/bin/brightdown
+bindsym $mod+Right exec ~/dotfiles/bin/brightup
 bindsym $mod+$c exec copyq toggle
 
 bar {
