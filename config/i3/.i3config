@@ -52,7 +52,8 @@ floating_modifier $alt
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "feh --bg-fill ~/Documents/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
-exec "setxkbmap -option caps:escape"
+exec "setxkbmap -option caps:backspace"
+exec ~/bin/set_dvorak_keyboard
 exec "guake"
 
 for_window [class="^.*"] border pixel 1
@@ -72,8 +73,8 @@ bindsym $mod+$o workspace back_and_forth
 # bindcode $mod+$semicolon exec guake -t
 bindsym $mod+$return exec alacritty
 bindsym $mod+$shift+$q kill
-bindsym $mod+$d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
-bindsym $mod+$shift+$d exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
+bindsym $mod+$g exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'"
+bindsym $mod+$shift+$g exec --no-startup-id dmenu_run -i -l 30 -fn 'Ubuntu Mono:pixelsize=24'
 bindsym $mod+$i exec rofi -show window
 bindsym Print	exec flameshot gui
 bindsym $mod+$p exec flameshot gui
@@ -155,7 +156,7 @@ bindsym $mod+$w mode "$mode_workspaces"
 bindsym $mod+$shift+$w mode "$mode_move_to_workspace"
 bindsym $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
 mode "$mode_launcher" {
-	bindsym $g exec google-chrome; mode "default"
+	bindsym $g exec google-chrome --profile-directory="Default"; mode "default"
 	bindsym $f exec xdg-open ~; mode "default"
 	bindsym $h exec alacritty --class "Float_Alacritty" --command "htop"; mode "default"
 	bindsym $b exec --no-startup-id ~/dotfiles/bin/rbook; mode "default"
