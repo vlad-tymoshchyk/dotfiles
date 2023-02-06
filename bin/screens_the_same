@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+outputs=$(xrandr -q | grep -Po "^.+(?= connected)")
+outputs_array=($outputs)
+first_output=${outputs_array[0]}
+second_output=${outputs_array[1]}
+
+xrandr --output $first_output --same-as $second_output

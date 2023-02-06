@@ -171,8 +171,8 @@ mode "$mode_launcher" {
 }
 mode "$mode_utils" {
 	bindsym $a exec exec xrandr --auto; mode "default"
-	bindsym $o exec exec xrandr --output HDMI-1 --same-as eDP-1; mode "default"
-	bindsym $s exec exec xrandr --output HDMI-1 --right-of eDP-1; mode "default"
+	bindsym $o exec ~/dotfiles/bin/screens_the_same ; mode "default"
+	bindsym $s exec ~/dotfiles/bin/screens_separate ; mode "default"
 	bindsym $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
 	bindsym $d exec ~/bin/brightdown 100; mode "default"
 	bindsym $f exec ~/bin/brightup 100; mode "default"
