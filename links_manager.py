@@ -37,6 +37,7 @@ LINKS = [
     ('~/.config/i3blocks', '~/dotfiles/config/i3blocks'),
     ('~/.config/tmuxinator', '~/dotfiles/tmuxinator'),
     ('~/.config/zathura', '~/dotfiles/config/zathura'),
+    ('~/.local/share/fonts', '~/dotfiles/local/fonts'),
 ]
 
 LINKS = [
