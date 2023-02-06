@@ -1,6 +1,6 @@
 #!/bin/bash
 
-install="sudo npm install -g"
+install="npm install -g"
 
 while read package; do
   if [[ ! $package =~ ^(#| *$) ]]; then

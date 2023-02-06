@@ -3,5 +3,7 @@ nodemon
 mocha
 jest
 prettier
+typescript-language-server
+neovim
 
 # vi: ft=sh

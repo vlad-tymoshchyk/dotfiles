@@ -1,17 +1,24 @@
 # cli
 apt-file
+cargo
 curl
+direnv
+exa
+fzf
 git
 htop
 i3
+i3blocks
 inotify-tools
-nmap
-ranger
-tig
+pavucontrol
+python2
+python3
+python3-neovim
+rpm
 tmux
+tmuxinator
 tree
 zsh
-npm
 
 # libs
 zlib1g-dev
