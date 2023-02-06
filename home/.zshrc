@@ -81,6 +81,7 @@ alias grepra="grep -nR"
 alias apts="apt-cache search"
 alias apti="apt-get install"
 alias sapti="sudo apt-get install"
+alias aptl="apt-file list"
 
 alias gpnv="git push --no-verify"
 alias gcnv="git commit --no-verify"
