@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
+cd ~/sandboxes
 
+mkdir -p sandbox-bash
+touch sandbox-bash/main.bash
+
+mkdir -p sandbox-js
+touch sandbox-bash/main.js
+
+mkdir -p sandbox-ts
+touch sandbox-bash/main.ts
+
+mkdir -p sandbox-py
+touch sandbox-bash/main.py
