@@ -1,0 +1,9 @@
+#!/bin/bash
+
+package="skypeforlinux-64.deb"
+folder="~/Downloads"
+
+[[ ! -d $folder ]] && mkdir $folder
+cd $foldler 
+wget "https://go.skype.com/${package}"
+sudo apt install -y "./$package"

@@ -52,9 +52,9 @@ floating_modifier $alt
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
 exec "feh --bg-fill ~/Documents/wallpapers/iss_sun_earth.jpg"
 exec "copyq"
-exec "setxkbmap -option caps:backspace"
-exec ~/bin/set_dvorak_keyboard
-exec "guake"
+exec_always "setxkbmap -option caps:backspace"
+exec_always ~/bin/set_dvorak_keyboard
+exec_always --no-startup-id nm-applet
 
 for_window [class="^.*"] border pixel 1
 for_window [instance="Float_Alacritty"] floating enable
