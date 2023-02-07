@@ -21,6 +21,7 @@ tmux
 tmuxinator
 tree
 zsh
+xkb-switch # ppa:atareao/atareao
 
 # libs
 zlib1g-dev

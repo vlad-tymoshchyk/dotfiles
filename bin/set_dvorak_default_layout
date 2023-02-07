@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+file=/etc/default/keyboard
+
+xkblayout=$(cat $file | grep -oP "(?<=XKBLAYOUT=\").+(?=\")")
+xkbvariant=$(cat $file | grep -oP "(?<=XKBVARIANT=\").+(?=\")")
+
+echo before XKBLAYOUT=$xkblayout
+echo before XKBVARIANT=$xkbvariant
+echo -----------------------------
+
+sudo sed -i -E "s/(XKBLAYOUT=\")(.+)(\")/\1us\3/" $file
+sudo sed -i -E "s/(XKBVARIANT=\")(.+)(\")/\1dvorak\3/" $file
+
+xkblayout=$(cat $file | grep -oP "(?<=XKBLAYOUT=\").+(?=\")")
+xkbvariant=$(cat $file | grep -oP "(?<=XKBVARIANT=\").+(?=\")")
+
+echo after XKBLAYOUT=$xkblayout
+echo after XKBVARIANT=$xkbvariant
+echo -----------------------------
+
+cat $file

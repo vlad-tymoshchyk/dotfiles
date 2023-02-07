@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+TOUCHPAD_ID=$(xinput | grep Touchpad | grep -oP "(?<=id=)\d+")
+
+TAPPING_PROP="libinput Tapping Enabled"
+# TAPPING_PROP_DEFAULT="${TAPPING_PROP} Default"
+
+echo BEFORE:
+xinput list-props $TOUCHPAD_ID | grep "${TAPPING_PROP}"
+
+xinput set-prop $TOUCHPAD_ID "${TAPPING_PROP}" 1
+# xinput set-prop $TOUCHPAD_ID "${TAPPING_PROP_DEFAULT}" 1
+
+echo AFTER:
+xinput list-props $TOUCHPAD_ID | grep "${TAPPING_PROP}"
