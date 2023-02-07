@@ -1,10 +1,12 @@
 # cli
 apt-file
 cargo
+copyq
 curl
 direnv
 exa
-fzf
+feh
+flameshot
 git
 htop
 i3

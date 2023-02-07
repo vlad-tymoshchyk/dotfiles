@@ -50,10 +50,9 @@ set $fheight 980
 floating_modifier $alt
 
 exec "gsettings set org.gnome.settings-daemon.plugins.keyboard active false"
-exec "feh --bg-fill ~/Documents/wallpapers/iss_sun_earth.jpg"
-exec "copyq"
+exec_always "feh --bg-fill ~/dotfiles/wallpapers/iss_space_shuttle.jpg"
+exec_always "copyq"
 exec_always "setxkbmap -option caps:backspace"
-exec_always ~/bin/set_dvorak_keyboard
 exec_always --no-startup-id nm-applet
 
 for_window [class="^.*"] border pixel 1
@@ -173,9 +172,9 @@ mode "$mode_utils" {
 	bindsym $a exec exec xrandr --auto; mode "default"
 	bindsym $o exec ~/dotfiles/bin/screens_the_same ; mode "default"
 	bindsym $s exec ~/dotfiles/bin/screens_separate ; mode "default"
-	bindsym $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
 	bindsym $d exec ~/bin/brightdown 100; mode "default"
 	bindsym $f exec ~/bin/brightup 100; mode "default"
+	bindsym $l exec ~/utils/i3lock-fancy/i3lock-fancy; mode "default"
 	bindsym $w exec alacritty --class "Float_Alacritty" --command nwork; mode "default"
 	bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
 	bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
