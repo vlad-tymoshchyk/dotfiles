@@ -73,12 +73,18 @@ Plug 'AckslD/nvim-neoclip.lua'
 Plug 'tami5/sqlite.lua'
 Plug 'phaazon/hop.nvim'
 Plug 'jghauser/mkdir.nvim'
+
+-- i3config syntax
+Plug 'mboughaba/i3config.vim'
+
 -- Plug 'wbthomason/packer.nvim'
 Plug 'cljoly/telescope-repo.nvim'
 Plug 'Xuyuanp/scrollbar.nvim'
 -- Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'mattn/emmet-vim'
+
+Plug 'kovetskiy/sxhkd-vim'
 
 vim.call('plug#end')
 

@@ -60,7 +60,7 @@ for_window [instance="Float_Alacritty"] floating enable
 for_window [instance="Float_Alacritty"] move position $fmarginright $fmargintop
 for_window [instance="Float_Alacritty"] resize set $fwidth $fheight
 for_window [instance="copyq"] floating enable border pixel 1
-for_window [instance="copyq"] move position 500 100
+for_window [instance="altcopyq"] move position 500 100
 for_window [instance="copyq"] resize set 920 880
 assign [class="Slack"] s
 assign [class="Skype"] k
@@ -68,6 +68,13 @@ assign [class="Postman"] p
 assign [class="Telegram"] e
 
 bindsym $mod+$o workspace back_and_forth
+
+bindcode $mod+24 exec xdotool click 1
+bindcode $mod+25 exec xdotool click 2
+bindcode $mod+26 exec xdotool click 3
+bindcode $mod+34 exec xdotool click 4
+bindcode $mod+35 exec xdotool click 5
+
 # dropdown terminal on semicolon
 # bindcode $mod+$semicolon exec guake -t
 bindsym $mod+$return exec alacritty
@@ -172,9 +179,9 @@ mode "$mode_utils" {
 	bindsym $a exec exec xrandr --auto; mode "default"
 	bindsym $o exec ~/dotfiles/bin/screens_the_same ; mode "default"
 	bindsym $s exec ~/dotfiles/bin/screens_separate ; mode "default"
-	bindsym $d exec ~/bin/brightdown 100; mode "default"
-	bindsym $f exec ~/bin/brightup 100; mode "default"
-	bindsym $l exec ~/utils/i3lock-fancy/i3lock-fancy; mode "default"
+	bindsym $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
+	bindsym $d exec ~/dotfiles/bin/brightdown 100; mode "default"
+	bindsym $f exec ~/dotfiles/bin/brightup 100; mode "default"
 	bindsym $w exec alacritty --class "Float_Alacritty" --command nwork; mode "default"
 	bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
 	bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"

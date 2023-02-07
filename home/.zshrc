@@ -8,7 +8,8 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="awesomepanda"
+# ZSH_THEME="awesomepanda"
+ZSH_THEME="amuse"
 
 plugins=(git z vi-mode jump colorize command-not-found)
 
@@ -55,7 +56,7 @@ alias ~s="cd \`git rev-parse --show-toplevel\`/src"
 alias ~t="cd \`git rev-parse --show-toplevel\`/testcafe"
 alias ~a="cd \`git rev-parse --show-toplevel\`/api-mock"
 alias ww="which"
-alias c=`which cat`
+alias c="`which cat`"
 alias n="`which nvim`"
 alias nu="nvim -u ~/.vimrc"
 alias no="nvim  +'norm! \`0'"
@@ -96,6 +97,10 @@ alias ghr="gh run"
 alias ghrl="gh run list"
 alias ghp="gh pr"
 alias ghpl="gh pr list"
+
+alias d="docker"
+alias di="docker image"
+alias dim="docker images"
 
 alias tree1="tree -L 1"
 alias tree2="tree -L 2"
