@@ -1,0 +1,5 @@
+#!/bin/bash
+
+file=/etc/udev/rules.d/90-brightnessctl.rules
+sudo cp ~/dotfiles/instalation/scripts/setup_brightnessctl_rules_file $file
+sudo chown root:root $file

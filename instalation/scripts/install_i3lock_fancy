@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p ~/utils
+cd ~/utils
+
+git clone https://github.com/meskarune/i3lock-fancy.git
+cd i3lock-fancy
+
+sudo make install
