@@ -44,11 +44,19 @@ if [[ $gitInstalled -eq 1 || $python3Installed -eq 1 ]]; then
   fi
 fi
 
-
 read -p "Do you want clone dotfiles git repo? [Yy] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "Clonning dotfiles"
+  echo "Clonning dotfiles..."
   git clone https://github.com/vlad-tymoshchyk/dotfiles.git
+else
+  echo "Abort..."
+  exit 0;
+fi
+
+read -p "Do you want to run install manager? [Yy] " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Running install manager"
+  ~/dotfiles/
 else
   echo "Abort..."
   exit 0;
