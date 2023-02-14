@@ -24,6 +24,7 @@ echo ""
 
 if [[ $gitInstalled -eq 1 || $python3Installed -eq 1 ]]; then
   read -p "Do you want to run 'apt-get update' and install git and python3 if they are not available? [Yy] " -n 1 -r
+  echo ""
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Running 'apt-get update'..."
@@ -44,16 +45,24 @@ if [[ $gitInstalled -eq 1 || $python3Installed -eq 1 ]]; then
   fi
 fi
 
-read -p "Do you want clone dotfiles git repo? [Yy] " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "Clonning dotfiles..."
-  git clone https://github.com/vlad-tymoshchyk/dotfiles.git
+if [[ -d "/home/${USER}/dotfiles" ]]; then
+  echo -e "${tick} dotfiles installed"
 else
-  echo "Abort..."
-  exit 0;
+  echo -e "${cross} dotfiles not installed"
+  read -p "Do you want to clone dotfiles git repo? [Yy] " -n 1 -r
+  echo ""
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Clonning dotfiles..."
+    git clone https://github.com/vlad-tymoshchyk/dotfiles.git
+  else
+    echo "Abort..."
+    exit 0;
+  fi
 fi
 
 read -p "Do you want to run install manager? [Yy] " -n 1 -r
+echo ""
+
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   echo "Running install manager"
   ~/dotfiles/
