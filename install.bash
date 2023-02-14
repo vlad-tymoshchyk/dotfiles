@@ -64,8 +64,8 @@ read -p "Do you want to run install manager? [Yy] " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "Running install manager"
-  ~/dotfiles/
+  echo "Running install manager..."
+  ~/dotfiles/install_manager.py
 else
   echo "Abort..."
   exit 0;
