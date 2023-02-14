@@ -23,7 +23,7 @@ fi
 echo ""
 
 if [[ $gitInstalled -eq 1 || $python3Installed -eq 1 ]]; then
-  read -p "Do you want to run 'apt-get update' and install git and python3 if they are not available? [Yy]\n" -n 1 -r
+  read -p "Do you want to run 'apt-get update' and install git and python3 if they are not available? [Yy] " -n 1 -r
 
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Running 'apt-get update'..."
@@ -31,13 +31,25 @@ if [[ $gitInstalled -eq 1 || $python3Installed -eq 1 ]]; then
 
     if [ $gitInstalled -eq 1 ]; then
       echo "Installing git..."
-      sudo apt-get install git
+      sudo apt-get install -y git
     fi
+
     if [ $python3Installed -eq 1 ]; then
       echo "Installing python3..."
-      sudo apt-get install python3
+      sudo apt-get install -y python3
     fi
   else
     echo "Abort..."
+    exit 0;
   fi
+fi
+
+
+read -p "Do you want clone dotfiles git repo? [Yy] " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Clonning dotfiles"
+  git clone https://github.com/vlad-tymoshchyk/dotfiles.git
+else
+  echo "Abort..."
+  exit 0;
 fi
