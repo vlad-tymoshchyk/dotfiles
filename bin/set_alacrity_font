@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+file=~/dotfiles/config/alacritty/alacritty.yml
+current_size=$(cat $file | grep -oP "(?<=size: ).+")
+
+if [[ $1 == "" ]]; then
+  echo "Current font size: ${current_size}"
+  exit 0
+elif [[ $1 == $current_size ]]; then
+  echo "Font size is already ${current_size}"
+  exit 0
+elif [[ $1 == "+" ]]; then
+  new_size=$(($current_size + 1))
+elif [[ $1 == "-" ]]; then
+  new_size=$(($current_size - 1))
+else
+  new_size=$1
+fi
+
+echo "Setting font ${current_size} -> ${new_size}"
+
+sed -i "s/size: ${current_size}/size: ${new_size}/" $file

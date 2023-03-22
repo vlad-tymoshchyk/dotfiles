@@ -1,3 +1,9 @@
 #!/usr/bin/env python3
 
-print('I am an install manager')
+import subprocess
+
+subprocess.run(["pwd"])
+
+subprocess.run(["/home/vtymoshchyk/dotfiles/links_manager.py"])
+
+subprocess.run(["pwd"])

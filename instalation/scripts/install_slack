@@ -1,9 +1,9 @@
 #!/bin/bash
 
 package="slack-desktop-4.4.3-amd64.deb"
-folder="~/Downloads/deb"
+folder="~/Downloads"
 
 [[ ! -d $folder ]] && mkdir $folder
 cd $foldler 
-wget "https://downloads.slack-edge.com/linux_releases/${package}"
+sudo wget "https://downloads.slack-edge.com/linux_releases/${package}"
 sudo apt install -y "./$package"

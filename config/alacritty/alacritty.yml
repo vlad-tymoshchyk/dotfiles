@@ -1,6 +1,6 @@
 background_opacity: 0.8
 font:
-  size: 18
+  size: 15
   normal:
     family: JetBrains Mono
 window:

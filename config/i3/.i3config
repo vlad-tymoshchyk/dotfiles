@@ -69,11 +69,11 @@ assign [class="Telegram"] e
 
 bindsym $mod+$o workspace back_and_forth
 
-bindcode $mod+24 exec xdotool click 1
-bindcode $mod+25 exec xdotool click 2
-bindcode $mod+26 exec xdotool click 3
-bindcode $mod+34 exec xdotool click 4
-bindcode $mod+35 exec xdotool click 5
+# bindcode $mod+24 exec xdotool click 1
+# bindcode $mod+25 exec xdotool click 2
+# bindcode $mod+26 exec xdotool click 3
+# bindcode $mod+34 exec xdotool click 4
+# bindcode $mod+35 exec xdotool click 5
 
 # dropdown terminal on semicolon
 # bindcode $mod+$semicolon exec guake -t
@@ -105,12 +105,12 @@ bindsym $mod+$z floating toggle
 bindsym $mod+$shift+$r restart
 bindsym $mod+$shift+$m move workspace to output left
 
-bindsym $ctrl+1 exec ~/bin/set_dvorak_keyboard
-bindsym $ctrl+2 exec ~/bin/set_ukr_eng_keyboard
-bindsym $ctrl+3 exec ~/bin/set_rus_eng_keyboard
-bindsym $ctrl+4 exec ~/bin/set_spanish_eng_keyboard
-bindsym $ctrl+5 exec ~/bin/set_esperanto_eng_keyboard
-bindsym $ctrl+$shift+6 exec ~/bin/set_eng_ukr_keyboard
+bindsym $ctrl+1 exec ~/dotfiles/bin/set_dvorak_keyboard
+bindsym $ctrl+2 exec ~/dotfiles/bin/set_ukr_eng_keyboard
+bindsym $ctrl+3 exec ~/dotfiles/bin/set_rus_eng_keyboard
+bindsym $ctrl+4 exec ~/dotfiles/bin/set_spanish_eng_keyboard
+bindsym $ctrl+5 exec ~/dotfiles/bin/set_esperanto_eng_keyboard
+bindsym $ctrl+$shift+6 exec ~/dotfiles/bin/set_eng_ukr_keyboard
 bindsym $mod+$u workspace u
 bindsym $mod+$y workspace y
 bindsym $mod+1 workspace 1
@@ -122,7 +122,7 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace 0
 bindsym $mod+$shift+1 move container to workspace 1; workspace 1;
 bindsym $mod+$shift+2 move container to workspace 2; workspace 2;
 bindsym $mod+$shift+3 move container to workspace 3; workspace 3;
@@ -132,7 +132,7 @@ bindsym $mod+$shift+6 move container to workspace 6; workspace 6;
 bindsym $mod+$shift+7 move container to workspace 7; workspace 7;
 bindsym $mod+$shift+8 move container to workspace 8; workspace 8;
 bindsym $mod+$shift+9 move container to workspace 9; workspace 9;
-bindsym $mod+$shift+0 move container to workspace 10; workspace 10;
+bindsym $mod+$shift+0 move container to workspace 0; workspace 0;
 bindsym XF86AudioRaiseVolume exec ~/dotfiles/bin/volume -i 5 && ~/dotfiles/bin/volume -n
 bindsym XF86AudioLowerVolume exec ~/dotfiles/bin/volume -d 5 && ~/dotfiles/bin/volume -n
 bindsym XF86AudioMute exec ~/dotfiles/bin/volume -m && ~/dotfiles/bin/volume -n
@@ -179,7 +179,7 @@ mode "$mode_utils" {
 	bindsym $a exec exec xrandr --auto; mode "default"
 	bindsym $o exec ~/dotfiles/bin/screens_the_same ; mode "default"
 	bindsym $s exec ~/dotfiles/bin/screens_separate ; mode "default"
-	bindsym $l exec ~/github/i3lock-fancy/i3lock-fancy; mode "default"
+	bindsym $l exec ~/utils/i3lock-fancy/i3lock-fancy; mode "default"
 	bindsym $d exec ~/dotfiles/bin/brightdown 100; mode "default"
 	bindsym $f exec ~/dotfiles/bin/brightup 100; mode "default"
 	bindsym $w exec alacritty --class "Float_Alacritty" --command nwork; mode "default"

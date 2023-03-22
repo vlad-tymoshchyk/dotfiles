@@ -41,6 +41,11 @@ local lsp_config = function()
     on_attach = on_attach
   }
 
+  require('lspconfig').pyright.setup {
+    capabilities = capabilities,
+    on_attach = on_attach
+  }
+
   -- require('lspconfig').sumneko_lua.setup {
   --   capabilities = capabilities,
   --   on_attach = on_attach
