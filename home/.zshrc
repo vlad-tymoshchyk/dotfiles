@@ -6,12 +6,11 @@ else
   touch "$private_zshrc_before"
 fi
 
-export ZSH="$HOME/.oh-my-zsh"
-
-# ZSH_THEME="awesomepanda"
-ZSH_THEME="amuse"
-
 plugins=(git z vi-mode jump colorize command-not-found)
+
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+source "$HOME/dotfiles/zsh-themes/amuse.custom.zsh-theme"
 
 if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
   export PATH=$PATH\
@@ -20,13 +19,9 @@ if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
 :$HOME/go/bin\
 :$HOME/bin/nvim/bin\
 :$HOME/.cargo/bin\
+:$HOME/.local/bin\
 :$HOME/dotfiles/bin
-
-# :$HOME/bin\
-# :$HOME/.local/bin\
 fi
-
-# echo $PATH | sed "s/:/\n/g" | sort
 
 source $ZSH/oh-my-zsh.sh
 set -g mouse on
@@ -120,11 +115,6 @@ alias lt4="_lt --level=4"
 alias lt5="_lt --level=5"
 
 alias proj="cd \`ls ~/projects | fzf | xargs -I{} echo ~/projects/{}\` && clear"
-
-install-oh-my-zsh-curl() { sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" }
-install-oh-my-zsh-wget() { sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" }
-install-nvm-curl() { curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash }
-install-nvm-wget() { wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash }
 
 alias -s {txt,js,jsx,ts,tsx}=nvim
 alias -s {uml,yaml}=nvim
