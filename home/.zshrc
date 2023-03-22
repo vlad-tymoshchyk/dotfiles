@@ -6,12 +6,6 @@ else
   touch "$private_zshrc_before"
 fi
 
-plugins=(git z vi-mode jump colorize command-not-found)
-
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-source "$HOME/dotfiles/zsh-themes/amuse.custom.zsh-theme"
-
 if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
   export PATH=$PATH\
 :/usr/local/go/bin\
@@ -216,3 +210,9 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+plugins=(git z vi-mode jump colorize command-not-found)
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+source "$HOME/dotfiles/zsh-themes/amuse.custom.zsh-theme"
+# export ZSH_THEME="amuse"
