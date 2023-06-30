@@ -26,6 +26,7 @@ else:
 
 LINKS = [
     ('~/.vimrc', '~/dotfiles/home/.vimrc'),
+    ('~/.ideavimrc', '~/dotfiles/home/.ideavimrc'),
     ('~/.zshrc', '~/dotfiles/home/.zshrc'),
     ('~/.tmux.conf', '~/dotfiles/home/.tmux.conf'),
     ('~/.gitconfig', '~/dotfiles/home/.gitconfig'),

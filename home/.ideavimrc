@@ -1,0 +1,3 @@
+inoremap jk <esc>
+nnoremap ZZ :w<cr>
+map -xx :action Run<cr>
