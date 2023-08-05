@@ -12,6 +12,7 @@ os.execute("mkdir -p ~/test/lua-vim && touch ~/test/lua-vim/main.lua")
 
 vim.cmd [[
 	autocmd BufWritePost ~/test/lua-vim/*.lua :luafile ~/test/lua-vim/main.lua
+	source ~/dotfiles/nvim/ipa.vim
 
 	colorscheme dracula
 

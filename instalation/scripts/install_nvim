@@ -6,6 +6,5 @@ package="${folder_name}.tar.gz"
 cd ~/bin
 wget "https://github.com/neovim/neovim/releases/download/stable/${package}"
 tar -xzf "$package"
-ln -s "./${folder_name}/bin/nvim" ~/bin
 
 rm $package

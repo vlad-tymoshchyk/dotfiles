@@ -5,7 +5,7 @@ c:
 cpp:
 	nodemon -e cpp -x "clear && g++ main.cpp -o _executable && ./_executable"
 bash:
-	nodemon -e bash -x "clear && bash main.bash"
+	nodemon -e bash -x "clear && bash main.bash || exit 1"
 go:
 	nodemon -e go -x "clear && go run main.go || exit 1"
 js:

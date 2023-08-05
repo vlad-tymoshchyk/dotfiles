@@ -1,0 +1,1 @@
+nnoremap ZZ :w<cr>

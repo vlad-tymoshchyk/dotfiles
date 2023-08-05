@@ -11,13 +11,18 @@ if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
 :/usr/local/go/bin\
 :/usr/libexec/docker/cli-plugins\
 :$HOME/go/bin\
-:$HOME/bin/nvim/bin\
+:$HOME/bin/nvim-linux64/bin\
 :$HOME/.cargo/bin\
 :$HOME/.local/bin\
 :$HOME/dotfiles/bin
 fi
 
+plugins=(git z vi-mode jump colorize command-not-found)
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+source "$HOME/dotfiles/zsh-themes/amuse.custom.zsh-theme"
+# export ZSH_THEME="amuse"
+
 set -g mouse on
 bindkey jk vi-cmd-mode
 bindkey ^q push-line
@@ -49,10 +54,12 @@ alias c="`which cat`"
 alias n="`which nvim`"
 alias nu="nvim -u ~/.vimrc"
 alias no="nvim  +'norm! \`0'"
+alias nuo="nvim -u ~/.vimrc +'norm! \`0'"
 alias lg="lazygit"
 alias t="tmux"
 alias rr="clear && r"
 alias nf="file=\`fzf --height \"10%\"\`; if [ ! -z \$file ]; then nvim \$file; fi"
+alias g="git"
 alias gcob="branch=\`git branch --all | fzf --height \"10%\" | xargs\`; if [ ! -z \$branch ]; then git checkout \$branch; fi"
 alias vimrc="nvim ~/.config/nvim/init.lua"
 alias luainit="nvim ~/dotfiles/nvim/init.lua"
@@ -98,7 +105,7 @@ alias tree4="tree -L 4"
 alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
-alias cal="gcal --with-week-number --starting-day=Monday --year 2022"
+alias cal="gcal --with-week-number --starting-day=Monday --year 2023"
 alias xg="xdg-open"
 alias _l="exa --long --icons --all --group-directories-first --sort=ext"
 alias _lt="_l --tree"
@@ -210,9 +217,3 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}"  ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-plugins=(git z vi-mode jump colorize command-not-found)
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-source "$HOME/dotfiles/zsh-themes/amuse.custom.zsh-theme"
-# export ZSH_THEME="amuse"

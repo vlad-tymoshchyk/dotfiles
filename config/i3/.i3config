@@ -162,7 +162,8 @@ bindsym $mod+$w mode "$mode_workspaces"
 bindsym $mod+$shift+$w mode "$mode_move_to_workspace"
 bindsym $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
 mode "$mode_launcher" {
-	bindsym $g exec google-chrome --profile-directory="Default"; mode "default"
+	# bindsym $g exec google-chrome --profile-directory="Default"; mode "default"
+	bindsym $g exec google-chrome --profile-directory="Profile 1"; mode "default"
 	bindsym $f exec xdg-open ~; mode "default"
 	bindsym $h exec alacritty --class "Float_Alacritty" --command "htop"; mode "default"
 	bindsym $b exec --no-startup-id ~/dotfiles/bin/rbook; mode "default"
@@ -315,3 +316,7 @@ mode "$mode_move_and_go_to_workspace" {
 	bindsym Escape mode "default"
 	bindsym $return mode "default"
 }
+
+
+
+for_window [instance="patterns-Mediator"] floating enable

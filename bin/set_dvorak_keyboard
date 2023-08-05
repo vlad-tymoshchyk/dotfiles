@@ -5,4 +5,4 @@ setxkbmap -option grp:win_space_toggle
 # xkb-switch -s us
 ~/dotfiles/bin/notify_language_switch "English_(dvorak)"
 
-setxkbmap -option caps:escape
+setxkbmap -option caps:backspace

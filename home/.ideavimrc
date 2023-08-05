@@ -1,3 +1,7 @@
 inoremap jk <esc>
-nnoremap ZZ :w<cr>
-map -xx :action Run<cr>
+nnoremap ZZ :w<cr>:action Run<cr>
+map -xx :w<cr>:action Run<cr>
+nnoremap vv ggVG
+
+se ideajoin
+se surround

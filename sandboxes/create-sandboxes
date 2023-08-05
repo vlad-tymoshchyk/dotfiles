@@ -13,3 +13,6 @@ touch sandbox-bash/main.ts
 
 mkdir -p sandbox-py
 touch sandbox-bash/main.py
+
+mkdir -p sandbox-lua
+touch sandbox-lua/main.lua
