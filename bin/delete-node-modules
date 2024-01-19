@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+
+const args = process.argv.slice(2);
+const isForced = args.includes('-f');
+
+const dirsToDelete = [];
+
+if (fs.existsSync('node_modules')) {
+  dirsToDelete.push(path.join(process.cwd(), 'node_modules'));
+}
+
+const homeDirs = fs
+  .readdirSync('.', { withFileTypes: true })
+  .filter((dirent) => dirent.isDirectory())
+  .map((dirent) => path.join(process.cwd(), dirent.name));
+
+const queue = [...homeDirs];
+
+do {
+  const dir = queue.shift();
+  const subdirs = fs
+    .readdirSync(dir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => path.join(dir, dirent.name));
+
+  subdirs.forEach((subdir) => {
+    if (subdir.match(/node_modules$/)) {
+      dirsToDelete.push(subdir);
+    } else {
+      queue.push(subdir);
+    }
+  });
+} while (queue.length > 0);
+
+if (isForced) {
+  console.log('Removing directories:');
+  dirsToDelete.forEach((dir) => {
+    console.log(dir);
+    fs.rmSync(dir, { recursive: true });
+  });
+} else {
+  console.log('The following directories will be deleted:');
+  console.log(dirsToDelete);
+}
