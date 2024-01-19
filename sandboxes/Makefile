@@ -1,7 +1,7 @@
 lua:
 	nodemon -e lua -x "clear && lua main.lua || exit 1"
 c:
-	nodemon -e c,h -x "clear && gcc *.c -o _executable && ./_executable"
+	nodemon -e c,h -x "clear && gcc main.c -o _executable && echo \"This is a test string\" | ./_executable"
 cpp:
 	nodemon -e cpp -x "clear && g++ main.cpp -o _executable && ./_executable"
 bash:

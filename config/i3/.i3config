@@ -62,10 +62,15 @@ for_window [instance="Float_Alacritty"] resize set $fwidth $fheight
 for_window [instance="copyq"] floating enable border pixel 1
 for_window [instance="altcopyq"] move position 500 100
 for_window [instance="copyq"] resize set 920 880
+# for_window [class="zoom"] focus_on_window_activation none
+no_focus [class="*"]
+# focus_on_window_activation none
+
 assign [class="Slack"] s
 assign [class="Skype"] k
 assign [class="Postman"] p
 assign [class="Telegram"] e
+assign [class="zoom"] 0
 
 bindsym $mod+$o workspace back_and_forth
 
@@ -185,7 +190,9 @@ mode "$mode_utils" {
 	bindsym $f exec ~/dotfiles/bin/brightup 100; mode "default"
 	bindsym $w exec alacritty --class "Float_Alacritty" --command nwork; mode "default"
 	bindsym 1 exec ~/dotfiles/bin/move_all_workspaces 1; mode "default"
+	bindsym j exec ~/dotfiles/bin/move_all_workspaces-1; mode "default"
 	bindsym 2 exec ~/dotfiles/bin/move_all_workspaces 2; mode "default"
+	bindsym k exec ~/dotfiles/bin/move_all_workspaces-2; mode "default"
 	bindsym $shift+1 exec ~/dotfiles/bin/move_all_workspaces !; mode "default"
 	bindsym $shift+2 exec ~/dotfiles/bin/move_all_workspaces @; mode "default"
 	bindsym Escape mode "default"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+notify-send "Some test"
+$HOME/dotfiles/bin/move_all_workspaces 1

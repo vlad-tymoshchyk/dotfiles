@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+pwd | xargs notify-send 
+$HOME/dotfiles/bin/move_all_workspaces 2
+notify-send "Some test " $?

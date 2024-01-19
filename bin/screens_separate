@@ -5,4 +5,4 @@ outputs_array=($outputs)
 first_output=${outputs_array[0]}
 second_output=${outputs_array[1]}
 
-xrandr --output $first_output --left-of $second_output
+xrandr --output $first_output --right-of $second_output

@@ -113,3 +113,5 @@ map('n', 'Р', 'D', opts);
 map('n', 'С', 'J', opts);
 map('n', 'а', 'u', opts);
 map('n', '<c-щ>', '<c-r>', opts);
+
+map('n', ',,', ':w<cr>', opts);

@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "bcrypt": "^5.1.0",
+    "checksum": "^1.0.0",
     "d3": "^7.6.1",
     "date-fns": "^2.29.3",
     "date-fns-tz": "^2.0.0",

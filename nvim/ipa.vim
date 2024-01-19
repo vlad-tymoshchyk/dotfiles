@@ -25,12 +25,13 @@ function! IPA()
 	imap ,uu ʊ
 	imap ,eh ɛ
 	imap ,oe œ
-	imap ,au ɔ
+	imap ,oo ɔ
 	imap ,ae æ
 	imap ,aa ɐ
 	imap ,ah ɑ
 	imap ,ba ɒ
 	imap ,aa ʌ
+	imap ,ii ɪ
 endfunction
 
 function! IPAOff()
@@ -72,4 +73,5 @@ function! IPAOff()
 	iunmap ,OE
 	iunmap ,ah
 	iunmap ,ba
+	iunmap ,ii
 endfunction
