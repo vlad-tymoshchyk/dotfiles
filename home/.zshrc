@@ -10,6 +10,7 @@ if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
   export PATH=$PATH\
 :/usr/local/go/bin\
 :/usr/libexec/docker/cli-plugins\
+:$HOME/bin\
 :$HOME/go/bin\
 :$HOME/bin/nvim-linux64/bin\
 :$HOME/.cargo/bin\
@@ -127,6 +128,7 @@ export EDITOR=$(which nvim)
 export PDF_VIEWER=$(which zathura)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 hash -d authn=~/projects/saas-authn-ui
 hash -d admin=~/projects/saas-admin-ui

@@ -1,0 +1,9 @@
+[font]
+size = 15
+
+[font.normal]
+family = "JetBrains Mono"
+
+[window.padding]
+x = 10
+y = 10

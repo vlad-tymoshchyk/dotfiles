@@ -31,10 +31,12 @@ set $comma 25
 set $dot 26
 
 set $ctrl Control
-set $mod Mod4
+set $win Mod4
 set $alt Mod1
 set $shift Shift
 set $return Return
+
+set $mod Mod4+Control
 
 set $mode_launcher [u]:Utils [g]:Chrome [f]:Files [e]:Telegram [k]:Skype [s]:Slack [p]:Postman
 set $mode_utils [l]:Lock [o]:One screen [s]:Separate screens [a]:Auto screen [d]:Dark screen [f]:Bright screen
@@ -160,7 +162,7 @@ bar {
 bindsym $mod+$a mode "$mode_launcher"
 bindsym $mod+$w mode "$mode_workspaces"
 bindsym $mod+$shift+$w mode "$mode_move_to_workspace"
-bindsym $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
+# bindsym $mod+$ctrl+$shift+$w mode "$mode_move_and_go_to_workspace"
 mode "$mode_launcher" {
 	# bindsym $g exec google-chrome --profile-directory="Default"; mode "default"
 	bindsym $g exec google-chrome --profile-directory="Profile 1"; mode "default"
