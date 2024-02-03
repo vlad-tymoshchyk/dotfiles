@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+cd ~/.ssh
+filename=$1
+
+if [ -z $filename ]; then
+  echo "filename is not provided"
+  exit 1
+fi 
+
+filepath="${HOME}/.ssh/${filename}"
+echo "Creating file \"${filepath}\""
+
+if [ -f "${filepath}" ]; then
+  echo "file ${filepath} exists"
+  exit 1
+fi
+
+ssh-keygen -t ed25519 -C $filename -f $filename -P ""
+
+ssh-add $filepath
