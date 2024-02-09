@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+root=`git_bare_root`
+runner_dir="${root}/trees/runner"
+current_dir=`pwd`
+
+echo $runner_dir
+echo $current_dir
+
+ln -nsf "${current_dir}/src/*" "${runner_dir}/src/"
+ln -sf "${current_dir}/api-mock" "${runner_dir}"
+ln -sf "${current_dir}/node_modules" "${runner_dir}"

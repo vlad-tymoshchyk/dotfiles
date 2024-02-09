@@ -11,7 +11,7 @@ local hop_config = R'plugin_configs.hop'
 local indent_blankline_config = R'plugin_configs.indent_blankline'
 local neoclip_config = R'plugin_configs.neoclip'
 local treesitter_config = R'plugin_configs.treesitter'
-local refactoring_config = R'plugin_configs.refactoring'
+-- local refactoring_config = R'plugin_configs.refactoring'
 
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim-plugged')
@@ -86,7 +86,7 @@ Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'mattn/emmet-vim'
 
 Plug 'kovetskiy/sxhkd-vim'
-Plug 'ThePrimeagen/refactoring.nvim'
+-- Plug 'ThePrimeagen/refactoring.nvim'
 
 vim.call('plug#end')
 
@@ -111,7 +111,7 @@ prettier_config()
 hop_config()
 neoclip_config()
 treesitter_config()
-refactoring_config()
+-- refactoring_config()
 
 -- indent_blankline_config()
 

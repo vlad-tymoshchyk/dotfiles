@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+section=$1
+
+_expect_exists() {
+  comand_name=$1
+  which "$comand_name" 2>&1 > /dev/null
+  code=$?
+  if [ $code -eq 0 ]; then
+    echo "(yes) $comand_name"
+  else
+    echo "(no) $comand_name"
+  fi
+}
+
+npm_check() {
+  echo "npm:" `npm --version`
+  echo "node:" `node --version`
+  echo "--------"
+  _expect_exists typescript-language-server
+  _expect_exists nodemon
+  _expect_exists env-cmd
+}
+
+npm_check

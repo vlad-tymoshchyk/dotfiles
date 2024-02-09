@@ -1,3 +1,5 @@
 src/.ctags
 src/tags
 .projections.json
+.env.dev*
+.env.int*
