@@ -71,6 +71,9 @@ g.NERDSpaceDelims = 1
 g.NERDDefaultNesting=-1
 g.NERDTreeWinPos = 'right'
 
+-- g.UltiSnipsExpandTrigger = '<C-Tab>'
+-- g.UltiSnipsExpandTrigger = '<ArrowRight>'
+
 g.user_emmet_mode='in'
 g.user_emmet_leader_key='<C-z>'
 

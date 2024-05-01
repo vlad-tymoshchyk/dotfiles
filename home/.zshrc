@@ -15,7 +15,8 @@ if [[ ! $PATH == *"/dotfiles/bin"* ]]; then
 :$HOME/bin/nvim-linux64/bin\
 :$HOME/.cargo/bin\
 :$HOME/.local/bin\
-:$HOME/dotfiles/bin
+:$HOME/dotfiles/bin\
+:$HOME/test/xkb-switch/build
 fi
 
 plugins=(git z vi-mode jump colorize command-not-found)
@@ -106,7 +107,7 @@ alias tree4="tree -L 4"
 alias tree5="tree -L 5"
 
 alias mux="tmuxinator"
-alias cal="gcal --with-week-number --starting-day=Monday --year 2023"
+alias cal="gcal --with-week-number --starting-day=Monday --year 2024"
 alias xg="xdg-open"
 alias _l="exa --long --icons --all --group-directories-first --sort=ext"
 alias _lt="_l --tree"

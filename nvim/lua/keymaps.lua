@@ -113,3 +113,10 @@ map('n', 'Р', 'D', opts);
 map('n', 'С', 'J', opts);
 map('n', 'а', 'u', opts);
 map('n', '<c-щ>', '<c-r>', opts);
+
+map('n', ',,', ':w<cr>',opts);
+vim.keymap.set('i', '<C-l>', 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false
+  })
+vim.g.copilot_no_tab_map = true

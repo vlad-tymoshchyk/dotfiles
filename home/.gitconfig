@@ -27,6 +27,8 @@
 [user]
   name = Vlad Tymoshchyk
   email = vtymoshchyk@gmail.com
+[includeIf "gitdir:~/projects/"]
+  path = ~/projects/.gitconfig
 [core]
   excludesfile = ~/.gitignore_global
   pager = less -RFX

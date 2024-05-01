@@ -2,5 +2,6 @@
 
 setxkbmap -layout dvorak,ua
 setxkbmap -option grp:win_space_toggle
-xkb-switch -s ua
+# xkb-switch -s ua
+~/test/xkb-switch/build/xkb-switch -s ua
 ~/dotfiles/bin/notify_language_switch "Українська"
