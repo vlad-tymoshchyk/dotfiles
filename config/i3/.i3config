@@ -37,6 +37,7 @@ set $shift Shift
 set $return Return
 
 set $mod Mod4+Control
+# set $mod Mod4
 
 set $mode_launcher [u]:Utils [g]:Chrome [f]:Files [e]:Telegram [k]:Skype [s]:Slack [p]:Postman
 set $mode_utils [l]:Lock [o]:One screen [s]:Separate screens [a]:Auto screen [d]:Dark screen [f]:Bright screen
@@ -111,7 +112,8 @@ bindsym $ctrl+1 exec ~/dotfiles/bin/set_dvorak_keyboard
 bindsym $ctrl+2 exec ~/dotfiles/bin/set_ukr_eng_keyboard
 bindsym $ctrl+3 exec ~/dotfiles/bin/set_rus_eng_keyboard
 bindsym $ctrl+4 exec ~/dotfiles/bin/set_spanish_eng_keyboard
-bindsym $ctrl+5 exec ~/dotfiles/bin/set_esperanto_eng_keyboard
+# bindsym $ctrl+5 exec ~/dotfiles/bin/set_esperanto_eng_keyboard
+bindsym $ctrl+5 exec ~/dotfiles/bin/set_greek_eng_keyboard
 bindsym $ctrl+$shift+6 exec ~/dotfiles/bin/set_eng_ukr_keyboard
 bindsym $mod+$u workspace u
 bindsym $mod+$y workspace y
