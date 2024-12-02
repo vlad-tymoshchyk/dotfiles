@@ -87,8 +87,16 @@ Plug 'mattn/emmet-vim'
 
 Plug 'kovetskiy/sxhkd-vim'
 -- Plug 'ThePrimeagen/refactoring.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim'
+
+Plug 'williamboman/mason.nvim'
 
 vim.call('plug#end')
+
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
 
 -- require('packer').startup(function(use)
 -- use 'wbthomason/packer.nvim'

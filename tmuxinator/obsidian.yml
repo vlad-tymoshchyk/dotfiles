@@ -1,0 +1,10 @@
+name: obsidian
+root: ~/obsidian-notes
+
+startup_window: 2
+
+windows:
+  - obsidian-bin:
+      panes:
+        - eval `ssh-agent` && ssh-add ~/.ssh/github-not-work && ~/bin/Obsidian-1.5.3.AppImage
+  - shell:
